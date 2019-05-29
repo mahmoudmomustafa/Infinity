@@ -21,7 +21,7 @@ class PostsTableSeeder extends Seeder
         $posts = [];
         $faker = Factory::create();
         for ($i=1; $i <=10 ; $i++) { 
-            $image = 'Post_image' . rand(1,5) . '.jpg';
+            $image = 'Post_image_' . rand(1,5) . '.jpg';
             // $date = date('Y-m-d H:i:s' , strtotime('2018-06-06 12:00:00 +{$i} days'));
             $posts[] = [
                 'author_id' => rand(1,3),
