@@ -14,4 +14,9 @@ class BlogController extends Controller
         $posts = Post::with('author')->orderBy('published_at','desc')->published()->paginate(3);
         return view('blog.index',compact('posts'));
     }
+    // show function
+    public function show($id){
+        $post = Post::findOrFail($id);
+        return view('blog.show',compact('post'));
+    }
 }
