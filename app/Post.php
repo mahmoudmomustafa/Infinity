@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Carbon\Carbon;
 
 class Post extends Model
@@ -31,5 +32,12 @@ class Post extends Model
     // publish scope
     public function scopePublished($query){
         return $query->where('published_at','<=',Carbon::now());
+    }
+    // markdown html
+    public function getBodyHtmlAttribute(){
+        return $this->description ? Markdown::convertToHtml($this->description) : Null ;
+    }
+    public function getExcerptHtmlAttribute(){
+        return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : Null ;
     }
 }
