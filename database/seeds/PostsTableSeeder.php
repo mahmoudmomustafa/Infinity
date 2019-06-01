@@ -24,6 +24,7 @@ class PostsTableSeeder extends Seeder
         $date = Carbon::create(2019,5,2,9);
         for ($i=1; $i <=10 ; $i++) { 
             $image = 'Post_image_' . rand(1,5) . '.jpg';
+            $category_id = rand(1, 5);
             $date->addDays(1);
             $publishedDate = clone($date);
             $posts[] = [
@@ -35,7 +36,8 @@ class PostsTableSeeder extends Seeder
                 'image' => rand(0,1) == 1 ? $image : Null,
                 'created_at' => clone($date),
                 'updated_at' => clone($date),
-                'published_at' => $i >5 && rand(0,1) == 0 ? NULL : $publishedDate->addDays($i + 4)
+                'published_at' => $i >5 && rand(0,1) == 0 ? NULL : $publishedDate->addDays($i + 4),
+                'category_id' => $category_id
             ];
         }
         DB::table('posts')->insert($posts);
