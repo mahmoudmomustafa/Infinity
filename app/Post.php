@@ -14,6 +14,10 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     //image
     public function getImageUrlAttribute($value)
     {
@@ -25,19 +29,23 @@ class Post extends Model
         return $imageUrl;
     }
     // date
-    public function getDateAttribute($value){
+    public function getDateAttribute($value)
+    {
         // return $this->created_at;
         return is_null($this->published_at) ? '' : $this->published_at->diffForHumans();
     }
     // publish scope
-    public function scopePublished($query){
-        return $query->where('published_at','<=',Carbon::now());
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<=', Carbon::now());
     }
     // markdown html
-    public function getBodyHtmlAttribute(){
-        return $this->description ? Markdown::convertToHtml($this->description) : Null ;
+    public function getBodyHtmlAttribute()
+    {
+        return $this->description ? Markdown::convertToHtml($this->description) : Null;
     }
-    public function getExcerptHtmlAttribute(){
-        return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : Null ;
+    public function getExcerptHtmlAttribute()
+    {
+        return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : Null;
     }
 }
