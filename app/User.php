@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -42,7 +43,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class,'author_id');
     }
-
+    //author bio
+    public function getBioHtmlAttribute()
+    {
+        return $this->bio ? Markdown::convertToHtml($this->bio) : Null;
+    }
     public function getRouteKeyName()
     {
         return 'slug';
