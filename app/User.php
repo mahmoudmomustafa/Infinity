@@ -38,7 +38,13 @@ class User extends Authenticatable
     ];
 
     // posts
-    public function posts(){
-        return $this->hasMany(Post::class);
+    public function posts()
+    {
+        return $this->hasMany(Post::class,'author_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

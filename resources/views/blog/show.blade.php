@@ -38,11 +38,11 @@
             </a>
           </div>
           <div class="media-body">
-            <h4 class="media-heading"><a href="#">{{$post->author->name}}</a></h4>
+            <h4 class="media-heading"><a href="{{route('author' , $post->author->slug)}}">{{$post->author->name}}</a></h4>
             <div class="post-author-count">
-              <a href="#">
+            <a href="{{route('author' , $post->author->slug)}}">
                 <i class="fa fa-clone"></i>
-                90 posts
+                {{$post->author->posts->count()}} Posts
               </a>
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad aut sunt cum, mollitia excepturi neque
