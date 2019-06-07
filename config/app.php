@@ -136,6 +136,7 @@ return [
 
     'providers' => [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */

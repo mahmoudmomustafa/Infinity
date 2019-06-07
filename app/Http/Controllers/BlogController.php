@@ -21,37 +21,29 @@ class BlogController extends Controller
     public function category(Category $category){
         $categoryName = $category->title;
 
-        $categories = Category::with(['posts'=> function($query){
-            $query->published();
-        }])->orderBy('title','asc')->get();
-
         $posts = $category->posts()
                             ->with('author')
                             ->latest()
                             ->published()
                             ->paginate(3);
 
-        return view('blog.index',compact('posts','categories','categoryName'));
+        return view('blog.index',compact('posts','categoryName'));
     }
     // author 
     public function author(User $author){
         $authorName = $author->name;
-        $categories = Category::with(['posts'=> function($query){
-            $query->published();
-        }])->orderBy('title','asc')->get();
+
         $posts = $author->posts()
                             ->with('category')
                             ->latest()
                             ->published()
                             ->paginate(3);
 
-        return view('blog.index',compact('posts','categories','authorName'));
+        return view('blog.index',compact('posts','authorName'));
     }
     // show function
     public function show(Post $post){
-        $categories = Category::with(['posts'=> function($query){
-            $query->published();
-        }])->orderBy('title','asc')->get();
-        return view('blog.show',compact('post','categories'));
+ 
+        return view('blog.show',compact('post'));
     }
 }

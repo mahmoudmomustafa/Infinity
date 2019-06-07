@@ -48,4 +48,8 @@ class Post extends Model
     {
         return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : Null;
     }
+    // popular post
+    public function scopePopular($query){
+        return $query->orderBy('view_count','desc');
+    }
 }
