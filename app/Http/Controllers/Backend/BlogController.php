@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class BlogController extends BackendController
 {
@@ -23,9 +24,10 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $posts)
     {
-        dd('create');
+        $categories = Category::get();
+        return view('backend.blog.create', compact('posts', 'categories'));
     }
 
     /**
@@ -36,7 +38,16 @@ class BlogController extends BackendController
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required|unique:posts',
+            'description' => 'required',
+            'category_id' => 'required',
+            'published_at' => 'date_format:Y-m-d H:i:s'
+        ]);
+        $request->user()->posts()->create($request->all());
+
+        return redirect('/backend/blog')->with('message', 'Ur Post was created');
     }
 
     /**

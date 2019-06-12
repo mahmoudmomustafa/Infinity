@@ -27,6 +27,8 @@ Route::get('/backend/blog', 'Backend\BlogController@index')->name('backend.index
 
 Route::get('/backend/blog/create', 'Backend\BlogController@create')->name('backend.create');
 
+Route::post('/backend/blog', 'Backend\BlogController@store')->name('backend.store');
+
 Route::get('/backend/blog/{post}', 'Backend\BlogController@edit')->name('backend.edit');
 
 Route::get('/backend/blog{post}', 'Backend\BlogController@destroy')->name('backend.delete');

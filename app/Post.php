@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
+    protected $fillable = ['title','slug' ,'description','category_id','excerpt','published_at','view_count','author_id', 'updated_at', 'created_at'];
     protected $dates = ['published_at'];
 
     public function author()
