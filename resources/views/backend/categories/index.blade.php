@@ -1,12 +1,17 @@
 @extends('layouts.backend.main')
-@section('title','MyBlog | Blog index')
+@section('title','MyBlog | Categories')
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Blog
-      <small>Display all posts</small>
+      Categories
+      <small>Display all Categories</small>
+      <b>
+          <a href="/backend/categories/create" class="btn btn-primary">
+            Add new Category
+          </a>
+        </b>
     </h1>
     <ol class="breadcrumb">
       {{-- Dashboard --}}
@@ -15,7 +20,7 @@
       </li>
       {{-- posts --}}
       <li class="active">
-        <a href="/backend/blog">Posts</a>
+        <a href="/backend/categories">Categories</a>
       </li>
     </ol>
   </section>
@@ -25,36 +30,34 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
-          <!-- /.box-header -->
-          <div class="box-body ">
+         <!-- /.box-header -->
+         <div class="box-body ">
             @if (session('message'))
             <div class="alert alert-info">
               {{ session('message')}}
             </div>
             @endif
-            @if (!$posts->count())
+            @if (!$categories->count())
             <div class="alert alert-danger">
               <strong>No record</strong>
             </div>
             @else
             <table class="table taable-bordered">
-                <thead>
-                    <tr>
-                      <td width='80'>Actions</td>
-                      <td>Post title</td>
-                      <td>Author</td>
-                      <td>Category</td>
-                      <td>Created at</td>
-                    </tr>
-                  </thead>
-              <tbody>
-                @foreach ($posts as $post)
+              <thead>
                 <tr>
-                  <td>
-                    <a href="/backend/blog/{{$post->id}}/edit" class="btn btn-xs btn-success">
+                  <td>Actions</td>
+                  <td>Categories</td>
+                  <td>Post Count</td>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($categories as $category)
+                <tr>
+                  <td width='80'>
+                    <a href="/backend/categories/{{$category->id}}/edit" class="btn btn-xs btn-success">
                       <i class="fa fa-edit"></i>
                     </a>
-                    <form action="/backend/blog/{{$post->id}}" method="post">
+                    <form action="/backend/categories/{{$category->id}}" method="post">
                       @method('DELETE')
                       @csrf
                       <button type="submit" class="btn btn-xs btn-danger">
@@ -62,10 +65,8 @@
                       </button>
                     </form>
                   </td>
-                  <td>{{$post->title}}</td>
-                  <td>{{$post->author->name}}</td>
-                  <td>{{$post->category->title}}</td>
-                  <td>{{$post->created_at}}</td>
+                  <td>{{$category->title}}</td>
+                  <td>{{$category->posts->count()}}</td>
                 </tr>
                 @endforeach
               </tbody>
@@ -74,7 +75,7 @@
           </div>
           <!-- /.box-body -->
           <nav>
-            {{$posts->links()}}
+            {{$categories->links()}}
           </nav>
           <!-- /.box -->
         </div>

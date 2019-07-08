@@ -24,10 +24,10 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Post $posts)
+    public function create(Post $post)
     {
         $categories = Category::get();
-        return view('backend.blog.create', compact('posts', 'categories'));
+        return view('backend.blog.create', compact('post', 'categories'));
     }
 
     /**
@@ -60,8 +60,8 @@ class BlogController extends BackendController
     public function edit($id)
     {
         $categories = Category::get();
-        $post=POST::findOrFail($id);
-        return view('backend/blog/edit',compact('post','categories'));
+        $post = POST::findOrFail($id);
+        return view('backend/blog/edit', compact('post', 'categories'));
     }
 
     /**
@@ -94,7 +94,7 @@ class BlogController extends BackendController
      */
     public function destroy($id)
     {
-        $post=POST::findOrFail($id);
+        $post = POST::findOrFail($id);
         $post->delete();
         return redirect('/backend/blog')->with('message', 'Post was Deleted');
     }
