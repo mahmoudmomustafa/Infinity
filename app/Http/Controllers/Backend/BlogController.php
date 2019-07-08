@@ -43,7 +43,8 @@ class BlogController extends BackendController
             'slug' => 'required|unique:posts',
             'description' => 'required',
             'category_id' => 'required',
-            'published_at' => 'date_format:Y-m-d H:i:s'
+            'published_at' => 'date_format:Y-m-d H:i:s',
+            // 'image'     => 'mims:png,jpg,jpeg'
         ]);
         $request->user()->posts()->create($request->all());
 
@@ -56,9 +57,11 @@ class BlogController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit($id)
     {
-        //
+        $categories = Category::get();
+        $post=POST::findOrFail($id);
+        return view('backend/blog/edit',compact('post','categories'));
     }
 
     /**
@@ -67,21 +70,20 @@ class BlogController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show(Post $post)
     {
-        //
+        // return view('backend/blog', compact("post"));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *\
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        // $post->update(request()->all());
+        POST::findOrFail($id)->update(request()->all());
+        return redirect('/backend/blog')->with('message', 'Ur Post was Updated');
     }
 
     /**
@@ -92,6 +94,8 @@ class BlogController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        $post=POST::findOrFail($id);
+        $post->delete();
+        return redirect('/backend/blog')->with('message', 'Post was Deleted');
     }
 }

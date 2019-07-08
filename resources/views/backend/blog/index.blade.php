@@ -9,7 +9,14 @@
       <small>Display all posts</small>
     </h1>
     <ol class="breadcrumb">
-      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      {{-- Dashboard --}}
+      <li class="active">
+        <a href="/home">Dashboard</a>
+      </li>
+      {{-- posts --}}
+      <li class="active">
+        <a href="/backend/blog">Posts</a>
+      </li>
     </ol>
   </section>
 
@@ -35,12 +42,16 @@
                 @foreach ($posts as $post)
                 <tr>
                   <td>
-                    <a href="{{route('backend.edit',$post->id)}}" class="btn btn-xs btn-default">
+                    <a href="/backend/blog/{{$post->id}}/edit" class="btn btn-xs btn-success">
                       <i class="fa fa-edit"></i>
                     </a>
-                    <a href="{{route('backend.delete',$post->id)}}" class="btn btn-xs btn-danger">
-                      <i class="fa fa-times"></i>
-                    </a>
+                    <form action="/backend/blog/{{$post->id}}" method="post">
+                      @method('DELETE')
+                      @csrf
+                      <button type="submit" class="btn btn-xs btn-danger">
+                        <i class="fa fa-times"></i>
+                      </button>
+                    </form>
                   </td>
                   <td>{{$post->title}}</td>
                   <td>{{$post->author->name}}</td>
@@ -53,15 +64,6 @@
             @endif
           </div>
           <!-- /.box-body -->
-          {{-- <div class="box-footer">
-            <ul class="pagination">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-            </ul>
-          </div>
-        </div> --}}
           <nav>
             {{$posts->links()}}
           </nav>

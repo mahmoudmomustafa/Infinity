@@ -13,22 +13,25 @@
 
 Route::get('/', 'BlogController@index')->name('blog');
 
-Route::get('/blog/{post}', 'BlogController@show')->name('blog.show');
+Route::get('/blog/{post}', 'BlogController@show');
 
-Route::get('/category/{category}', 'BlogController@category')->name('category');
+Route::get('/category/{category}', 'BlogController@category');
 
-Route::get('/author/{author}','BlogController@author')->name('author');
+Route::get('/author/{author}','BlogController@author');
 Auth::routes();
 
-Route::get('/home', 'Backend\HomeController@index')->name('home');
+Route::get('/home', 'Backend\HomeController@index');
 
+Route::resource('/backend/blog', 'Backend\BlogController');
 
-Route::get('/backend/blog', 'Backend\BlogController@index')->name('backend.index');
+// Route::get('/backend/blog', 'Backend\BlogController@index')->name('backend.index');
 
-Route::get('/backend/blog/create', 'Backend\BlogController@create')->name('backend.create');
+// Route::get('/backend/blog/create', 'Backend\BlogController@create')->name('backend.create');
 
-Route::post('/backend/blog', 'Backend\BlogController@store')->name('backend.store');
+// Route::post('/backend/blog', 'Backend\BlogController@store')->name('backend.store');
 
-Route::get('/backend/blog/{post}', 'Backend\BlogController@edit')->name('backend.edit');
+// Route::get('/backend/blog/{post}/edit', 'Backend\BlogController@edit')->name('backend.edit');
 
-Route::get('/backend/blog{post}', 'Backend\BlogController@destroy')->name('backend.delete');
+// Route::get('/backend/blog/{post}', 'Backend\BlogController@update')->name('backend.update');
+
+// Route::get('/backend/blog{post}', 'Backend\BlogController@destroy')->name('backend.delete');
