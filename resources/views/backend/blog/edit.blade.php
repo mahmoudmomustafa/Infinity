@@ -9,7 +9,14 @@
       <small>Edit Post</small>
     </h1>
     <ol class="breadcrumb">
-      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      {{-- Dashboard --}}
+      <li class="active">
+        <a href="/home">Dashboard</a>
+      </li>
+      {{-- posts --}}
+      <li class="active">
+        <a href="/backend/blog">Posts</a>
+      </li>
     </ol>
   </section>
 
@@ -71,7 +78,7 @@
                 @endif
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Update</button>
               </div>
             </form>
           </div>

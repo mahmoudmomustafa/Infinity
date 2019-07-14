@@ -9,7 +9,13 @@
       <small>Add new Category</small>
     </h1>
     <ol class="breadcrumb">
-      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      <li class="active">
+        <a href="/home">Dashboard</a>
+      </li>
+      {{-- posts --}}
+      <li class="active">
+        <a href="/backend/categories">Categories</a>
+      </li>
     </ol>
   </section>
 

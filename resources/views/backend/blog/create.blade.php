@@ -9,7 +9,14 @@
       <small>Add new Post</small>
     </h1>
     <ol class="breadcrumb">
-      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      {{-- Dashboard --}}
+      <li class="active">
+        <a href="/home">Dashboard</a>
+      </li>
+      {{-- posts --}}
+      <li class="active">
+        <a href="/backend/blog">Posts</a>
+      </li>
     </ol>
   </section>
 

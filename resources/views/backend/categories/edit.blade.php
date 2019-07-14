@@ -1,15 +1,21 @@
 @extends('layouts.backend.main')
-@section('title','MyBlog | Edit Post')
+@section('title','MyBlog | Edit category')
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
       Blog
-      <small>Edit Post</small>
+      <small>Edit category</small>
     </h1>
     <ol class="breadcrumb">
-      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      <li class="active">
+        <a href="/home">Dashboard</a>
+      </li>
+      {{-- categorys --}}
+      <li class="active">
+        <a href="/backend/categories">Categories</a>
+      </li>
     </ol>
   </section>
 
@@ -20,58 +26,25 @@
         <div class="box">
           <!-- /.box-header -->
           <div class="box-body ">
-            <form action="/backend/blog/{{$post->id}}" method="POST">
+            <form action="/backend/blog/{{$category->id}}" method="post">
               @method('patch')
               @csrf
               <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
                 <label for="title">title:</label>
-                <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
+                <input type="text" name="title" id="title" class="form-control" value="{{$category->title}}">
                 @if ($errors->has('title'))
                 <span class="help-block">{{$errors->first('title') }}</span>
                 @endif
               </div>
               <div class="form-group {{$errors->has('slug') ? 'has-error' : ''}}">
                 <label for="slug">slug:</label>
-                <input type="text" name="slug" id="slug" class="form-control" value="{{ $post->slug }}">
+                <input type="text" name="slug" id="slug" class="form-control" value="{{ $category->slug }}">
                 @if ($errors->has('slug'))
                 <span class="help-block">{{$errors->first('slug') }}</span>
                 @endif
               </div>
               <div class="form-group">
-                <label for="excerpt">excerpt:</label>
-                <textarea name="excerpt" id="excerpt" cols="5" rows="5"
-                  class="form-control">{{ $post->excerpt }}</textarea>
-              </div>
-              <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
-                <label for="description">description:</label>
-                <textarea name="description" id="description" cols="10" rows="10"
-                  class="form-control">{{ $post->description }}</textarea>
-                @if ($errors->has('description'))
-                <span class="help-block">{{$errors->first('description') }}</span>
-                @endif
-              </div>
-              <div class="form-group {{$errors->has('published_at') ? 'has-error' : ''}}">
-                <label for="published_at">Published Date:</label>
-                <input type="text" name="published_at" id="published_at" class="form-control" placeholder="Y-m-d H:i:s"
-                  value="{{ $post->date }}">
-                @if ($errors->has('published_at'))
-                <span class="help-block">{{$errors->first('published_at') }}</span>
-                @endif
-              </div>
-              <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
-                <label for="category_id">Category:</label>
-                <select name="category_id" id="category_id" class="form-control" value="{{ $post->category_id }}">
-                  <option disabled selected>Choose Category</option>
-                  @foreach ($categories as $category)
-                  <option value="{{$category->id}}">{{$category->title}}</option>
-                  @endforeach
-                </select>
-                @if ($errors->has('category_id'))
-                <span class="help-block">{{$errors->first('category_id') }}</span>
-                @endif
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Update</button>
               </div>
             </form>
           </div>

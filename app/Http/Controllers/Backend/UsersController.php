@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
+use App\User;
 
-class CategoriesController extends BackendController
+class UsersController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,8 @@ class CategoriesController extends BackendController
      */
     public function index()
     {
-        $categories = Category::with('posts')->orderBy('title')->paginate(5);
-        $categoryCount = Category::count();
-        return view('backend/categories/index', compact('categories', 'categoryCount'));
+        $users = User::orderBy('name')->paginate(5);
+        return view('backend/users/index', compact('users'));
     }
 
     /**
@@ -25,9 +26,9 @@ class CategoriesController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Category $category)
+    public function create(User $user)
     {
-        return view('backend.categories.create', compact('category'));
+        return view('backend.users.create', compact('user'));
     }
 
     /**
@@ -36,15 +37,19 @@ class CategoriesController extends BackendController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Category $category)
+    public function store(Request $request, User $user)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'slug' => 'required|unique:categories',
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => ['required', 'confirmed'],
         ]);
-        $category->create(request()->all());
+        // $user->create(request()->all());
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
 
-        return redirect('/backend/categories')->with('message', 'a New Category was created');
+        return redirect('/backend/users')->with('message', 'a New User was created');
     }
 
     /**
@@ -66,8 +71,8 @@ class CategoriesController extends BackendController
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-        return view('backend/categories/edit', compact('category'));
+        $user = User::findOrFail($id);
+        return view('backend/users/edit', compact('user'));
     }
 
     /**
@@ -79,8 +84,8 @@ class CategoriesController extends BackendController
      */
     public function update(Request $request, $id)
     {
-        Category::findOrFail($id)->update(request()->all());
-        return redirect('/backend/blog')->with('message', 'Category was Updated');
+        User::findOrFail($id)->update(request()->all());
+        return redirect('/backend/users')->with('message', 'User was Updated');
     }
 
     /**
@@ -91,8 +96,8 @@ class CategoriesController extends BackendController
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect('/backend/categories')->with('message', 'Post was Deleted');
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect('/backend/users')->with('message', 'User was Deleted');
     }
 }
