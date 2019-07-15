@@ -20,7 +20,7 @@ Route::get('/category/{category}', 'BlogController@category');
 Route::get('/author/{author}','BlogController@author');
 Auth::routes();
 
-Route::get('/home', 'Backend\HomeController@index');
+Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard');
 
 Route::resource('/backend/blog', 'Backend\BlogController');
 

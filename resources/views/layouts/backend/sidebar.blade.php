@@ -16,7 +16,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li>
-        <a href="{{ url('/home')}}">
+        <a href="{{ url('/dashboard')}}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
