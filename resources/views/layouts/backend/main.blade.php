@@ -16,12 +16,10 @@
   <!-- Theme style -->
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="/backend/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/backend/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/backend/css/skins/_all-skins.min.css">
-
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -31,32 +29,23 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-
-    @include('layouts.backend.navbar')
-    @include('layouts.backend.sidebar')
-
-    <!-- Content Wrapper. Contains page content -->
-    @yield('content')
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.3.6
+  {{-- navbar --}}
+  @include('layouts.backend.navbar')
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Content -->
+        @yield('content')
       </div>
-      <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-      reserved.
-    </footer>
-
+    </div>
   </div>
-  <!-- ./wrapper -->
-
   <!-- jQuery 2.2.3 -->
   <script src="/backend/js/jquery-2.2.3.min.js"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="/backend/js/bootstrap.min.js"></script>
   <!-- AdminLTE App -->
+  {{-- <script src="/backend/js/app.min.js"></script> --}}
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="/backend/js/app.min.js"></script>
 </body>
 
 </html>

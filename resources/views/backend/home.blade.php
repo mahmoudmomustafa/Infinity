@@ -9,15 +9,15 @@
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <a href="/home">Dashboard</a>
+                <a href="/dashboard">Dashboard</a>
             </li>
         </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="container mt-2">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body ">

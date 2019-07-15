@@ -29,16 +29,22 @@
 
               {!! $post->body_html !!}
               @auth
-              <a href="/backend/blog/{{$post->id}}/edit" class="btn btn-md btn-success">
-                <i class="fa fa-edit"></i>
-              </a>
-              <form action="/backend/blog/{{$post->id}}" method="post">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="btn btn-md btn-danger">
-                  <i class="fa fa-times"></i>
-                </button>
-              </form>
+              <div class="row">
+                <div class="col-1">
+                  <a href="/backend/blog/{{$post->id}}/edit" class="btn btn-xs btn-success">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                </div>
+                <div class="col-1">
+                  <form action="/backend/blog/{{$post->id}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-xs btn-danger">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
               @endauth
             </div>
           </div>

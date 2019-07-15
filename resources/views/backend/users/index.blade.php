@@ -16,7 +16,7 @@
     <ol class="breadcrumb">
       {{-- Dashboard --}}
       <li class="active">
-        <a href="/home">Dashboard</a>
+        <a href="{{route('dashboard')}}">Dashboard</a>
       </li>
       {{-- posts --}}
       <li class="active">
@@ -26,9 +26,9 @@
   </section>
 
   <!-- Main content -->
-  <section class="content">
+  <section class="container  mt-2">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col">
         <div class="box">
           <!-- /.box-header -->
           <div class="box-body ">
@@ -62,15 +62,15 @@
                     <form action="/backend/users/{{$user->id}}" method="post">
                       @method('DELETE')
                       @csrf
-                        @if($user->id == config('cms.default_user'))
-                        <button type="submit" class="btn btn-xs btn-danger" disabled>
-                          <i class="fa fa-times"></i>
-                        </button>
-                        @else
-                        <button type="submit" class="btn btn-xs btn-danger">
-                          <i class="fa fa-times"></i>
-                        </button>
-                        @endif
+                      @if($user->id == config('cms.default_user'))
+                      <button type="submit" class="btn btn-xs btn-danger" disabled>
+                        <i class="fa fa-times"></i>
+                      </button>
+                      @else
+                      <button type="submit" class="btn btn-xs btn-danger">
+                        <i class="fa fa-times"></i>
+                      </button>
+                      @endif
                     </form>
                   </td>
                   <td>{{$user->name}}</td>
