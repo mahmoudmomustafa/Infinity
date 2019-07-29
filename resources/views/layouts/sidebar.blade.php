@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-3 offset-md-1">
   <aside class="right-sidebar">
     {{-- add post --}}
     @auth

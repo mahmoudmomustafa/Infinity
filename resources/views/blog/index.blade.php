@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6 offset-md-1">
             @if (session('message'))
             <div class="content">
                 <div class="alert alert-info">
@@ -21,40 +21,34 @@
             @foreach ($posts as $post)
             <div class="content mb-2">
                 <article class="post-item">
-                    {{-- @if ($post->image_url)
-                    <div class="post-item-image">
-                        <a href="/blog/{{$post->id}}">
-                            <img src="{{$post->image_url}}" alt="">
-                        </a>
+                    <div class="post-meta p-3">
+                        <ul class="post-meta-group">
+                            <li>
+                                <h5 class="float-left font-weight-bold text-primary">
+                                    <div class="author-img">
+                                        <img src="/" alt="authorImg">
+                                    </div>
+                                    <a href="/author/{{ $post->author->slug}}">{{$post->author->name}}</a>
+                                </h5>
+                            </li>
+                            <span class="float-right">
+                                <li class="tag">
+                                    <a href="/category/{{$post->category->slug}}">
+                                        {{$post->category->title}}</a></li>
+                            </span>
+                        </ul>
+
                     </div>
-                    @endif --}}
-                    <div class="post-item-body">
-                        <div class="padding-10">
+                    <div class="post-item-body ml-4">
+                        <div class="p-4">
                             <h2><a href="/blog/{{$post->id}}">{{$post->title}}</a></h2>
                             {!!$post->excerpt_html!!}
-                        </div>
-
-                        <div class="post-meta padding-10 clearfix">
-                            <div class="pull-left">
-                                <ul class="post-meta-group">
-                                    <li><i class="fa fa-user"></i><a href="/author/{{ $post->author->slug}}">
-                                            {{$post->author->name}}</a></li>
-                                    {{-- <li><i class="fa fa-clock-o"></i><time>{{$post->created_at}}</time></li> --}}
-                                    <li><i class="fa fa-tags"></i><a href="/category/{{$post->category->slug}}">
-                                            {{$post->category->title}}</a></li>
-                                    {{-- <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li> --}}
-                                </ul>
-                            </div>
-                            <div class="pull-right">
-                                <a href="/blog/{{$post->id}}">Continue Reading &raquo;</a>
-                            </div>
                         </div>
                     </div>
                 </article>
             </div>
             @endforeach
             @endif
-
             <nav>
                 {{$posts->links()}}
             </nav>
