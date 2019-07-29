@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
       {{-- Dashboard --}}
       <li class="active">
-        <a href="/home">Dashboard</a>
+        <a href="{{route('dashboard')}}">Dashboard</a>
       </li>
       {{-- posts --}}
       <li class="active">

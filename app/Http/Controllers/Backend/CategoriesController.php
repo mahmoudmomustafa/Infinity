@@ -80,7 +80,7 @@ class CategoriesController extends BackendController
     public function update(Request $request, $id)
     {
         Category::findOrFail($id)->update(request()->all());
-        return redirect('/backend/blog')->with('message', 'Category was Updated');
+        return redirect('/backend/categories')->with('message', 'Category was Updated');
     }
 
     /**
@@ -93,6 +93,6 @@ class CategoriesController extends BackendController
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect('/backend/categories')->with('message', 'Post was Deleted');
+        return redirect('/backend/categories')->with('message', 'Category was Deleted');
     }
 }

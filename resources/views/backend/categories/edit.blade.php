@@ -10,7 +10,7 @@
     </h1>
     <ol class="breadcrumb">
       <li class="active">
-        <a href="/home">Dashboard</a>
+        <a href="{{route('dashboard')}}">Dashboard</a>
       </li>
       {{-- categorys --}}
       <li class="active">
@@ -26,7 +26,7 @@
         <div class="box">
           <!-- /.box-header -->
           <div class="box-body ">
-            <form action="/backend/blog/{{$category->id}}" method="post">
+            <form action="/backend/categories/{{$category->id}}" method="post">
               @method('patch')
               @csrf
               <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">

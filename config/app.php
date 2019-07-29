@@ -137,12 +137,9 @@ return [
     'providers' => [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
-        Laratrust\LaratrustServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\SocialiteProviders\Manager\ServiceProvider::class,
-
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -194,8 +191,6 @@ return [
 
     'aliases' => [
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
-        'Laratrust'   => Laratrust\LaratrustFacade::class,
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

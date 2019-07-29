@@ -10,7 +10,7 @@
     </h1>
     <ol class="breadcrumb">
       <li class="active">
-        <a href="/home">Dashboard</a>
+        <a href="{{route('dashboard')}}">Dashboard</a>
       </li>
       {{-- posts --}}
       <li class="active">
@@ -30,7 +30,7 @@
               @csrf
               <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="naem" class="form-control">
+                <input type="text" name="name" id="name" class="form-control">
                 @if ($errors->has('name'))
                 <span class="help-block">{{$errors->first('name') }}</span>
                 @endif

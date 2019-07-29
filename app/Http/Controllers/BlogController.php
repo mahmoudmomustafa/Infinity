@@ -15,7 +15,7 @@ class BlogController extends Controller
         $categories = Category::with('posts')->orderBy('title', 'asc')->get();
         // $posts = Post::with('author')->orderBy('created_at','desc')->get();
         // $posts = Post::with('author')->latest()->published()->paginate(3);
-        $posts = Post::with('author')->orderBy('published_at', 'desc')->published()->paginate(3);
+        $posts = Post::with('author')->orderBy('title', 'desc')->paginate(3);
         return view('blog.index', compact('posts', 'categories'));
     }
     // category
@@ -25,8 +25,6 @@ class BlogController extends Controller
 
         $posts = $category->posts()
             ->with('author')
-            ->latest()
-            ->published()
             ->paginate(3);
 
         return view('blog.index', compact('posts', 'categoryName'));
@@ -38,8 +36,6 @@ class BlogController extends Controller
 
         $posts = $author->posts()
             ->with('category')
-            ->latest()
-            ->published()
             ->paginate(3);
 
         return view('blog.index', compact('posts', 'authorName'));

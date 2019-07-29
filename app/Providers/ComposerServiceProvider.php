@@ -28,13 +28,13 @@ class ComposerServiceProvider extends ServiceProvider
         //path data throw every view
         view()->composer('layouts.sidebar',function($view){
             $categories = Category::with(['posts'=>function($query){
-                $query->published();
+                // $query->created_at;
             }])->orderBy('title','asc')->get();
             return $view->with('categories',$categories);
         });
 
         view()->composer('layouts.sidebar',function($view){
-            $popularPosts = Post::published()->popular()->take(3)->get();
+            $popularPosts = Post::popular()->take(3)->get();
             return $view->with('popularPosts',$popularPosts);
         });
     }

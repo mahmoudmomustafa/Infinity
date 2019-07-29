@@ -30,16 +30,14 @@
                             </a>
                         </div>
                     </li>
-                    @role(['admin','editor'])
+                    @if(Auth::user()->isAdmin() || Auth::user()->isEditor())
                     <li class="nav-item"><a class="nav-link" href="/backend/categories">
                             <span>Categories</span></a></li>
-                    @endrole
-                    @role('admin')
                     <li class="nav-item">
                         <a class="nav-link" href="/backend/users"><span>Users</span>
                         </a>
                     </li>
-                    @endrole
+                    @endif
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -64,9 +62,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            {{-- <a class="dropdown-item" href="{{ route('dashboard') }}">
-                                {{ __('Dashboard') }}
-                            </a> --}}
+                            <a class="dropdown-item" href="{{ route('blog') }}">
+                                {{ __('Blog') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}

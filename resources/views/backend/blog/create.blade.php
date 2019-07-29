@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
       {{-- Dashboard --}}
       <li class="active">
-        <a href="/home">Dashboard</a>
+        <a href="{{route('dashboard')}}">Dashboard</a>
       </li>
       {{-- posts --}}
       <li class="active">
@@ -54,13 +54,6 @@
                 <span class="help-block">{{$errors->first('description') }}</span>
                 @endif
               </div>
-              <div class="form-group {{$errors->has('published_at') ? 'has-error' : ''}}">
-                <label for="published_at">Published Date:</label>
-                <input type="text" name="published_at" id="published_at" class="form-control" placeholder="Y-m-d H:i:s">
-                @if ($errors->has('published_at'))
-                <span class="help-block">{{$errors->first('published_at') }}</span>
-                @endif
-              </div>
               <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
                 <label for="category_id">Category:</label>
                 <select name="category_id" id="category_id" class="form-control">
@@ -73,13 +66,6 @@
                 <span class="help-block">{{$errors->first('category_id') }}</span>
                 @endif
               </div>
-              {{-- <div class="form-group {{$errors->has('image') ? 'has-error' : ''}}">
-                <label for="image">Select Image:</label>
-                <input type="file" name="image" id="image" class="form-control">
-                @if ($errors->has('image'))
-                <span class="help-block">{{$errors->first('image') }}</span>
-                @endif
-              </div> --}}
               <div class="form-group">
                 <button type="submit" class="btn btn-primary">Create</button>
               </div>

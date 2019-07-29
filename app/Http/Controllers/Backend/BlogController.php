@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends BackendController
 {
@@ -15,7 +16,13 @@ class BlogController extends BackendController
      */
     public function index()
     {
-        $posts = Post::with('category', 'author')->latest()->paginate(8);
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            $posts = Post::with('category', 'author')->latest()->paginate(8);
+        } else {
+            // auth();
+            Auth::user();
+            $posts = Post::where('author_id', Auth::user()->id)->latest()->paginate(8);;
+        }
         return view("backend.blog.index", compact('posts'));
     }
 
@@ -43,8 +50,6 @@ class BlogController extends BackendController
             'slug' => 'required|unique:posts',
             'description' => 'required',
             'category_id' => 'required',
-            'published_at' => 'date_format:Y-m-d H:i:s',
-            // 'image'     => 'mims:png,jpg,jpeg'
         ]);
         $request->user()->posts()->create($request->all());
 
@@ -60,7 +65,13 @@ class BlogController extends BackendController
     public function edit($id)
     {
         $categories = Category::get();
-        $post = POST::findOrFail($id);
+
+        if (Auth::user()->isAdmin() || Auth::user()->isEditor()) {
+            $post = POST::findOrFail($id);
+        } else {
+            $post = POST::findOrFail($id);
+            $this->authorize('view', $post);
+        }
         return view('backend/blog/edit', compact('post', 'categories'));
     }
 
@@ -70,9 +81,11 @@ class BlogController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        // return view('backend/blog', compact("post"));
+        $post = POST::findOrFail($id);
+        $this->authorize('view', $post);
+        return view('backend/blog/index', compact("post"));
     }
 
     /**

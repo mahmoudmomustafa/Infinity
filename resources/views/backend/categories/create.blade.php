@@ -10,7 +10,7 @@
     </h1>
     <ol class="breadcrumb">
       <li class="active">
-        <a href="/home">Dashboard</a>
+        <a href="{{route('dashboard')}}">Dashboard</a>
       </li>
       {{-- posts --}}
       <li class="active">

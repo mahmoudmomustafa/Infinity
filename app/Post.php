@@ -8,8 +8,7 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $fillable = ['title','slug' ,'description','category_id','excerpt','published_at','view_count','author_id', 'updated_at', 'created_at'];
-    protected $dates = ['published_at'];
+    protected $fillable = ['title','slug' ,'description','category_id','excerpt','view_count','author_id', 'updated_at', 'created_at'];
 
     public function author()
     {
@@ -28,17 +27,6 @@ class Post extends Model
             if (file_exists($imagePath)) $imageUrl = asset('img/' . $this->image);
         }
         return $imageUrl;
-    }
-    // date
-    public function getDateAttribute($value)
-    {
-        // return $this->created_at;
-        return is_null($this->published_at) ? '' : $this->published_at->diffForHumans();
-    }
-    // publish scope
-    public function scopePublished($query)
-    {
-        return $query->where('published_at', '<=', Carbon::now());
     }
     // markdown html
     public function getBodyHtmlAttribute()

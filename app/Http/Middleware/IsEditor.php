@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class CheckPermissionsMiddleware
+class IsEditor
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,10 @@ class CheckPermissionsMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user() && Auth::user()->isEditor()) {
+            return $next($request);
+        }
+        
+        return abort(404);
     }
 }

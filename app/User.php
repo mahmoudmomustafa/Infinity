@@ -43,7 +43,7 @@ class User extends Authenticatable
     // posts
     public function posts()
     {
-        return $this->hasMany(Post::class,'author_id');
+        return $this->hasMany(Post::class, 'author_id');
     }
     //author bio
     public function getBioHtmlAttribute()
@@ -53,5 +53,31 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+    // role
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function isAdmin()
+    {
+        if ($this->role_id == 1)
+            return true;
+        else
+            return false;
+    }
+    public function isEditor()
+    {
+        if ($this->role_id == 2)
+            return true;
+        else
+            return false;
+    }
+    public function isAuthor()
+    {
+        if ($this->role_id == 3)
+            return true;
+        else
+            return false;
     }
 }

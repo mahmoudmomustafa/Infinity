@@ -44,7 +44,7 @@
               <div class="post-body">
                 <h6><a href="/blog/{{$post->id}}">{{$post->title}}</a></h6>
                 <div class="post-meta">
-                  <span>{{$post->date}}</span>
+                  <span>{{$post->created_at}}</span>
                   <span style="float:right"><a href="/author/{{$post->author->slug}}">{{$post->author->name}}</a></span>
                 </div>
               </div>

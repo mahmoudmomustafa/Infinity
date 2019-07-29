@@ -17,13 +17,20 @@ Route::get('/blog/{post}', 'BlogController@show');
 
 Route::get('/category/{category}', 'BlogController@category');
 
-Route::get('/author/{author}','BlogController@author');
+Route::get('/author/{author}', 'BlogController@author');
 Auth::routes();
 
 Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard');
 
-Route::resource('/backend/blog', 'Backend\BlogController');
+// Route::resource('/backend/blog', 'Backend\BlogController')->middleware('checkrole');
 
-Route::resource('/backend/categories', 'Backend\CategoriesController');
+// Route::group(['middleware'=>['admin', 'editor','author']],function () {
+//   Route::resource('/backend/blog', 'Backend\BlogController');
+//   });
 
-Route::resource('/backend/users', 'Backend\UsersController');
+Route::group(['middleware' => ['role:admin' or 'role:editor' or 'role:author']], function () {
+  Route::resource('/backend/blog', 'Backend\BlogController');
+});
+Route::resource('/backend/categories', 'Backend\CategoriesController')->middleware('checkrole');
+
+Route::resource('/backend/users', 'Backend\UsersController')->middleware('admin');

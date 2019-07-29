@@ -3,13 +3,18 @@
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    @if (session('message'))
+        <div class="alert alert-info mt-4">
+            {{ session('message')}}
+        </div>
+    @endif
     <section class="content-header">
         <h1>
             Dasbhboard
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <a href="/dashboard">Dashboard</a>
+                <a href="{{route('dashboard')}}">Dashboard</a>
             </li>
         </ol>
     </section>
@@ -25,7 +30,7 @@
                         <p class="lead text-muted">Hallo {{Auth::user()->name}}, Welcome to MyBlog</p>
 
                         <h4>Get started</h4>
-                        <p><a href="/backend/create" class="btn btn-primary">Write your first blog post</a> </p>
+                        <p><a href="/backend/blog/create" class="btn btn-primary">Write blog post</a> </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
