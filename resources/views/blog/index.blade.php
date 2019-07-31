@@ -89,33 +89,89 @@
                                 <li class="tag">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                                 </li>
-                                {{-- jkjk --}}
                                 <li class="dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span class="caret"></span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/blog/{{$post->id}}" onclick="event.preventDefault();
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span
+                                            class="caret"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                        {{-- edit form --}}
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#editForm">
+                                            Edit
+                                        </button>
+                                        {{-- delete form --}}
+                                        <a class="dropdown-item" href="/blog/{{$post->id}}" onclick="event.preventDefault();
                                                              document.getElementById('delete-form').submit();">
-                                                {{ __('Delete') }}
-                                            </a>
-            
-                                            <form id="delete-form" action="post" method="POST"
-                                                style="display: none;">
-                                                @method('DELETE')
-                                    @csrf
-                                            </form>
-                                        </div>
-                                    </li>
-                                {{-- jkj --}}
-                                {{-- <form action="/blog/{{$post->id}}" method="post">
-                                    
-                                    <button type="submit" class="btn btn-danger">
-                                      Delete
-                                    </button>
-                                  </form> --}}
+                                            {{ __('Delete') }}
+                                        </a>
+                                        {{-- edit form --}}
+                                        <form id="delete-form" action="/blog/{{$post->id}}" method="POST"
+                                            style="display: none;">
+                                            @method('DELETE')
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
                             </span>
                         </ul>
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class=" modal-dialog content" role="document">
+                                <div class="modal-content" style="border:none">
+                                    <h5 class="modal-title p-4 font-weight-bold"
+                                        style="color:#1d68a7;padding-bottom:.5rem !important;">Edit Post
+                                    </h5>
+                                    <div class="modal-body">
+                                        <form action="/blog/{{$post->id}}" method="post">
+                                            @method('patch')
+                                            @csrf
+                                            <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
+                                                <div class="col">
+                                                    <input class="form-control" value="{{$post->title}}" type="text"
+                                                        name="title" id="title" placeholder="Post Title...">
+                                                </div>
+                                                @if ($errors->has('title'))
+                                                <span class="help-block">{{$errors->first('title') }}</span>
+                                                @endif
+                                            </div>
+                                            <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
+                                                <div class="col">
+                                                    <textarea class="form-control" name="description" id="description"
+                                                        placeholder="Write Post Description Here..."
+                                                        rows="2">{{$post->description}}</textarea>
+                                                </div>
+                                                @if ($errors->has('description'))
+                                                <span class="help-block">{{$errors->first('description') }}</span>
+                                                @endif
+                                            </div>
+                                            <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
+                                                <div class="col">
+                                                    <select name="category_id" id="category_id"
+                                                        value="{{$post->category_id}}" class="form-control">
+                                                        <option disabled selected>Choose Category
+                                                        </option>
+                                                        @foreach ($categories as $category)
+                                                        <option value="{{$category->id}}">
+                                                            {{$category->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if ($errors->has('category_id'))
+                                                    <span class="help-block">{{$errors->first('category_id') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save
+                                            changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-item-body ml-4">
                         <div class="p-4" style="white-space:nowrap;text-overflow:ellipsis;">
