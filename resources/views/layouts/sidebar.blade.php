@@ -1,41 +1,30 @@
 <div class="col-md-3 offset-md-1">
   <aside class="right-sidebar">
-    {{-- add post --}}
-    @auth
-    <div class="content">
-      <div class="btn">
-        {{-- new post --}}
-        <a class="btn btn-primary" href="/backend/blog/create">{{ __('New Post') }}</a>
-        {{-- see post --}}
-        <a class="btn btn-primary" href="/author/{{Auth::user()->slug}}">{{ __('See Posts') }}</a>
-      </div>
-    </div>
-    @endauth
-    <div class="content">
+    {{-- categories --}}
+    <div class="content mb-3">
       <div class="widget">
-        <div class="widget-heading">
-          <h5>Categories</h5>
-        </div>
+        <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
+          Categories..
+        </h5>
         <div class="widget-body">
           <ul class="categories">
-
             @foreach ($categories as $category)
             <li>
-              <a href="/category/{{$category->slug}}"><i class="fa fa-angle-right"></i> {{ $category->title}}</a>
-              <span class="badge pull-right"> {{ $category->posts->count()}}</span>
+              <i class="fa fa-angle-right"></i>
+              <a class="ml-2" href="/category/{{$category->slug}}">{{$category->title}}</a>
+              <span class="ml-2badge pull-right"> {{ $category->posts->count()}}</span>
             </li>
             @endforeach
-
           </ul>
         </div>
       </div>
     </div>
-
-    <div class="content">
+    {{-- popular posts --}}
+    <div class="content mb-3">
       <div class="widget">
-        <div class="widget-heading">
-          <h5>Popular Posts</h5>
-        </div>
+        <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
+          Popular Posts..
+        </h5>
         <div class="widget-body">
           <ul class="popular-posts">
 
