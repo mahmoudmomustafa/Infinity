@@ -9,11 +9,6 @@
         <div class="widget-body">
           <ul class="categories">
             @foreach ($categories as $category)
-            {{-- <li>
-              <i class="fa fa-angle-right"></i>
-              <a class="ml-2" href="/category/{{$category->slug}}">{{$category->title}}</a>
-              <span class="ml-2 badge pull-right" style="background:#1d68a72e">{{ $category->posts->count()}}</span>
-            </li> --}}
             <span class="tag-sidebar">
                 <a href="/category/{{$category->slug}}">{{$category->title}}</a>
             </span>
@@ -30,7 +25,6 @@
         </h5>
         <div class="widget-body">
           <ul class="popular-posts">
-
             @foreach ($popularPosts as $post)
             <li>
               <div class="post-body">
@@ -42,7 +36,6 @@
               </div>
             </li>
             @endforeach
-
           </ul>
         </div>
       </div>
