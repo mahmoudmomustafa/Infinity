@@ -1,8 +1,6 @@
 body {
     color: #777;
     font-family: 'Dosis', sans-serif;
-    /* background: #9e9e9e  url("../img/body-bg.png"); */
-    /* background: linear-gradient(to top, #141e30, #243b55); */
 }
 
 .navbar {
@@ -19,7 +17,7 @@ a:hover {
 }
 
 .content {
-    box-shadow: 0 0 10px gainsboro;
+    box-shadow: 0 0 10px #bdbdbd;
     border-radius: 5px;
 }
 
@@ -27,13 +25,6 @@ a:hover {
     width: max-content;
     margin: 10px auto;
 }
-
-/* .post-item, */
-/* .widget,
-.post-author,
-.post-comments {
-    background: #fff;
-} */
 
 .post-item {
     color: #525252;
@@ -150,11 +141,6 @@ ul.post-meta-group li i {
     margin-bottom: 10px;
     border-bottom: 1px solid #e7e7e7;
 }
-
-/*.comment-heading h3 {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e7e7e7;
-}*/
 
 .post-comments {
     padding-top: 10px;
@@ -330,7 +316,6 @@ span.required {
 }
 
 .author a {
-    /* position: relative; */
     display: flex;
     flex-direction: row;
     overflow: auto;

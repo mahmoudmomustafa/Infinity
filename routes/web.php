@@ -13,6 +13,9 @@
 
 Route::get('/', 'BlogController@index')->name('blog');
 
+Route::get('/create', 'BlogController@create');
+Route::post('/', 'BlogController@store');
+
 Route::get('/blog/{post}', 'BlogController@show');
 
 Route::get('/category/{category}', 'BlogController@category');

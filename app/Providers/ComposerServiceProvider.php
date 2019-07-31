@@ -27,9 +27,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         //path data throw every view
         view()->composer('layouts.sidebar',function($view){
-            $categories = Category::with(['posts'=>function($query){
-                // $query->created_at;
-            }])->orderBy('title','asc')->get();
+            $categories = Category::orderBy('title','asc')->get();
             return $view->with('categories',$categories);
         });
 

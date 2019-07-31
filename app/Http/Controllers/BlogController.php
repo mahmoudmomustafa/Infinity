@@ -12,11 +12,35 @@ class BlogController extends Controller
     //index function
     public function index()
     {
-        $categories = Category::with('posts')->orderBy('title', 'asc')->get();
         // $posts = Post::with('author')->orderBy('created_at','desc')->get();
         // $posts = Post::with('author')->latest()->published()->paginate(3);
-        $posts = Post::with('author')->orderBy('title', 'desc')->paginate(3);
-        return view('blog.index', compact('posts', 'categories'));
+        $posts = Post::with('author')->orderBy('title', 'desc')->paginate(5);
+        return view('blog.index', compact('posts'));
+    }
+    // create posts
+    public function create(Post $post)
+    {
+        // $categories = Category::get();
+        return view('blog.index', compact('post'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            // 'slug' => 'required|unique:posts',
+            'description' => 'required',
+            // 'category_id' => 'required',
+        ]);
+        $request->user()->posts()->create($request->all());
+
+        return redirect('/')->with('message', 'Ur Post was created');
     }
     // category
     public function category(Category $category)
