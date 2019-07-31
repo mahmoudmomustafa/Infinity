@@ -20,34 +20,39 @@
                     </h5>
                     <form action="/" method="post">
                         @csrf
-                        <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
+                        {{-- post title --}}
+                        <div class="form-group">
                             <div class="col">
-                                <input class="form-control" type="text" name="title" id="title"
-                                    placeholder="Post Title...">
+                                <input class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}" type="text"
+                                    name="title" id="title" placeholder="Post Title...">
+                                @if ($errors->has('title'))
+                                <div class="invalid-feedback">{{$errors->first('title') }}</div>
+                                @endif
                             </div>
-                            @if ($errors->has('title'))
-                            <span class="help-block">{{$errors->first('title') }}</span>
-                            @endif
                         </div>
-                        <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
+                        {{-- post description --}}
+                        <div class="form-group">
                             <div class="col">
-                                <textarea class="form-control" name="description" id="description"
-                                    placeholder="Write Post Description Here..." rows="2"></textarea>
+                                <textarea class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}"
+                                    name="description" id="description" placeholder="Write Post Description Here..."
+                                    rows="2"></textarea>
+                                @if ($errors->has('description'))
+                                <span class="invalid-feedback">{{$errors->first('description') }}</span>
+                                @endif
                             </div>
-                            @if ($errors->has('description'))
-                            <span class="help-block">{{$errors->first('description') }}</span>
-                            @endif
                         </div>
-                        <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
+                        {{-- post category --}}
+                        <div class="form-group">
                             <div class="col">
-                                <select name="category_id" id="category_id" class="form-control">
+                                <select name="category_id" id="category_id"
+                                    class="form-control {{$errors->has('category_id') ? 'is-invalid' : ''}}">
                                     <option disabled selected>Choose Category</option>
                                     @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('category_id'))
-                                <span class="help-block">{{$errors->first('category_id') }}</span>
+                                <span class="invalid-feedback">{{$errors->first('category_id') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -69,7 +74,7 @@
             @else
             {{-- authors posts --}}
             @foreach ($posts as $post)
-            <div class="content mb-3">
+            <div class="content mb-3 content-post">
                 <article class="post-item">
                     <div class="post-meta p-3" style="padding-bottom: 0 !important;">
                         {{-- author name --}}

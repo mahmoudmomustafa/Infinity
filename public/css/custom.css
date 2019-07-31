@@ -16,16 +16,20 @@ a {
 a:hover {
     text-decoration: none;
 }
-.post-body{
+
+.post-body {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px gainsboro;
     transition: 500ms ease-in-out;
     margin: 0px 8px;
 }
-.post-body:hover{
+
+.post-body:hover {
     transform: scale(1.1);
+    background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
 }
+
 .content {
     box-shadow: 0 0 10px #bdbdbd;
     border-radius: 5px;
@@ -35,7 +39,8 @@ a:hover {
     width: max-content;
     margin: 10px auto;
 }
-.tag-sidebar{
+
+.tag-sidebar {
     background: #69696929;
     box-shadow: 0 0 5px #0000004d;
     margin: 5px;
@@ -45,10 +50,25 @@ a:hover {
     display: inline-block;
     transition: 500ms ease-in-out
 }
+
 .tag-sidebar:hover {
     transform: scale(1.099);
-    background: #8e99b5;
+    background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
 }
+
+.btn-primary {
+    background: linear-gradient(65deg, #1d68ac 0, #566aa79e 100%);
+    border: 0;
+    font-weight: 700;
+    transition: 500ms ease-in-out
+}
+
+.btn-pramriy:hover,
+.btn-pramriy:focus {
+    border: 0;
+    box-shadow: 0 0 5px ghostwhite;
+}
+
 .post-item {
     color: #525252;
     position: relative;
@@ -56,6 +76,7 @@ a:hover {
 
 .post-item p {
     font-size: 16px;
+    text-indent: 50px;
 }
 
 .post-item-image {
@@ -73,18 +94,26 @@ a:hover {
     border: 1px solid #e7e7e7;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
 }
-.post-des{
+
+.post-des {
     font-size: 15px;
-text-overflow: ellipsis;
-overflow: hidden;
-color: #5b6f82;
-margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #5b6f82;
+    margin-bottom: 0;
 }
-.post-title{
+
+.post-title {
     font-weight: 700;
-text-indent: 30px;
-overflow: hidden;
-text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.content-post{
+transition: 500ms ease-in-out;
+}
+.content-post:hover{
+    transform: scale(1.019);
+    background:linear-gradient(223deg,#1d68ac1a 0,#566aa761 100%);
 }
 .post-item-body h2,
 .post-item-body h1 {
