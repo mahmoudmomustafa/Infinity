@@ -35,7 +35,20 @@ a:hover {
     width: max-content;
     margin: 10px auto;
 }
-
+.tag-sidebar{
+    background: #69696929;
+    box-shadow: 0 0 5px #0000004d;
+    margin: 5px;
+    padding: 3px 10px;
+    line-height: 20px;
+    margin-right: 0;
+    display: inline-block;
+    transition: 500ms ease-in-out
+}
+.tag-sidebar:hover {
+    transform: scale(1.099);
+    background: #8e99b5;
+}
 .post-item {
     color: #525252;
     position: relative;

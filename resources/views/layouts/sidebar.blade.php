@@ -9,11 +9,14 @@
         <div class="widget-body">
           <ul class="categories">
             @foreach ($categories as $category)
-            <li>
+            {{-- <li>
               <i class="fa fa-angle-right"></i>
               <a class="ml-2" href="/category/{{$category->slug}}">{{$category->title}}</a>
               <span class="ml-2 badge pull-right" style="background:#1d68a72e">{{ $category->posts->count()}}</span>
-            </li>
+            </li> --}}
+            <span class="tag-sidebar">
+                <a href="/category/{{$category->slug}}">{{$category->title}}</a>
+            </span>
             @endforeach
           </ul>
         </div>
