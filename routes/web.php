@@ -14,7 +14,7 @@
 Route::get('/', 'BlogController@index')->name('blog');
 
 Route::get('/blog/create', 'BlogController@create');
-Route::post('/', 'BlogController@store');
+Route::post('/blog', 'BlogController@store');
 Route::delete('/blog/{post}', 'BlogController@destroy');
 
 

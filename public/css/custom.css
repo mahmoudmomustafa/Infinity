@@ -16,16 +16,25 @@ a {
 a:hover {
     text-decoration: none;
 }
-
+.post-body{
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px gainsboro;
+    transition: 500ms ease-in-out;
+    margin: 0px 8px;
+}
+.post-body:hover{
+    transform: scale(1.1);
+}
 .content {
     box-shadow: 0 0 10px #bdbdbd;
     border-radius: 5px;
 }
 
-.pagination {
+/* .pagination {
     width: max-content;
     margin: 10px auto;
-}
+} */
 
 .post-item {
     color: #525252;
@@ -229,9 +238,8 @@ ul.categories li:last-child {
 }
 
 ul.popular-posts li {
-    display: block;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 ul.popular-posts li:last-child {

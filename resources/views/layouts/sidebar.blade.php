@@ -12,7 +12,7 @@
             <li>
               <i class="fa fa-angle-right"></i>
               <a class="ml-2" href="/category/{{$category->slug}}">{{$category->title}}</a>
-              <span class="ml-2badge pull-right"> {{ $category->posts->count()}}</span>
+              <span class="ml-2 badge pull-right" style="background:#1d68a72e">{{ $category->posts->count()}}</span>
             </li>
             @endforeach
           </ul>
