@@ -31,13 +31,14 @@ a:hover {
     border-radius: 5px;
 }
 
-/* .pagination {
+.pagination {
     width: max-content;
     margin: 10px auto;
-} */
+}
 
 .post-item {
     color: #525252;
+    position: relative;
 }
 
 .post-item p {
@@ -122,6 +123,7 @@ ul.post-meta-group {
 
 ul.post-meta-group li {
     float: left;
+    position: inherit;
     /* margin: 0 10px 0 0;
     padding: 0 10px 0 0; */
 }

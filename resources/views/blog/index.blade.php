@@ -3,6 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 offset-md-1">
+            {{-- session message --}}
             @if (session('message'))
             <div class="content">
                 <div class="alert alert-info">
@@ -66,10 +67,12 @@
                 </div>
             </div>
             @else
+            {{-- authors posts --}}
             @foreach ($posts as $post)
             <div class="content mb-3">
                 <article class="post-item">
                     <div class="post-meta p-3" style="padding-bottom: 0 !important;">
+                        {{-- author name --}}
                         <ul class="post-meta-group">
                             <li>
                                 <div class="author">
@@ -96,8 +99,8 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                                         {{-- edit form --}}
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#editForm">
+                                        <button type="button" class="dropdown-item" data-toggle="modal"
+                                            data-target="#editForm" style="cursor:pointer">
                                             Edit
                                         </button>
                                         {{-- delete form --}}
@@ -105,7 +108,6 @@
                                                              document.getElementById('delete-form').submit();">
                                             {{ __('Delete') }}
                                         </a>
-                                        {{-- edit form --}}
                                         <form id="delete-form" action="/blog/{{$post->id}}" method="POST"
                                             style="display: none;">
                                             @method('DELETE')
@@ -161,18 +163,19 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save
+                                                    changes</button>
+                                            </div>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save
-                                            changes</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{-- author post --}}
                     <div class="post-item-body ml-4">
                         <div class="p-4" style="white-space:nowrap;text-overflow:ellipsis;">
                             <h4 class="post-title"><a href="/blog/{{$post->id}}">{{$post->title}}</a></h4>

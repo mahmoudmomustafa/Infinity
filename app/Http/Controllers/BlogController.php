@@ -12,15 +12,12 @@ class BlogController extends Controller
     //index function
     public function index()
     {
-        // $posts = Post::with('author')->orderBy('created_at','desc')->get();
-        // $posts = Post::with('author')->latest()->published()->paginate(3);
         $posts = Post::with('author')->orderBy('created_at', 'desc')->paginate(5);
         return view('blog.index', compact('posts'));
     }
     // create posts
     public function create(Post $post)
     {
-        // $categories = Category::get();
         return view('blog.index', compact('post'));
     }
 
@@ -57,7 +54,6 @@ class BlogController extends Controller
     public function author(User $author)
     {
         $authorName = $author->name;
-
         $posts = $author->posts()
             ->with('category')
             ->paginate(3);
@@ -69,8 +65,20 @@ class BlogController extends Controller
     {
         // increase view count
         $post->increment('view_count');
-
         return view('blog.show', compact('post'));
+    }
+    // edit
+    public function edit($id)
+    {
+            $post = POST::findOrFail($id);
+            $this->authorize('view', $post);
+        return view('/edit', compact('post'));
+    }
+    // update method
+    public function update($id)
+    {
+        POST::findOrFail($id)->update(request()->all());
+        return redirect('/')->with('message', 'Ur Post was Updated');
     }
     // delete post
     public function destroy($id)

@@ -15,6 +15,8 @@ Route::get('/', 'BlogController@index')->name('blog');
 
 Route::get('/blog/create', 'BlogController@create');
 Route::post('/blog', 'BlogController@store');
+Route::get('/blog/{post}/edit', 'BlogController@edit');
+Route::patch('/blog/{post}', 'BlogController@update');
 Route::delete('/blog/{post}', 'BlogController@destroy');
 
 
