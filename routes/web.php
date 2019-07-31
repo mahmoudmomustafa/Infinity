@@ -13,8 +13,10 @@
 
 Route::get('/', 'BlogController@index')->name('blog');
 
-Route::get('/create', 'BlogController@create');
+Route::get('/blog/create', 'BlogController@create');
 Route::post('/', 'BlogController@store');
+Route::delete('/blog/{post}', 'BlogController@destroy');
+
 
 Route::get('/blog/{post}', 'BlogController@show');
 

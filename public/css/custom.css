@@ -49,7 +49,19 @@ a:hover {
     border: 1px solid #e7e7e7;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
 }
-
+.post-des{
+    font-size: 15px;
+text-overflow: ellipsis;
+overflow: hidden;
+color: #5b6f82;
+margin-bottom: 0;
+}
+.post-title{
+    font-weight: 700;
+text-indent: 30px;
+overflow: hidden;
+text-overflow: ellipsis;
+}
 .post-item-body h2,
 .post-item-body h1 {
     font-weight: 700;
@@ -57,9 +69,9 @@ a:hover {
     text-indent: 50px;
 }
 
-.padding-10 {
+/* .padding-10 {
     padding: 20px;
-}
+} */
 
 .post-item-body .post-meta {
     border-top: 1px solid #e7e7e7;
@@ -76,9 +88,10 @@ a:hover {
     background: #69696929;
     box-shadow: 0 0 5px #0000004d;
     border-radius: 32px;
-    margin: 10px !important;
-    padding: 3px 10px !important;
+    margin: 10px;
+    padding: 3px 10px;
     line-height: 20px;
+    margin-right: 0;
 }
 
 .post-item-body .post-meta a {
@@ -99,8 +112,8 @@ ul.post-meta-group {
 
 ul.post-meta-group li {
     float: left;
-    margin: 0 10px 0 0;
-    padding: 0 10px 0 0;
+    /* margin: 0 10px 0 0;
+    padding: 0 10px 0 0; */
 }
 
 ul.post-meta-group li i {

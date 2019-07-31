@@ -37,6 +37,19 @@
                             <span class="help-block">{{$errors->first('description') }}</span>
                             @endif
                         </div>
+                        <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
+                            <div class="col">
+                                <select name="category_id" id="category_id" class="form-control">
+                                    <option disabled selected>Choose Category</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('category_id'))
+                                <span class="help-block">{{$errors->first('category_id') }}</span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-4 offset-md-8 py-2">
                                 <button class="w-100 shadow btn btn-primary" type="submit">Post</button>
@@ -66,24 +79,50 @@
                                         </div>
                                         <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
                                             {{$post->author->name}}
+                                            <span
+                                                style="font-size:10px;font-weight:100;color:gray;">{{$post->created_at}}</span>
                                         </h5>
-                                        
-
                                     </a>
                                 </div>
                             </li>
                             <span class="float-right">
                                 <li class="tag">
-                                    <a href="/category/{{$post->category->slug}}">
-                                        {{$post->category->title}}</a></li>
+                                    <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
+                                </li>
+                                {{-- jkjk --}}
+                                <li class="dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span class="caret"></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/blog/{{$post->id}}" onclick="event.preventDefault();
+                                                             document.getElementById('delete-form').submit();">
+                                                {{ __('Delete') }}
+                                            </a>
+            
+                                            <form id="delete-form" action="post" method="POST"
+                                                style="display: none;">
+                                                @method('DELETE')
+                                    @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                {{-- jkj --}}
+                                {{-- <form action="/blog/{{$post->id}}" method="post">
+                                    
+                                    <button type="submit" class="btn btn-danger">
+                                      Delete
+                                    </button>
+                                  </form> --}}
                             </span>
                         </ul>
                     </div>
                     <div class="post-item-body ml-4">
-                        <div class="p-4">
-                            <h4 style="font-weight:700;
-                            text-indent:30px;"><a href="/blog/{{$post->id}}">{{$post->title}}</a></h4>
-                            {!!$post->excerpt_html!!}
+                        <div class="p-4" style="white-space:nowrap;text-overflow:ellipsis;">
+                            <h4 class="post-title"><a href="/blog/{{$post->id}}">{{$post->title}}</a></h4>
+                            <p class="post-des">
+                                {!!$post->description!!}
+                            </p>
                         </div>
                     </div>
                 </article>

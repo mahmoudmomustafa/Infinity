@@ -14,7 +14,7 @@ class BlogController extends Controller
     {
         // $posts = Post::with('author')->orderBy('created_at','desc')->get();
         // $posts = Post::with('author')->latest()->published()->paginate(3);
-        $posts = Post::with('author')->orderBy('title', 'desc')->paginate(5);
+        $posts = Post::with('author')->orderBy('created_at', 'desc')->paginate(5);
         return view('blog.index', compact('posts'));
     }
     // create posts
@@ -36,11 +36,11 @@ class BlogController extends Controller
             'title' => 'required',
             // 'slug' => 'required|unique:posts',
             'description' => 'required',
-            // 'category_id' => 'required',
+            'category_id' => 'required',
         ]);
         $request->user()->posts()->create($request->all());
 
-        return redirect('/')->with('message', 'Ur Post was created');
+        return redirect('/')->with('message', 'Post was created');
     }
     // category
     public function category(Category $category)
@@ -71,5 +71,12 @@ class BlogController extends Controller
         $post->increment('view_count');
 
         return view('blog.show', compact('post'));
+    }
+    // delete post
+    public function destroy($id)
+    {
+        $post = POST::findOrFail($id);
+        $post->delete();
+        return redirect('/')->with('message', 'Post was Deleted');
     }
 }
