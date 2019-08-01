@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ __('Blog') }}</title>
+  <title>{{ __('Infinite') }}</title>
   <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
   <!-- Fonts -->
@@ -60,9 +60,11 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                @if(Auth::user()->isAdmin() || Auth::user()->isEditor())
                 <a class="dropdown-item" href="{{ route('dashboard') }}">
                   {{ __('Dashboard') }}
                 </a>
+                @endif
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}

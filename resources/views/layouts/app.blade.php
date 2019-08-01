@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ __('Blog') }}</title>
-    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet"> 
-    <!-- Fonts -->
+    <title>{{ __('Infinite') }}</title>
+    <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
@@ -18,15 +19,16 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ __('Blog') }}
+                    {{-- <i class="lni-infinite"></i> --}}
+                    {{ __('Infinite') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><i class="lni-menu"></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,15 +56,18 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->firstName() }} <span class="caret"
+                                    style="font-size:15px;transform:rotate(90deg);"><i class="lni-more-alt"></i></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->isAdmin() || Auth::user()->isEditor())
                                 <a class="dropdown-item" href="{{ route('dashboard') }}">
                                     {{ __('Dashboard') }}
                                 </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                                               document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
@@ -83,8 +88,9 @@
         </main>
     </div>
     <!-- Scripts -->
+    <script src="/backend/js/jquery-2.2.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- <script src="/js/bootstrap.min.js"></script> --}}
 </body>
 
 </html>
