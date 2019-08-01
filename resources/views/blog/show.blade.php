@@ -10,7 +10,7 @@
             <ul class="post-meta-group">
               <li>
                 <div class="author">
-                  <a href="/author/{{ $post->author->slug}}">
+                  <a href="/author/{{$post->author->slug}}">
                     <div class="author-img">
                       <img src="/img/user.svg" alt="authorImg">
                     </div>
@@ -25,9 +25,11 @@
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                 </li>
+                @if ($post->author->id == Auth::user()->id)
                 <li class="dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" v-pre><span class="caret"></span>
+                    aria-haspopup="true" aria-expanded="false" v-pre><span class="caret more-icon"><i
+                        class="lni-more-alt"></i></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                     {{-- edit form --}}
@@ -46,6 +48,7 @@
                     </form>
                   </div>
                 </li>
+                @endif
               </span>
             </ul>
             <!-- Edit Modal -->

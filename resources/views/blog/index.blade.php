@@ -97,6 +97,7 @@
                                 <li class="tag">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                                 </li>
+                                @if ($post->author->id == Auth::user()->id)
                                 <li class="dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span
@@ -120,6 +121,7 @@
                                         </form>
                                     </div>
                                 </li>
+                                @endif
                             </span>
                         </ul>
                         <!-- Edit Modal -->
