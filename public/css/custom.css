@@ -8,14 +8,17 @@ body {
 .navbar {
     background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%);
 }
-.navbar-brand{
+
+.navbar-brand {
     font-weight: 700;
     transition: 500ms ease-in-out
 }
-.navbar-brand:hover{
+
+.navbar-brand:hover {
     color: #1d68ac !important;
     transform: translate(10px)
 }
+
 a {
     color: #333;
 }
@@ -81,21 +84,43 @@ a:hover {
     font-weight: 700;
     transition: 500ms ease-in-out
 }
-.btn-success{
+
+.btn-success {
     background: linear-gradient(65deg, #1dac52 0, #56a7709e 100%);
     border: 0;
     font-weight: 700;
     transition: 500ms ease-in-out;
 }
+
 .btn-success:hover,
-.btn-success:focus{
+.btn-success:focus {
     border: 0;
     box-shadow: 0 0 5px rgb(74, 226, 120);
 }
+
 .btn-pramriy:hover,
 .btn-pramriy:focus {
     border: 0;
     box-shadow: 0 0 5px ghostwhite;
+}
+
+.author-meta {
+    padding-bottom: 0px !important;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.like {
+    transition: 500ms ease-in-out;
+    cursor: pointer;
+}
+
+.like i {
+    line-height: 2.5;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .post-item {
@@ -367,4 +392,5 @@ span.required {
     margin-left: .5rem;
     margin-bottom: 0;
 }
+
 /*login page */

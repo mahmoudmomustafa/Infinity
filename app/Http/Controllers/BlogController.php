@@ -53,18 +53,17 @@ class BlogController extends Controller
     // author 
     public function author(User $author)
     {
-        $authorName = $author->name;
         $posts = $author->posts()
             ->with('category')
             ->paginate(3);
 
-        return view('blog.index', compact('posts', 'authorName'));
+        return view('blog.author', compact('posts', 'author'));
     }
     // show function
     public function show(Post $post)
     {
         // increase view count
-        // $post->increment('view_count');
+        $post->increment('view_count');
         return view('blog.show', compact('post'));
     }
     // edit

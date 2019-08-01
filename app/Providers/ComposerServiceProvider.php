@@ -26,7 +26,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         //path data throw every view
-        view()->composer(['blog.index','layouts.sidebar'],function($view){
+        view()->composer(['blog.index','blog.author','layouts.sidebar'],function($view){
             $categories = Category::orderBy('title','asc')->get();
             return $view->with('categories',$categories);
         });
