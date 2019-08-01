@@ -22,21 +22,21 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'Joe Doe',
-                'slug' => 'joe-doe',
+                'userName' => 'joe-doe',
                 'bio' => $faker->text(rand(255,300)),
                 'email' => 'john@test.com',
                 'password' => bcrypt('secret')
             ],
             [
                 'name' => 'Jane Doe',
-                'slug' => 'jane-doe',
+                'userName' => 'jane-doe',
                 'bio' => $faker->text(rand(255,300)),
                 'email' => 'jane@test.com',
                 'password' => bcrypt('secret')
             ],
             [
                 'name' => 'Saitama',
-                'slug' => 'saitama',
+                'userName' => 'saitama',
                 'bio' => $faker->text(rand(255,300)),
                 'email' => 'saitama@test.com',
                 'password' => bcrypt('secret')

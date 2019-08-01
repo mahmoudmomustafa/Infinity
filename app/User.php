@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'userName';
     }
     // role
     public function role()
@@ -79,5 +79,12 @@ class User extends Authenticatable
             return true;
         else
             return false;
+    }
+    // get first name
+    public function firstName(){
+        $splitName = explode(' ', $this->name);
+
+        $firstName = $splitName[0];
+        return $firstName;
     }
 }

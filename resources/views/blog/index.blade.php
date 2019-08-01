@@ -81,7 +81,7 @@
                         <ul class="post-meta-group">
                             <li>
                                 <div class="author">
-                                    <a href="/author/{{ $post->author->slug}}">
+                                    <a href="/author/{{ $post->author->userName}}">
                                         <div class="author-img">
                                             <img src="/img/user.svg" alt="authorImg">
                                         </div>

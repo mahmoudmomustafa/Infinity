@@ -35,7 +35,7 @@ Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard');
 //   Route::resource('/backend/blog', 'Backend\BlogController');
 //   });
 
-Route::group(['middleware' => ['role:admin' or 'role:editor' or 'role:author']], function () {
+Route::group(['middleware' => ['role:admin' or 'role:editor']], function () {
   Route::resource('/backend/blog', 'Backend\BlogController');
 });
 Route::resource('/backend/categories', 'Backend\CategoriesController')->middleware('checkrole');
