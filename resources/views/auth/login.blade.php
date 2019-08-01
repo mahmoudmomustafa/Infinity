@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 log-img">
+            <img src="/img/log.png" style="width:inherit;">
+        </div>
         <div class="col-md-6">
-            <div class="card content">
+            <div class="card content" style="height:100%">
                 <h3 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
                     Login
                 </h3>
@@ -60,7 +63,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Login') }}
                                 </button>
 
