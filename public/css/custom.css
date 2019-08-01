@@ -2,15 +2,33 @@ body {
     color: #777;
     font-family: 'Dosis', sans-serif;
     position: relative;
+    background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%);
 }
 
 .navbar {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgb(0, 0, 0) 120%) #343a40;
-    background-blend-mode: multiply, multiply;
+    background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%);
 }
-
+.navbar-brand{
+    font-weight: 700;
+    transition: 500ms ease-in-out
+}
+.navbar-brand:hover{
+    color: #1d68ac !important;
+    transform: translate(10px)
+}
 a {
     color: #333;
+}
+
+#navbarDropdown::after {
+    content: none
+}
+
+.more-icon {
+    font-size: 15px;
+    transform: rotate(90deg);
+    padding-top: 18px;
+    line-height: 2;
 }
 
 a:hover {
@@ -33,6 +51,7 @@ a:hover {
 .content {
     box-shadow: 0 0 10px #bdbdbd;
     border-radius: 5px;
+    background: #f8fafc;
 }
 
 .pagination {
@@ -108,13 +127,16 @@ a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.content-post{
-transition: 500ms ease-in-out;
+
+.content-post {
+    transition: 500ms ease-in-out;
 }
-.content-post:hover{
-    transform: scale(1.019);
-    background:linear-gradient(223deg,#1d68ac1a 0,#566aa761 100%);
+
+.content-post:hover {
+    /* transform: scale(1.019); */
+    background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
 }
+
 .post-item-body h2,
 .post-item-body h1 {
     font-weight: 700;

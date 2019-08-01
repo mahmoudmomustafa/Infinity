@@ -50,89 +50,86 @@
             </ul>
             <!-- Edit Modal -->
             <div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class=" modal-dialog content" role="document">
-                    <div class="modal-content" style="border:none">
-                        <h5 class="modal-title p-4 font-weight-bold"
-                            style="color:#1d68a7;padding-bottom:.5rem !important;">Edit Post
-                        </h5>
-                        <div class="modal-body">
-                            <form action="/blog/{{$post->id}}" method="post">
-                                @method('patch')
-                                @csrf
-                                <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
-                                    <div class="col">
-                                        <input class="form-control" value="{{$post->title}}" type="text"
-                                            name="title" id="title" placeholder="Post Title...">
-                                    </div>
-                                    @if ($errors->has('title'))
-                                    <span class="help-block">{{$errors->first('title') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
-                                    <div class="col">
-                                        <textarea class="form-control" name="description" id="description"
-                                            placeholder="Write Post Description Here..."
-                                            rows="2">{{$post->description}}</textarea>
-                                    </div>
-                                    @if ($errors->has('description'))
-                                    <span class="help-block">{{$errors->first('description') }}</span>
-                                    @endif
-                                </div>
-                                {{-- <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
-                                    <div class="col">
-                                        <select name="category_id" id="category_id"
-                                            value="{{$post->category_id}}" class="form-control">
-                                            <option disabled selected>Choose Category
-                                            </option>
-                                            @foreach ($categories as $category)
-                                            <option value="{{$category->id}}">
-                                                {{$category->title}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('category_id'))
-                                        <span class="help-block">{{$errors->first('category_id') }}</span>
-                                        @endif
-                                    </div>
-                                </div> --}}
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save
-                                        changes</button>
-                                </div>
-                            </form>
+              <div class=" modal-dialog content" role="document">
+                <div class="modal-content" style="border:none">
+                  <h5 class="modal-title p-4 font-weight-bold" style="color:#1d68a7;padding-bottom:.5rem !important;">
+                    Edit Post
+                  </h5>
+                  <div class="modal-body">
+                    <form action="/blog/{{$post->id}}" method="post">
+                      @method('patch')
+                      @csrf
+                      <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
+                        <div class="col">
+                          <input class="form-control" value="{{$post->title}}" type="text" name="title" id="title"
+                            placeholder="Post Title...">
                         </div>
-                    </div>
-                </div>
-            </div>
-            <p class="p-4">
-              {!! $post->description !!}
-            </p>
-          </div>
-          {{-- comments --}}
-          <div class="comments">
-            <article class="post-item">
-              <h5 class="px-4 font-weight-bold " style="color:#1d68a7;padding-bottom:1rem !important;">
-                Comments..
-              </h5>
-              {{-- comment form --}}
-              <form action="/blog" class="pb-4" method="post">
-                <div class="form-group">
-                  <div class="col-md-10 offset-md-1">
-                    <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text"
-                      name="cmment" id="comment" placeholder="Write Comment...">
-                    @if ($errors->has('comment'))
-                    <div class="invalid-feedback">{{$errors->first('comment') }}</div>
-                    @endif
+                        @if ($errors->has('title'))
+                        <span class="help-block">{{$errors->first('title') }}</span>
+                        @endif
+                      </div>
+                      <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
+                        <div class="col">
+                          <textarea class="form-control" name="description" id="description"
+                            placeholder="Write Post Description Here..." rows="2">{{$post->description}}</textarea>
+                        </div>
+                        @if ($errors->has('description'))
+                        <span class="help-block">{{$errors->first('description') }}</span>
+                        @endif
+                      </div>
+                      {{-- <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
+                      <div class="col">
+                        <select name="category_id" id="category_id" value="{{$post->category_id}}" class="form-control">
+                          <option disabled selected>Choose Category
+                          </option>
+                          @foreach ($categories as $category)
+                          <option value="{{$category->id}}">
+                            {{$category->title}}</option>
+                          @endforeach
+                        </select>
+                        @if ($errors->has('category_id'))
+                        <span class="help-block">{{$errors->first('category_id') }}</span>
+                        @endif
+                      </div>
+                  </div> --}}
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save
+                      changes</button>
                   </div>
+                  </form>
                 </div>
-              </form>
-            </article>
+              </div>
+            </div>
           </div>
+          <p class="p-4">
+            {!! $post->description !!}
+          </p>
+      </div>
+      {{-- comments --}}
+      <div class="comments">
+        <article class="post-item">
+          <h5 class="px-4 font-weight-bold " style="color:#1d68a7;padding-bottom:1rem !important;">
+            Comments..
+          </h5>
+          {{-- comment form --}}
+          <form action="/blog" class="pb-4" method="post">
+            <div class="form-group">
+              <div class="col-md-10 offset-md-1">
+                <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="cmment"
+                  id="comment" placeholder="Write Comment...">
+                @if ($errors->has('comment'))
+                <div class="invalid-feedback">{{$errors->first('comment') }}</div>
+                @endif
+              </div>
+            </div>
+          </form>
         </article>
       </div>
+      </article>
     </div>
-    @include('layouts.sidebar')
   </div>
+  @include('layouts.sidebar')
+</div>
 </div>
 @endsection
