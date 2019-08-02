@@ -25,14 +25,7 @@ Route::get('/category/{category}', 'BlogController@category');
 Route::get('/author/{author}', 'BlogController@author');
 Auth::routes();
 
-// Route::resource('/backend/blog', 'Backend\BlogController')->middleware('checkrole');
-// Route::group(['middleware'=>['admin', 'editor','author']],function () {
-//   Route::resource('/backend/blog', 'Backend\BlogController');
-//   });
-// Route::group(['middleware' => ['role:admin' or 'role:editor']], function () {
-// });
-
 Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard')->middleware('checkrole');
-Route::resource('/backend/blog', 'Backend\BlogController')->middleware('checkrole');
-Route::resource('/backend/categories', 'Backend\CategoriesController')->middleware('checkrole');
-Route::resource('/backend/users', 'Backend\UsersController')->middleware('admin');
+Route::resource('/dashboard/posts', 'Backend\BlogController')->middleware('checkrole');
+Route::resource('/dashboard/categories', 'Backend\CategoriesController')->middleware('checkrole');
+Route::resource('/dashboard/users', 'Backend\UsersController')->middleware('admin');

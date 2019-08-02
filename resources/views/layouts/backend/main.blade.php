@@ -2,20 +2,6 @@
 <html>
 
 <head>
-  {{-- <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title','Dashboard')</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/backend/plugins/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="/backend/css/AdminLTE.css">
-  <link rel="stylesheet" href="/backend/css/skins/_all-skins.min.css"> --}}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -31,21 +17,51 @@
   <link rel="stylesheet" href="/css/custom.css">
 </head>
 
-<body id='app'>
+<body style="background: linear-gradient(49deg, rgb(27, 36, 47) 0%, rgb(30, 37, 45) 100%);">
   {{-- navbar --}}
   @include('layouts.backend.navbar')
-  <main class="py-4">
-    @yield('content')
-  </main>
-  {{-- <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <!-- Content -->
-        @yield('content')
+  <div class="row mr-auto">
+    {{-- sidebar --}}
+    <div class="col-lg-1">
+      <div class="side">
+        <ul class="navbar-nav sidebar mt-4">
+          <!-- Dashboard -->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="{{route('dashboard')}}">
+              <i class="lni-dashboard"></i>
+            </a>
+          </li>
+          <!-- Users -->
+          <li class="nav-item dropdown" data-toggle="tooltip" data-placement="right" title="Users">
+            <a class="nav-link" href="/dashboard/users">
+              <i class="lni-users"></i>
+            </a>
+          </li>
+          <!-- posts -->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Posts">
+            <a class="nav-link" href="/dashboard/posts">
+              <i class="lni-write"></i>
+            </a>
+          </li>
+          <!-- categories -->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
+            <a class="nav-link" href="/dashboard/categories">
+              <i class="lni-slack"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="toggle"></div>
       </div>
     </div>
-  </div> --}}
-
+    {{-- main --}}
+    <div class="col-lg-10">
+      <main>
+        <div class="container">
+          @yield('content')
+        </div>
+      </main>
+    </div>
+  </div>
   <!-- Scripts -->
   <script src="/backend/js/jquery-2.2.3.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
