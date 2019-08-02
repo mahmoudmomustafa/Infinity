@@ -27,5 +27,5 @@ Auth::routes();
 
 Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard')->middleware('checkrole');
 Route::resource('/dashboard/posts', 'Backend\BlogController')->middleware('checkrole');
-Route::resource('/dashboard/categories', 'Backend\CategoriesController')->middleware('checkrole');
+Route::resource('/dashboard/tags', 'Backend\CategoriesController')->middleware('checkrole');
 Route::resource('/dashboard/users', 'Backend\UsersController')->middleware('admin');

@@ -7,13 +7,15 @@
     <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
       Display All Tags...
     </h1>
+    {{-- create tag --}}
     <div class="create float-right py-2">
-      <button class="btn btn-primary">
-        New Tag
-      </button>
+      <a href="/dashboard/tags/create">
+        <button class="btn btn-primary btn-add">
+          New Tag
+        </button>
+      </a>
     </div>
   </section>
-
   <!-- Main content -->
   <section class="container  mt-4">
     <div class="row">
@@ -46,10 +48,10 @@
                     <td>{{$category->title}}</td>
                     <td style="text-align:center;">{{$category->posts->count()}}</td>
                     <td style="display:flex;">
-                      <a href="/backend/categories/{{$category->id}}/edit" class="mr-2 btn btn-xs btn-success">
+                      <a href="/dashboard/tags/{{$category->id}}/edit" class="mr-2 btn btn-xs btn-success">
                         <i class="fa fa-edit"></i>
                       </a>
-                      <form action="/backend/categories/{{$category->id}}" method="post">
+                      <form action="/dashboard/tags/{{$category->id}}" method="post">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-xs btn-danger">

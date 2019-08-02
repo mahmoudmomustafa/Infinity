@@ -47,7 +47,7 @@ class BlogController extends BackendController
         ]);
         $request->user()->posts()->create($request->all());
 
-        return redirect('/backend/blog')->with('message', 'Ur Post was created');
+        return redirect('/dashboard/posts')->with('message', 'Ur Post was created');
     }
 
     /**
@@ -60,7 +60,7 @@ class BlogController extends BackendController
     {
         $categories = Category::get();
         $post = POST::findOrFail($id);
-        return view('backend/blog/edit', compact('post', 'categories'));
+        return view('dashboard/posts/edit', compact('post', 'categories'));
     }
 
     /**
@@ -84,7 +84,7 @@ class BlogController extends BackendController
     {
         // $post->update(request()->all());
         POST::findOrFail($id)->update(request()->all());
-        return redirect('/backend/blog')->with('message', 'Ur Post was Updated');
+        return redirect('/dashboard/posts')->with('message', 'Ur Post was Updated');
     }
 
     /**
@@ -97,6 +97,6 @@ class BlogController extends BackendController
     {
         $post = POST::findOrFail($id);
         $post->delete();
-        return redirect('/backend/blog')->with('message', 'Post was Deleted');
+        return redirect('/dashboard/posts')->with('message', 'Post was Deleted');
     }
 }

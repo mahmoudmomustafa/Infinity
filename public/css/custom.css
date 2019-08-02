@@ -446,7 +446,7 @@ li.nav-item .nav-link i {
     right: 0;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1295px) {
     .side {
         position: fixed;
         transform: translate(-70px);

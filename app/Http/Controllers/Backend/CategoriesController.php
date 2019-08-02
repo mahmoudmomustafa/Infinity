@@ -42,7 +42,7 @@ class CategoriesController extends BackendController
             'slug' => 'required|unique:categories',
         ]);
         $category->create(request()->all());
-        return redirect('/backend/categories')->with('message', 'a New Category was created');
+        return redirect('/dashboard/tags')->with('message', 'a New Category was created');
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoriesController extends BackendController
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('backend/categories/edit', compact('category'));
+        return view('dashboard/tags/edit', compact('category'));
     }
 
     /**
@@ -78,7 +78,7 @@ class CategoriesController extends BackendController
     public function update(Request $request, $id)
     {
         Category::findOrFail($id)->update(request()->all());
-        return redirect('/backend/categories')->with('message', 'Category was Updated');
+        return redirect('/dashboard/tags')->with('message', 'Category was Updated');
     }
 
     /**
@@ -91,6 +91,6 @@ class CategoriesController extends BackendController
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect('/backend/categories')->with('message', 'Category was Deleted');
+        return redirect('/dashboard/tags')->with('message', 'Category was Deleted');
     }
 }

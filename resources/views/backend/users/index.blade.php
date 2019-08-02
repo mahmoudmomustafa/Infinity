@@ -7,10 +7,13 @@
     <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
       Display All Users...
     </h1>
+    {{-- create user --}}
     <div class="create float-right py-2">
-      <button class="btn btn-primary">
-        New User
-      </button>
+      <a href="/dashboard/users/create">
+        <button class="btn btn-primary btn-add">
+          New User
+        </button>
+      </a>
     </div>
   </section>
   <!-- Main content -->
@@ -49,10 +52,10 @@
                     <td style="text-align:center;">{{$user->posts->count()}}</td>
                     <td>{{$user->role->name}}</td>
                     <td style="display:flex;">
-                      <a href="/backend/users/{{$user->id}}/edit" class="mr-2 btn btn-xs btn-success">
+                      <a href="/dashboard/users/{{$user->id}}/edit" class="mr-2 btn btn-xs btn-success">
                         <i class="fa fa-edit"></i>
                       </a>
-                      <form action="/backend/users/{{$user->id}}" method="post">
+                      <form action="/dashboard/users/{{$user->id}}" method="post">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-xs btn-danger">

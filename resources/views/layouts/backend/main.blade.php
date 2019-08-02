@@ -44,8 +44,8 @@
             </a>
           </li>
           <!-- categories -->
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
-            <a class="nav-link" href="/dashboard/categories">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tags">
+            <a class="nav-link" href="/dashboard/tags">
               <i class="lni-slack"></i>
             </a>
           </li>

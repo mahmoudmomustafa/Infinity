@@ -4,13 +4,16 @@
 <div class="container-fluid p-4">
   <!-- Content Header (Page header) -->
   <section class="content-header" style="overflow:auto">
-    <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
+    <h1 class="float-left" style="color:#1d68a7;">
       Display All Posts...
     </h1>
+    {{-- create post --}}
     <div class="create float-right py-2">
-      <button class="btn btn-primary">
-        New Post
-      </button>
+      <a href="/dashboard/posts/create">
+        <button class="btn btn-primary btn-add">
+          New Post
+        </button>
+      </a>
     </div>
   </section>
 
@@ -54,10 +57,10 @@
                     <td>{{$post->category->title}}</td>
                     <td>{{$post->created_at}}</td>
                     <td style="display:flex">
-                      <a href="/backend/blog/{{$post->id}}/edit" class="mr-2 btn btn-xs btn-success">
+                      <a href="/dashboard/posts/{{$post->id}}/edit" class="mr-2 btn btn-xs btn-success">
                         <i class="fa fa-edit"></i>
                       </a>
-                      <form action="/backend/blog/{{$post->id}}" method="post">
+                      <form action="/dashboard/posts/{{$post->id}}" method="post">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-xs btn-danger">

@@ -49,7 +49,7 @@ class UsersController extends BackendController
         $data['password'] = bcrypt($data['password']);
         User::create($data);
 
-        return redirect('/backend/users')->with('message', 'a New User was created');
+        return redirect('/dashboard/users')->with('message', 'a New User was created');
     }
 
     /**
@@ -72,7 +72,7 @@ class UsersController extends BackendController
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('backend/users/edit', compact('user'));
+        return view('dashboard/users/edit', compact('user'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UsersController extends BackendController
     public function update(Request $request, $id)
     {
         User::findOrFail($id)->update(request()->all());
-        return redirect('/backend/users')->with('message', 'User was Updated');
+        return redirect('/dashboard/users')->with('message', 'User was Updated');
     }
 
     /**
@@ -101,6 +101,6 @@ class UsersController extends BackendController
             return abort(403);
         }
         $user->delete();
-        return redirect('/backend/users')->with('message', 'User was Deleted');
+        return redirect('/dashboard/users')->with('message', 'User was Deleted');
     }
 }
