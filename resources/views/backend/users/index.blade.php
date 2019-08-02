@@ -30,7 +30,6 @@
               <strong>No record</strong>
             </div>
             @else
-            {{-- <div class="table-responsive"> --}}
               <table class="table table-striped table-dark table-hover  table-bordered ">
                 <thead>
                   <tr>
@@ -64,7 +63,6 @@
                   @endforeach
                 </tbody>
               </table>
-            {{-- </div> --}}
             @endif
           </div>
           <!-- /.box-body -->
