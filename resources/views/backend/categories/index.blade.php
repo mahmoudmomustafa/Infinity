@@ -34,7 +34,7 @@
             <table class="table table-striped table-dark table-hover  table-bordered">
               <thead>
                 <tr>
-                  <td scope="col">Categories</td>
+                  <td scope="col">Tags</td>
                   <td scope="col" width='90'>Post Count</td>
                   <td scope="col" width="100">Actions</td>
                 </tr>

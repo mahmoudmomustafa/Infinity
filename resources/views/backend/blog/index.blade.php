@@ -1,27 +1,21 @@
 @extends('layouts.backend.main')
 @section('title','MyBlog | Blog index')
 @section('content')
-<div class="content-wrapper">
+<div class="container-fluid p-4">
   <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Blog
-      <small>Display all posts</small>
-    </h1>
-    <ol class="breadcrumb">
-      {{-- Dashboard --}}
-      <li class="active">
-        <a href="{{route('dashboard')}}">Dashboard</a>
-      </li>
-      {{-- posts --}}
-      <li class="active">
-        <a href="/backend/blog">Posts</a>
-      </li>
-    </ol>
-  </section>
+  <section class="content-header" style="overflow:auto">
+      <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
+        Display All Posts...
+      </h1>
+      <div class="create float-right py-2">
+        <button class="btn btn-primary">
+          New Post
+        </button>
+      </div>
+    </section>
 
   <!-- Main content -->
-  <section class="container mt-2">
+  <section class="container mt-4">
     <div class="row">
       <div class="col">
         <div class="box">
@@ -37,15 +31,15 @@
               <strong>No record</strong>
             </div>
             @else
-            <table class="table taable-bordered">
+            <table class="table table-striped table-dark table-hover table-bordered ">
               <thead>
                 <tr>
                   <td>Post title</td>
                   <td width="100">Author</td>
-                  <td>Likes</td>
-                  <td>Comments</td>
+                  <td style="text-align:center;">Likes</td>
+                  <td style="text-align:center;">Comments</td>
                   <td>Category</td>
-                  <td width="120">Created at</td>
+                  <td width="100">Created at</td>
                   <td width='80'>Actions</td>
                 </tr>
               </thead>
@@ -54,8 +48,8 @@
                 <tr>
                   <td>{{$post->title}}</td>
                   <td>{{$post->author->name}}</td>
-                  <td>{{$post->author->id}}</td>
-                  <td>{{$post->author->id}}</td>
+                  <td style="text-align:center;">{{$post->author->id}}</td>
+                  <td style="text-align:center;">{{$post->author->id}}</td>
                   <td>{{$post->category->title}}</td>
                   <td>{{$post->created_at}}</td>
                   <td style="display:flex">
