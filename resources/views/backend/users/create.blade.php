@@ -1,23 +1,22 @@
 @extends('layouts.backend.main')
 @section('title','MyBlog | Add Post')
 @section('content')
-<div class="content-wrapper">
+<div class="container-fluid p-4">
   <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Categories
-      <small>Add new Category</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li class="active">
-        <a href="{{route('dashboard')}}">Dashboard</a>
-      </li>
-      {{-- posts --}}
-      <li class="active">
-        <a href="/backend/users">Users</a>
-      </li>
-    </ol>
-  </section>
+  <section class="content-header" style="overflow:auto">
+      <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
+          <i class="lni-user"></i> Add  User...
+      </h1>
+      {{-- create tag --}}
+      <div class="create float-right py-2 mr-2">
+        <a href="/dashboard/users">
+          <button class="btn btn-primary btn-add">
+            <i class="lni-angle-double-left pr-2"></i>
+            Back
+          </button>
+        </a>
+      </div>
+    </section>
 
   <!-- Main content -->
   <section class="container  mt-2">

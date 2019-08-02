@@ -86,7 +86,7 @@ a:hover {
 }
 
 .btn-success {
-    background: linear-gradient(65deg, #1dac52 0, #56a7709e 100%);
+    background: linear-gradient(65deg, #1dac52 0, #35d6699e 100%);
     border: 0;
     font-weight: 700;
     transition: 500ms ease-in-out;
@@ -427,12 +427,13 @@ li.nav-item .nav-link i {
     text-align: center;
     font-size: 25px;
     color: white;
-    border-radius: 5px;
+    border-radius: 50px;
     transition: 500ms ease-in-out
 }
 
 .sidebar .nav-item .nav-link:hover {
     background: linear-gradient(65deg,#5E52F6 0,#8B82F9 100%);
+    box-shadow: 0 0 4px #5E52F6;
 }
 
 .trans {
@@ -449,6 +450,6 @@ li.nav-item .nav-link i {
 @media (max-width: 1295px) {
     .side {
         position: fixed;
-        transform: translate(-70px);
+        transform: translate(-75px);
     }
 }

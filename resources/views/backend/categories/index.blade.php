@@ -5,10 +5,10 @@
   <!-- Content Header -->
   <section class="content-header" style="overflow:auto">
     <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
-      Display All Tags...
+        <i class="lni-slack"></i> Display All Tags...
     </h1>
     {{-- create tag --}}
-    <div class="create float-right py-2">
+    <div class="create float-right py-2 mr-2">
       <a href="/dashboard/tags/create">
         <button class="btn btn-primary btn-add">
           New Tag
@@ -36,7 +36,7 @@
             <div class="table-responsive">
               <table class="table table-striped table-dark table-hover  table-bordered">
                 <thead>
-                  <tr>
+                  <tr class="font-weight-bold " style="color:#1d68a7;">
                     <td scope="col">Tags</td>
                     <td scope="col" width='90'>Post Count</td>
                     <td scope="col" width="100">Actions</td>

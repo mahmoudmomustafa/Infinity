@@ -5,10 +5,10 @@
   <!-- Content Header (Page header) -->
   <section class="content-header" style="overflow:auto">
     <h1 class="float-left" style="color:#1d68a7;">
-      Display All Posts...
+        <i class="lni-write"></i> Display All Posts...
     </h1>
     {{-- create post --}}
-    <div class="create float-right py-2">
+    <div class="create float-right py-2 mr-2">
       <a href="/dashboard/posts/create">
         <button class="btn btn-primary btn-add">
           New Post
@@ -37,7 +37,7 @@
             <div class="table-responsive">
               <table class="table table-striped table-dark table-hover table-bordered ">
                 <thead>
-                  <tr>
+                  <tr class="font-weight-bold " style="color:#1d68a7;">
                     <td>Post title</td>
                     <td width="100">Author</td>
                     <td style="text-align:center;">Likes</td>

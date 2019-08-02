@@ -3,22 +3,22 @@
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Blog
-      <small>Add new Post</small>
-    </h1>
-    <ol class="breadcrumb">
-      {{-- Dashboard --}}
-      <li class="active">
-        <a href="{{route('dashboard')}}">Dashboard</a>
-      </li>
-      {{-- posts --}}
-      <li class="active">
-        <a href="/backend/blog">Posts</a>
-      </li>
-    </ol>
-  </section>
+  <div class="container-fluid p-4">
+      <!-- Content Header (Page header) -->
+      <section class="content-header" style="overflow:auto">
+          <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
+              <i class="lni-write"></i> Add Post...
+          </h1>
+          {{-- create tag --}}
+          <div class="create float-right py-2 mr-2">
+            <a href="/dashboard/posts">
+              <button class="btn btn-primary btn-add">
+                <i class="lni-angle-double-left pr-2"></i>
+                Back
+              </button>
+            </a>
+          </div>
+        </section>
 
   <!-- Main content -->
   <section class="container  mt-2">
