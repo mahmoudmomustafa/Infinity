@@ -5,7 +5,7 @@
   <!-- Content Header -->
   <section class="content-header" style="overflow:auto">
     <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
-        <i class="lni-slack"></i> Display All Tags...
+      <i class="lni-slack"></i> Display Tags...
     </h1>
     {{-- create tag --}}
     <div class="create float-right py-2 mr-2">

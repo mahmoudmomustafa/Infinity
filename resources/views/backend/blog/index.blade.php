@@ -5,7 +5,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header" style="overflow:auto">
     <h1 class="float-left" style="color:#1d68a7;">
-        <i class="lni-write"></i> Display All Posts...
+      <i class="lni-write"></i> Display Posts...
     </h1>
     {{-- create post --}}
     <div class="create float-right py-2 mr-2">

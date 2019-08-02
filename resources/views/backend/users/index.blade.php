@@ -5,7 +5,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header" style="overflow:auto">
     <h1 class="float-left font-weight-bold " style="color:#1d68a7;">
-      <i class="lni-user"></i> Display All Users...
+      <i class="lni-users"></i> Display Users...
     </h1>
     {{-- create user --}}
     <div class="create float-right py-2 mr-2">

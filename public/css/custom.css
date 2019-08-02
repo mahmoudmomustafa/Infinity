@@ -336,7 +336,9 @@ ul.tags li a:hover {
     background: linear-gradient(45deg, #86868673, #27272736);
     border: 0;
 }
-
+.help-block{
+    color: red
+}
 .form-control:focus {
     box-shadow: 0 0 15px gainsboro;
     border: 0;

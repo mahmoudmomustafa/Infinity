@@ -80,8 +80,6 @@
           <!-- /.box -->
         </div>
       </div>
-      <!-- ./row -->
   </section>
-  <!-- /.content -->
 </div>
 @endsection
