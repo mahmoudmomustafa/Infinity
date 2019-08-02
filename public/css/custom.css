@@ -396,7 +396,9 @@ span.required {
     margin-left: .5rem;
     margin-bottom: 0;
 }
-
+.btn-add{
+    background: linear-gradient(65deg,#5E52F6 0,#8B82F9 100%);
+}
 /*side page */
 .side {
     box-shadow: 0 4px 12px #6c6c6c52;

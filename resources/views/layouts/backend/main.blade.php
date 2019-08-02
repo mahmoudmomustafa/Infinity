@@ -24,7 +24,7 @@
     {{-- sidebar --}}
     <div class="col-lg-1">
       <div class="side">
-        <ul class="navbar-nav sidebar mt-4">
+        <ul class="navbar-nav sidebar mt-5">
           <!-- Dashboard -->
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="{{route('dashboard')}}">

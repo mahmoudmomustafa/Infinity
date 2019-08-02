@@ -31,35 +31,37 @@
               <strong>No record</strong>
             </div>
             @else
-            <table class="table table-striped table-dark table-hover  table-bordered">
-              <thead>
-                <tr>
-                  <td scope="col">Tags</td>
-                  <td scope="col" width='90'>Post Count</td>
-                  <td scope="col" width="100">Actions</td>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($categories as $category)
-                <tr>
-                  <td>{{$category->title}}</td>
-                  <td style="text-align:center;">{{$category->posts->count()}}</td>
-                  <td style="display:flex;">
-                    <a href="/backend/categories/{{$category->id}}/edit" class="mr-2 btn btn-xs btn-success">
-                      <i class="fa fa-edit"></i>
-                    </a>
-                    <form action="/backend/categories/{{$category->id}}" method="post">
-                      @method('DELETE')
-                      @csrf
-                      <button type="submit" class="btn btn-xs btn-danger">
-                        <i class="fa fa-times"></i>
-                      </button>
-                    </form>
-                  </td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-striped table-dark table-hover  table-bordered">
+                <thead>
+                  <tr>
+                    <td scope="col">Tags</td>
+                    <td scope="col" width='90'>Post Count</td>
+                    <td scope="col" width="100">Actions</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($categories as $category)
+                  <tr>
+                    <td>{{$category->title}}</td>
+                    <td style="text-align:center;">{{$category->posts->count()}}</td>
+                    <td style="display:flex;">
+                      <a href="/backend/categories/{{$category->id}}/edit" class="mr-2 btn btn-xs btn-success">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                      <form action="/backend/categories/{{$category->id}}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-xs btn-danger">
+                          <i class="fa fa-times"></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
             @endif
           </div>
         </div>
