@@ -45,38 +45,32 @@
             <table class="table taable-bordered">
               <thead>
                 <tr>
-                  <td>Actions</td>
                   <td>Name</td>
                   <td>Mail</td>
-                  <td>Post Count</td>
+                  <td width='80'>Post Count</td>
                   <td>Role</td>
+                  <td width='80'>Actions</td>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($users as $user)
                 <tr>
-                  <td width='80'>
-                    <a href="/backend/users/{{$user->id}}/edit" class="btn btn-xs btn-success">
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->posts->count()}}</td>
+                  <td>{{$user->role->name}}</td>
+                  <td style="display:flex;">
+                    <a href="/backend/users/{{$user->id}}/edit" class="mr-2 btn btn-xs btn-success">
                       <i class="fa fa-edit"></i>
                     </a>
                     <form action="/backend/users/{{$user->id}}" method="post">
                       @method('DELETE')
                       @csrf
-                      @if($user->id == config('cms.default_user'))
-                      <button type="submit" class="btn btn-xs btn-danger" disabled>
-                        <i class="fa fa-times"></i>
-                      </button>
-                      @else
                       <button type="submit" class="btn btn-xs btn-danger">
                         <i class="fa fa-times"></i>
                       </button>
-                      @endif
                     </form>
                   </td>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->email}}</td>
-                  <td>{{$user->posts->count()}}</td>
-                  <td>{{$user->posts->count()}}</td>
                 </tr>
                 @endforeach
               </tbody>
@@ -87,11 +81,8 @@
           <nav>
             {{-- {{$user->links()}} --}}
           </nav>
-          <!-- /.box -->
         </div>
       </div>
-      <!-- ./row -->
   </section>
-  <!-- /.content -->
 </div>
 @endsection

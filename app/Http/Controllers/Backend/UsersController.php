@@ -17,7 +17,7 @@ class UsersController extends BackendController
      */
     public function index()
     {
-        $users = User::orderBy('name')->paginate(5);
+        $users = User::orderBy('name')->get();
         return view('backend/users/index', compact('users'));
     }
 
@@ -97,6 +97,9 @@ class UsersController extends BackendController
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        if ($user->id == Auth::user()->id) {
+            return abort(403);
+        }
         $user->delete();
         return redirect('/backend/users')->with('message', 'User was Deleted');
     }

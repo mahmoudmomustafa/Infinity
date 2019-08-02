@@ -38,20 +38,28 @@
             </div>
             @else
             <table class="table taable-bordered">
-                <thead>
-                    <tr>
-                      <td width='80'>Actions</td>
-                      <td>Post title</td>
-                      <td>Author</td>
-                      <td>Category</td>
-                      <td>Created at</td>
-                    </tr>
-                  </thead>
+              <thead>
+                <tr>
+                  <td>Post title</td>
+                  <td width="100">Author</td>
+                  <td>Likes</td>
+                  <td>Comments</td>
+                  <td>Category</td>
+                  <td width="120">Created at</td>
+                  <td width='80'>Actions</td>
+                </tr>
+              </thead>
               <tbody>
                 @foreach ($posts as $post)
                 <tr>
-                  <td>
-                    <a href="/backend/blog/{{$post->id}}/edit" class="btn btn-xs btn-success">
+                  <td>{{$post->title}}</td>
+                  <td>{{$post->author->name}}</td>
+                  <td>{{$post->author->id}}</td>
+                  <td>{{$post->author->id}}</td>
+                  <td>{{$post->category->title}}</td>
+                  <td>{{$post->created_at}}</td>
+                  <td style="display:flex">
+                    <a href="/backend/blog/{{$post->id}}/edit" class="mr-2 btn btn-xs btn-success">
                       <i class="fa fa-edit"></i>
                     </a>
                     <form action="/backend/blog/{{$post->id}}" method="post">
@@ -62,10 +70,6 @@
                       </button>
                     </form>
                   </td>
-                  <td>{{$post->title}}</td>
-                  <td>{{$post->author->name}}</td>
-                  <td>{{$post->category->title}}</td>
-                  <td>{{$post->created_at}}</td>
                 </tr>
                 @endforeach
               </tbody>

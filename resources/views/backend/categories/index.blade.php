@@ -8,10 +8,10 @@
       Categories
       <small>Display all Categories</small>
       <b>
-          <a href="/backend/categories/create" class="btn btn-primary">
-            Add new Category
-          </a>
-        </b>
+        <a href="/backend/categories/create" class="btn btn-primary">
+          Add new Category
+        </a>
+      </b>
     </h1>
     <ol class="breadcrumb">
       {{-- Dashboard --}}
@@ -30,8 +30,8 @@
     <div class="row">
       <div class="col">
         <div class="box">
-         <!-- /.box-header -->
-         <div class="box-body ">
+          <!-- /.box-header -->
+          <div class="box-body ">
             @if (session('message'))
             <div class="alert alert-info">
               {{ session('message')}}
@@ -45,16 +45,18 @@
             <table class="table taable-bordered">
               <thead>
                 <tr>
-                  <td>Actions</td>
                   <td>Categories</td>
-                  <td>Post Count</td>
+                  <td width='100'>Post Count</td>
+                  <td width="100">Actions</td>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($categories as $category)
                 <tr>
-                  <td width='80'>
-                    <a href="/backend/categories/{{$category->id}}/edit" class="btn btn-xs btn-success">
+                  <td>{{$category->title}}</td>
+                  <td>{{$category->posts->count()}}</td>
+                  <td style="display:flex;">
+                    <a href="/backend/categories/{{$category->id}}/edit" class="mr-2 btn btn-xs btn-success">
                       <i class="fa fa-edit"></i>
                     </a>
                     <form action="/backend/categories/{{$category->id}}" method="post">
@@ -65,23 +67,14 @@
                       </button>
                     </form>
                   </td>
-                  <td>{{$category->title}}</td>
-                  <td>{{$category->posts->count()}}</td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
             @endif
           </div>
-          <!-- /.box-body -->
-          <nav>
-            {{$categories->links()}}
-          </nav>
-          <!-- /.box -->
         </div>
       </div>
-      <!-- ./row -->
   </section>
-  <!-- /.content -->
 </div>
 @endsection

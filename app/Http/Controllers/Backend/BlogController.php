@@ -16,13 +16,7 @@ class BlogController extends BackendController
      */
     public function index()
     {
-        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
-            $posts = Post::with('category', 'author')->latest()->paginate(8);
-        } else {
-            // auth();
-            Auth::user();
-            $posts = Post::where('author_id', Auth::user()->id)->latest()->paginate(8);;
-        }
+        $posts = Post::with('category', 'author')->latest()->paginate(8);
         return view("backend.blog.index", compact('posts'));
     }
 
@@ -65,13 +59,7 @@ class BlogController extends BackendController
     public function edit($id)
     {
         $categories = Category::get();
-
-        if (Auth::user()->isAdmin() || Auth::user()->isEditor()) {
-            $post = POST::findOrFail($id);
-        } else {
-            $post = POST::findOrFail($id);
-            $this->authorize('view', $post);
-        }
+        $post = POST::findOrFail($id);
         return view('backend/blog/edit', compact('post', 'categories'));
     }
 

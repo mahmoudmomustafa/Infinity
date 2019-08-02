@@ -15,9 +15,8 @@ class CategoriesController extends BackendController
      */
     public function index()
     {
-        $categories = Category::with('posts')->orderBy('title')->paginate(5);
-        $categoryCount = Category::count();
-        return view('backend/categories/index', compact('categories', 'categoryCount'));
+        $categories = Category::with('posts')->orderBy('title')->get();
+        return view('backend/categories/index', compact('categories'));
     }
 
     /**
@@ -43,7 +42,6 @@ class CategoriesController extends BackendController
             'slug' => 'required|unique:categories',
         ]);
         $category->create(request()->all());
-
         return redirect('/backend/categories')->with('message', 'a New Category was created');
     }
 
