@@ -172,7 +172,6 @@ a:hover {
 }
 
 .content-post:hover {
-    /* transform: scale(1.019); */
     background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
 }
 
@@ -232,11 +231,6 @@ ul.post-meta-group li i {
 
 .post-author {
     font-size: 13px;
-}
-
-.media img {
-    border-radius: 100%;
-    margin-right: 10px;
 }
 
 .post-author h4 {
@@ -349,6 +343,18 @@ ul.tags li a:hover {
     background: #030a0f11;
 }
 
+.back-create{
+    background: linear-gradient(45deg, #8686867a, #d8d8d836);
+    box-shadow: none;
+    color: white;
+    font-size: 20px;
+    height: max-content;
+    padding: 8px;
+}
+.back-create:focus{
+    box-shadow: 0 0 5px #959595;
+    color: #1d68ac;
+}
 .form-group.required label:after {
     content: "*";
     color: red;
