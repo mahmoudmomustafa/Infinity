@@ -467,7 +467,7 @@ li.nav-item .nav-link i {
 }
 .toggle {
     position: absolute;
-    width: 10px;
+    width: 15px;
     height: 100%;
     top: 0;
     right: 0;
@@ -476,6 +476,6 @@ li.nav-item .nav-link i {
 @media (max-width: 990px) {
     .side {
         position: fixed;
-        transform: translate(-65px)
+        transform: translate(-70px);
     }
 }
