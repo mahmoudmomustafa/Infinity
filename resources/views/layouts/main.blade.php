@@ -22,7 +22,6 @@
     <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-          {{-- <i class="lni-infinite"></i> --}}
           {{ __('Infinite') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -52,6 +51,13 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('blog') }}">{{ __('Home') }}</a>
             </li>
+            @if(Auth::user()->isAdmin() || Auth::user()->isEditor())
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('dashboard') }}">
+                {{ __('Dashboard') }}
+              </a>
+            </li>
+            @endif
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false" v-pre>
@@ -60,11 +66,6 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                @if(Auth::user()->isAdmin() || Auth::user()->isEditor())
-                <a class="dropdown-item" href="{{ route('dashboard') }}">
-                  {{ __('Dashboard') }}
-                </a>
-                @endif
                 <a class="dropdown-item" href="/author/{{Auth::user()->userName}}">
                   {{ __('Profile') }}
                 </a>
@@ -88,9 +89,9 @@
       @yield('content')
     </main>
   </div>
-  <!-- Scripts \\-->
+  <!-- Scripts -->
   <script src="/backend/js/jquery-2.2.3.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+  {{-- <script src="/js/bootstrap.min.js"></script> --}}
   <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
