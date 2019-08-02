@@ -105,7 +105,7 @@ a:hover {
 }
 
 .author-meta {
-    padding-bottom: 0px !important;
+    background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
     display: flex;
     text-align: center;
     justify-content: center;
@@ -121,6 +121,10 @@ a:hover {
     line-height: 2.5;
     font-size: 18px;
     font-weight: 700;
+}
+
+.like i:hover {
+    color: #1d68ac
 }
 
 .post-item {
@@ -335,7 +339,7 @@ ul.tags li a:hover {
 .form-control {
     border-radius: 3px;
     box-shadow: 0 0 15px gainsboro;
-    background: #030a0f2b;
+    background: linear-gradient(45deg, #86868673, #27272736);
     border: 0;
 }
 

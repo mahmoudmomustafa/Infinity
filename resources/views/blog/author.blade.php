@@ -5,7 +5,7 @@
     <div class="col-md-4 offset-md-1">
       <div class="content mb-3 content-post">
         <article class="post-item">
-          <div class="author-meta p-3" style="padding-bottom: 0 !important;">
+          <div class="author-meta p-3">
             {{-- author name --}}
             <ul class="post-meta-group">
               <li>
@@ -20,6 +20,9 @@
                     <small>{ {{$author->userName}} }</small>
                   </h5>
                   <h4>{{$author->email}}</h4>
+                  <span class="tag">
+                    {{$author->posts()->count()}} Posts
+                  </span>
                 </div>
               </li>
             </ul>
@@ -120,7 +123,7 @@
               </li>
               <span class="float-right">
                 <li class="like">
-                    <i class="lni-heart"></i>
+                  <i class="lni-heart-filled"></i>
                 </li>
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>

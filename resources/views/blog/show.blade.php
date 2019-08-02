@@ -23,7 +23,7 @@
               </li>
               <span class="float-right">
                 <li class="like">
-                  <i class="lni-heart"></i>
+                  <i class="lni-heart-filled"></i>
                 </li>
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
@@ -120,13 +120,16 @@
           </h5>
           {{-- comment form --}}
           <form action="/blog" class="pb-4" method="post">
-            <div class="form-group">
-              <div class="col-md-10 offset-md-1">
+            <div class="form-group row">
+              <div class="col-md-8 offset-md-1">
                 <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="cmment"
                   id="comment" placeholder="Write Comment...">
                 @if ($errors->has('comment'))
                 <div class="invalid-feedback">{{$errors->first('comment') }}</div>
                 @endif
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary">Comment</button>
               </div>
             </div>
           </form>

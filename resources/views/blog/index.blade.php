@@ -95,7 +95,7 @@
                             </li>
                             <span class="float-right">
                                 <li class="like">
-                                    <i class="lni-heart"></i>
+                                    <i class="lni-heart-filled"></i>
                                 </li>
                                 <li class="tag">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>

@@ -55,7 +55,7 @@ class BlogController extends Controller
     {
         $posts = $author->posts()
             ->with('category')
-            ->paginate(3);
+            ->paginate(5);
 
         return view('blog.author', compact('posts', 'author'));
     }
@@ -69,8 +69,8 @@ class BlogController extends Controller
     // edit
     public function edit($id)
     {
-            $post = POST::findOrFail($id);
-            $this->authorize('view', $post);
+        $post = POST::findOrFail($id);
+        $this->authorize('view', $post);
         return view('/edit', compact('post'));
     }
     // update method
