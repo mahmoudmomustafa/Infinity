@@ -454,18 +454,36 @@ li.nav-item .nav-link i {
     top: 0;
     right: 0;
 }
-.logOut{
-    position: absolute !important;
-    bottom: 0;
+
+.dash .dash-header{
+    color:#1d68a7;
+    font-size: 65px;
+    font-family: 'Luckiest Guy', cursive;
 }
-.log-out{
-    background: linear-gradient(45deg, #e91e3d, #dd1e1e);
-    font-size: 20px !important;
-    box-shadow: 0px 0px 15px rgba(226, 30, 45, 0.25);
+
+.dash .mt-4{
+    color:white;font-size:50px;text-indent:216px;
+    font-family: 'Righteous', cursive;
 }
-.log-out:hover{
-    background: linear-gradient(45deg, #e91e3d, #dd1e1e9f) !important;
-    box-shadow: 0px 0px 20px rgba(226, 30, 45, 0.25)!important;
+.statics ul{
+    list-style: none;
+    text-align: center
+}
+.statics ul li{
+    width: 70%;
+    font-size: 25px;
+    transition: 500ms ease-in-out;
+    border-radius: 5px;
+    margin: auto;
+    background: linear-gradient(45deg, #00000080, transparent);
+}
+.statics ul li i{
+    font-size: initial;
+}
+.statics ul li:hover{
+    transform: scale(1.09);
+    background: linear-gradient(65deg,#5E52F6 0,#8B82F9 100%);
+    box-shadow: 0 0 14px #5E52F6;
 }
 @media (max-width: 1295px) {
     .side {

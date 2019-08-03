@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
-
+use App\Category;
+use App\User;
+use App\Post;
 class HomeController extends BackendController
 {
 
@@ -13,6 +15,9 @@ class HomeController extends BackendController
      */
     public function index()
     {
-        return view('backend.home');
+        $users = User::get();
+        $tags = Category::get();
+        $posts = Post::get();
+        return view('backend.home',compact('users','tags','posts'));
     }
 }

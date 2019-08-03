@@ -9,6 +9,7 @@
   <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
   <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Righteous&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -47,13 +48,6 @@
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tags">
             <a class="nav-link" href="/dashboard/tags">
               <i class="lni-slack"></i>
-            </a>
-          </li>
-          {{-- log out --}}
-          <li class="nav-item logOut" data-toggle="tooltip" data-placement="right" title="Log Out">
-            <a class="nav-link log-out" href="{{ route('logout') }}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-              <i class="lni-exit"></i>
             </a>
           </li>
         </ul>
