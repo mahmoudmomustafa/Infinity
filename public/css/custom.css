@@ -454,7 +454,19 @@ li.nav-item .nav-link i {
     top: 0;
     right: 0;
 }
-
+.logOut{
+    position: absolute !important;
+    bottom: 0;
+}
+.log-out{
+    background: linear-gradient(45deg, #e91e3d, #dd1e1e);
+    font-size: 20px !important;
+    box-shadow: 0px 0px 15px rgba(226, 30, 45, 0.25);
+}
+.log-out:hover{
+    background: linear-gradient(45deg, #e91e3d, #dd1e1e9f) !important;
+    box-shadow: 0px 0px 20px rgba(226, 30, 45, 0.25)!important;
+}
 @media (max-width: 1295px) {
     .side {
         position: fixed;

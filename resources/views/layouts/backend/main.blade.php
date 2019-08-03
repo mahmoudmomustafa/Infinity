@@ -49,6 +49,13 @@
               <i class="lni-slack"></i>
             </a>
           </li>
+          {{-- log out --}}
+          <li class="nav-item logOut" data-toggle="tooltip" data-placement="right" title="Log Out">
+            <a class="nav-link log-out" href="{{ route('logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+              <i class="lni-exit"></i>
+            </a>
+          </li>
         </ul>
         <div class="toggle"></div>
       </div>

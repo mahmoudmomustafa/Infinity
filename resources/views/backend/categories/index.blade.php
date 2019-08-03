@@ -11,7 +11,7 @@
     <div class="create float-right py-2 mr-2">
       <a href="/dashboard/tags/create">
         <button class="btn btn-primary btn-add">
-          New Tag
+          Add<i class="ml-2 lni-plus"></i>
         </button>
       </a>
     </div>
