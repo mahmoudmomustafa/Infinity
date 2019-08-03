@@ -5,4 +5,4 @@ $('.toggle').click(function () {
 });
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-})
+});

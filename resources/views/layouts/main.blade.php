@@ -15,6 +15,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/custom.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -90,8 +91,7 @@
     </main>
   </div>
   <!-- Scripts -->
-  <script src="/backend/js/jquery-2.2.3.min.js"></script>
-  {{-- <script src="/js/bootstrap.min.js"></script> --}}
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 

@@ -21,7 +21,7 @@
                   </a>
                 </div>
               </li>
-              <span class="float-right">
+              <span class="float-right mr-1">
                 <li class="like">
                   <i class="lni-heart-filled"></i>
                 </li>

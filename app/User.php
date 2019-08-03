@@ -81,7 +81,8 @@ class User extends Authenticatable
             return false;
     }
     // get first name
-    public function firstName(){
+    public function firstName()
+    {
         $splitName = explode(' ', $this->name);
 
         $firstName = $splitName[0];

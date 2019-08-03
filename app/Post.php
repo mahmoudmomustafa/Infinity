@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use GrahamCampbell\Markdown\Facades\Markdown;
-use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $fillable = ['title','slug' ,'description','category_id','excerpt','view_count','author_id', 'updated_at', 'created_at'];
+    protected $fillable = ['title', 'slug', 'description', 'category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
 
     public function author()
     {
@@ -38,7 +37,8 @@ class Post extends Model
         return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : Null;
     }
     // popular post
-    public function scopePopular($query){
-        return $query->orderBy('view_count','desc');
+    public function scopePopular($query)
+    {
+        return $query->orderBy('view_count', 'desc');
     }
 }
