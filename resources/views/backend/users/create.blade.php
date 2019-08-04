@@ -41,6 +41,15 @@
               </div>
               <div class="form-group row mb-4">
                 <div class="col-md-6 m-auto">
+                  <input id="userName" type="text" class="form-control back-create @error('userName') is-invalid @enderror"
+                    name="userName" value="{{ old('userName') }}" placeholder="User Name.."  required autocomplete="userName">
+                  @if ($errors->has('userName'))
+                  <span class="help-block">{{$errors->first('userName') }}</span>
+                  @endif
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <div class="col-md-6 m-auto">
                   <input id="email" type="email" class="form-control back-create @error('email') is-invalid @enderror"
                     name="email" value="{{ old('email') }}" placeholder="Email Address.." required autocomplete="email">
                   @error('email')

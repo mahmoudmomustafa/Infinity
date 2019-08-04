@@ -380,6 +380,7 @@ span.required {
 }
 
 .author-img {
+    margin: auto;
     position: relative;
 }
 

@@ -38,6 +38,7 @@
                 <thead>
                   <tr class="font-weight-bold " style="color:#1d68a7;">
                     <td scope="col">Name</td>
+                    <td scope="col">User Name</td>
                     <td scope="col">Mail</td>
                     <td scope="col" width='90'>Post Count</td>
                     <td scope="col" width='80'>Role</td>
@@ -48,6 +49,7 @@
                   @foreach ($users as $user)
                   <tr>
                     <td>{{$user->name}}</td>
+                    <td>{{$user->userName}}</td>
                     <td>{{$user->email}}</td>
                     <td style="text-align:center;">{{$user->posts->count()}}</td>
                     <td>{{$user->role->name}}</td>

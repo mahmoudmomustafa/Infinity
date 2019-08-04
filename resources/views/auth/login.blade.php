@@ -6,7 +6,7 @@
         <div class="col-md-6 log-img">
             <img src="/img/log.png" style="width:inherit;">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-2">
             <div class="card content" style="height:100%">
                 <h3 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
                     Login

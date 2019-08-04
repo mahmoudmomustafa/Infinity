@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
-use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
 class UsersController extends BackendController
 {
     /**
@@ -42,6 +39,7 @@ class UsersController extends BackendController
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|unique:users',
+            'userName'=>'required|unique:users|alpha_dash',
             'password' => ['required', 'confirmed'],
         ]);
         // $user->create(request()->all());
