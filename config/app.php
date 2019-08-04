@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Laratrust\LaratrustServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -190,6 +190,7 @@ return [
     */
 
     'aliases' => [
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

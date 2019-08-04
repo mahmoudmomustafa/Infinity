@@ -37,7 +37,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-       
+
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -52,6 +52,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'role' => \Laratrust\Middleware\LaratrustRole::class,
+        'permission' => \Laratrust\Middleware\LaratrustPermission::class,
+        'ability' => \Laratrust\Middleware\LaratrustAbility::class,
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'editor' => \App\Http\Middleware\IsEditor::class,
         'author' => \App\Http\Middleware\IsAuthor::class,
