@@ -11,7 +11,7 @@
     <section class="content-header my-4 dash">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="font-weight-bold dash-header">
+                <h1 class="dash-header">
                     <i class="lni-dashboard"></i> Dashboard...
                     <h2 class="font-weight-bold text-center" style="font-size:40px;margin-top:12%;">
                         Welcome {{Auth::user()->firstName()}}
@@ -38,9 +38,12 @@
             <div class="col-md-6">
                 <div class="statics">
                     <ul>
-                        <li class="my-4 p-3 shadow">User <i class="lni-angle-double-right mx-2"></i> {{$users->count()}}</li>
-                        <li class="my-4 p-3 shadow">Posts <i class="lni-angle-double-right mx-2"></i> {{$posts->count()}}</li>
-                        <li class="my-4 p-3 shadow">Tags <i class="lni-angle-double-right mx-2"></i> {{$tags->count()}}</li>
+                        <li class="my-4 p-3 shadow">User <i class="lni-angle-double-right mx-2"></i> {{$users->count()}}
+                        </li>
+                        <li class="my-4 p-3 shadow">Posts <i class="lni-angle-double-right mx-2"></i>
+                            {{$posts->count()}}</li>
+                        <li class="my-4 p-3 shadow">Tags <i class="lni-angle-double-right mx-2"></i> {{$tags->count()}}
+                        </li>
                     </ul>
                 </div>
             </div>

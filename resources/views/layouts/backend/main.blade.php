@@ -21,48 +21,49 @@
 <body style="background: linear-gradient(49deg, rgb(27, 36, 47) 0%, rgb(30, 37, 45) 100%);">
   {{-- navbar --}}
   @include('layouts.backend.navbar')
-  <div class="row mr-auto">
-    {{-- sidebar --}}
-    <div class="col-lg-1">
-      <div class="side">
-        <ul class="navbar-nav sidebar mt-5">
-          <!-- Dashboard -->
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-            <a class="nav-link" href="{{route('dashboard')}}">
-              <i class="lni-dashboard"></i>
-            </a>
-          </li>
-          <!-- Users -->
-          <li class="nav-item dropdown" data-toggle="tooltip" data-placement="right" title="Users">
-            <a class="nav-link" href="/dashboard/users">
-              <i class="lni-users"></i>
-            </a>
-          </li>
-          <!-- posts -->
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Posts">
-            <a class="nav-link" href="/dashboard/posts">
-              <i class="lni-write"></i>
-            </a>
-          </li>
-          <!-- categories -->
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tags">
-            <a class="nav-link" href="/dashboard/tags">
-              <i class="lni-slack"></i>
-            </a>
-          </li>
-        </ul>
-        <div class="toggle"></div>
+  <div class="container-fluid">
+    <div class="row">
+      {{-- sidebar --}}
+      <div class="col-lg-1">
+        <div class="side">
+          <ul class="navbar-nav sidebar mt-5">
+            <!-- Dashboard -->
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{{route('dashboard')}}">
+                <i class="lni-dashboard"></i>
+              </a>
+            </li>
+            <!-- Users -->
+            <li class="nav-item dropdown" data-toggle="tooltip" data-placement="right" title="Users">
+              <a class="nav-link" href="/dashboard/users">
+                <i class="lni-users"></i>
+              </a>
+            </li>
+            <!-- posts -->
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Posts">
+              <a class="nav-link" href="/dashboard/posts">
+                <i class="lni-write"></i>
+              </a>
+            </li>
+            <!-- categories -->
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tags">
+              <a class="nav-link" href="/dashboard/tags">
+                <i class="lni-slack"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="toggle"></div>
+        </div>
+      </div>
+      {{-- main --}}
+      <div class="col-lg-10">
+        <main class="p-4">
+          @yield('content')
+        </main>
       </div>
     </div>
-    {{-- main --}}
-    <div class="col-lg-10">
-      <main>
-        <div class="container">
-          @yield('content')
-        </div>
-      </main>
-    </div>
   </div>
+
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
