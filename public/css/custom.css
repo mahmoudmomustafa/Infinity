@@ -512,3 +512,15 @@ li.nav-item .nav-link i {
         transform: translate(-90px);
     }
 }
+.commend{
+    box-shadow: 0 0 5px #b7b7b7;
+border-radius: 5px;
+width: 90%;
+margin: auto;
+padding: 10px;
+background: #efefef;
+}
+.commend p {
+    text-indent: 40px;
+    padding-left: 1rem
+}

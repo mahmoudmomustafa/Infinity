@@ -29,3 +29,6 @@ Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard')->mid
 Route::resource('/dashboard/posts', 'Backend\BlogController')->middleware('checkrole');
 Route::resource('/dashboard/tags', 'Backend\CategoriesController')->middleware('checkrole');
 Route::resource('/dashboard/users', 'Backend\UsersController')->middleware('admin');
+//coments
+Route::post('/blog/{post}/comments', 'CommentsController@store');
+Route::delete('/blog/{post}/{comment}', 'CommentsController@destroy');

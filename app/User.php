@@ -88,4 +88,7 @@ class User extends Authenticatable
         $firstName = $splitName[0];
         return $firstName;
     }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }
