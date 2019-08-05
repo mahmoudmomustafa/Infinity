@@ -71,7 +71,7 @@ class UsersController extends BackendController
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('dashboard/users/edit', compact('user'));
+        return view('backend.users.edit', compact('user'));
     }
 
     /**

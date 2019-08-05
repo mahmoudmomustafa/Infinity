@@ -16,7 +16,6 @@
       </a>
     </div>
   </section>
-
   <!-- Main content -->
   <section class="container mt-4">
     <div class="row">
@@ -53,7 +52,7 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->author->name}}</td>
                     <td style="text-align:center;">{{$post->author->id}}</td>
-                    <td style="text-align:center;">{{$post->author->id}}</td>
+                    <td style="text-align:center;">{{$post->comments->count()}}</td>
                     <td>{{$post->category->title}}</td>
                     <td>{{$post->created_at}}</td>
                     <td style="display:flex">

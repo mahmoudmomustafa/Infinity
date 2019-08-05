@@ -31,24 +31,21 @@ class BlogController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            // 'slug' => 'required|unique:posts',
             'description' => 'required',
             'category_id' => 'required',
         ]);
         $request->user()->posts()->create($request->all());
 
-        return redirect('/')->with('message', 'Post was created');
+        return back()->with('message', 'Post was created');
     }
     // category
     public function category(Category $category)
     {
-        $categoryName = $category->title;
-
         $posts = $category->posts()
             ->with('author')
             ->paginate(3);
 
-        return view('blog.index', compact('posts', 'categoryName'));
+        return view('blog.index', compact('posts'));
     }
     // author 
     public function author(User $author)
@@ -77,13 +74,13 @@ class BlogController extends Controller
     public function update($id)
     {
         POST::findOrFail($id)->update(request()->all());
-        return redirect('/')->with('message', 'Ur Post was Updated');
+        return back()->with('message', 'Ur Post was Updated');
     }
     // delete post
     public function destroy($id)
     {
         $post = POST::findOrFail($id);
         $post->delete();
-        return redirect('/')->with('message', 'Post was Deleted');
+        return back()->with('message', 'Post was Deleted');
     }
 }

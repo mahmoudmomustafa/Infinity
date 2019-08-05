@@ -65,7 +65,7 @@ class CategoriesController extends BackendController
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('dashboard/tags/edit', compact('category'));
+        return view('backend/tags/edit', compact('category'));
     }
 
     /**
