@@ -41,7 +41,12 @@ class Post extends Model
     {
         return $query->orderBy('view_count', 'desc');
     }
+    // comments
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+    // likes
+    public function likes(){
+        return $this->hasMany(Like::class);
     }
 }

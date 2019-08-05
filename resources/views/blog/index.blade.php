@@ -94,6 +94,7 @@
                             </li>
                             <span class="float-right">
                                 <li class="like">
+                                    {{-- <span class="tag">0</span> --}}
                                     <i class="lni-heart-filled"></i>
                                 </li>
                                 <li class="tag">
