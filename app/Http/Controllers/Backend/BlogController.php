@@ -82,7 +82,6 @@ class BlogController extends BackendController
      */
     public function update($id)
     {
-        // $post->update(request()->all());
         POST::findOrFail($id)->update(request()->all());
         return redirect('/dashboard/posts')->with('message', 'Ur Post was Updated');
     }
