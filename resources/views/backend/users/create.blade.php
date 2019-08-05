@@ -41,8 +41,9 @@
               </div>
               <div class="form-group row mb-4">
                 <div class="col-md-6 m-auto">
-                  <input id="userName" type="text" class="form-control back-create @error('userName') is-invalid @enderror"
-                    name="userName" value="{{ old('userName') }}" placeholder="User Name.."  required autocomplete="userName">
+                  <input id="userName" type="text"
+                    class="form-control back-create @error('userName') is-invalid @enderror" name="userName"
+                    value="{{ old('userName') }}" placeholder="User Name.." required autocomplete="userName">
                   @if ($errors->has('userName'))
                   <span class="help-block">{{$errors->first('userName') }}</span>
                   @endif
@@ -75,6 +76,20 @@
                 <div class="col-md-6 m-auto">
                   <input id="password-confirm" type="password" class="form-control back-create"
                     name="password_confirmation" placeholder="Confirm Password.." required autocomplete="new-password">
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <div class="col-md-6 m-auto">
+                  <select name="role_id" id="role_id"
+                    class="form-control back-create {{$errors->has('role_id') ? 'has-error' : ''}}">
+                    <option disabled selected>Choose Role</option>
+                    @foreach ($roles as $role)
+                    <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+                  </select>
+                  @if ($errors->has('role_id'))
+                  <span class="help-block">{{$errors->first('role_id') }}</span>
+                  @endif
                 </div>
               </div>
               <div class="form-group row mb-0">

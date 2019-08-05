@@ -41,7 +41,7 @@ class BlogController extends BackendController
     {
         $this->validate($request, [
             'title' => 'required',
-            'slug' => 'required|unique:posts',
+            // 'slug' => 'required|unique:posts',
             'description' => 'required',
             'category_id' => 'required',
         ]);
@@ -60,7 +60,7 @@ class BlogController extends BackendController
     {
         $categories = Category::get();
         $post = POST::findOrFail($id);
-        return view('dashboard/posts/edit', compact('post', 'categories'));
+        return view('backend.blog.edit', compact('post', 'categories'));
     }
 
     /**

@@ -122,8 +122,8 @@
           <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
             @csrf
               <div class="form-group mx-3 mb-2">
-                <textarea class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
-                  id="comment" placeholder="Write Comment..." rows="1"></textarea>
+                <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
+                  id="comment" placeholder="Write Comment...">
                 <input type="hidden" name="post_id" value="{{$post->id}}">
                 @if ($errors->has('comment'))
                 <div class="invalid-feedback">{{$errors->first('comment') }}</div>
@@ -135,24 +135,24 @@
           </form>
         </article>
         @foreach($post->comments as $comment)
-        <div class="p-4 commend mb-3">
+        <div class="commend mb-3">
           {{-- author name --}}
           <ul class="post-meta-group">
             <li>
               <div class="author">
-                <a href="/author/{{$comment->user->userName}}">
-                  <div class="author-img mr-2">
-                    <img src="/img/user.svg" alt="authorImg" width="45">
-                  </div>
-                  <h6 class="font-weight-bold" style="color:#1d68a7;line-height:40px">
-                    {{$comment->user->name}}
-                    <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
-                  </h6>
-                </a>
+                  <a href="/author/{{$comment->user->userName}}">
+                    <div class="author-img">
+                      <img src="/img/user.svg" alt="authorImg">
+                    </div>
+                    <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
+                        {{$comment->user->name}}
+                      <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
+                    </h5>
+                  </a>
               </div>
             </li>
+            @if (Auth::check() && $comment->user->id == Auth::user()->id)
             <span class="float-right mr-1">
-              @if (Auth::check() && $comment->user->id == Auth::user()->id)
               <li class="dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false" v-pre><span class="caret more-icon"><i
@@ -160,18 +160,17 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                   {{-- delete form --}}
-                  <a class="dropdown-item" href="/blog/{{$post->id}}/{{$comment->id}}" onclick="event.preventDefault();
-                                                 document.getElementById('delete-form').submit();">
+                <a class="dropdown-item" href="/blog/{{$post->id}}/{{$comment->id}}" onclick="event.preventDefault();document.getElementById('delete-comment').submit();">
                     {{ __('Delete') }}
                   </a>
-                  <form id="delete-form" action="/blog/{{$post->id}}/{{$comment->id}}" method="post" style="display: none;">
+                  <form id="delete-comment" action="/blog/{{$post->id}}/{{$comment->id}}" method="post" style="display: none;">
                     @method('DELETE')
                     @csrf
                   </form>
                 </div>
               </li>
-              @endif
             </span>
+            @endif
           </ul>
           <div class="comment">
             <p>

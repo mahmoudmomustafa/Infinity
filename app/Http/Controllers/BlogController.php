@@ -81,6 +81,6 @@ class BlogController extends Controller
     {
         $post = POST::findOrFail($id);
         $post->delete();
-        return back()->with('message', 'Post was Deleted');
+        return redirect('/')->with('message', 'Post was Deleted');
     }
 }

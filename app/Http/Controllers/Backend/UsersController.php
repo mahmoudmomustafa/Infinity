@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,8 @@ class UsersController extends BackendController
      */
     public function create(User $user)
     {
-        return view('backend.users.create', compact('user'));
+        $roles= Role::get();
+        return view('backend.users.create', compact('user','roles'));
     }
 
     /**
@@ -42,13 +44,13 @@ class UsersController extends BackendController
             'email' => 'required|unique:users',
             'userName'=>'required|unique:users|alpha_dash',
             'password' => ['required', 'confirmed'],
+            'role_id' =>['required']
         ]);
-        // $user->create(request()->all());
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
         User::create($data);
 
-        return redirect('/dashboard/users')->with('message', 'a New User was created');
+        return redirect('/dashboard/users')->with('message', 'New User was created');
     }
 
     /**
@@ -71,7 +73,8 @@ class UsersController extends BackendController
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('backend.users.edit', compact('user'));
+        $roles= Role::get();
+        return view('backend.users.edit', compact('user','roles'));
     }
 
     /**
