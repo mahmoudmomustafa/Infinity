@@ -22,6 +22,9 @@
                 </div>
               </li>
               <span class="float-right mr-1">
+                <li>
+                  <small>{{$post->likes->count()}}</small>
+                </li>
                 <li class="like">
                   <a href="/blog/{{$post->id}}/likes" class="like" onclick="event.preventDefault();
                   document.getElementById('likable').submit();">

@@ -54,7 +54,7 @@ class Post extends Model
     }
     public function checkUser()
     {
-        if($this->likes()->where(['user_id' => Auth::user()->id])->exists()){
+        if(Auth::check() && $this->likes()->where(['user_id' => Auth::user()->id])->exists()){
             return 'liked';
         }
     }
@@ -66,4 +66,8 @@ class Post extends Model
             $this->likes()->delete();
         }
     }
+    // date
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+    ];
 }

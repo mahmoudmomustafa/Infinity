@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use App\Like;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','userName','role_id'
+        'name', 'email', 'password', 'userName', 'img', 'role_id'
     ];
 
     /**
@@ -89,11 +90,13 @@ class User extends Authenticatable
         return $firstName;
     }
     // comments
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
     // likes
-    public function likes(){
-        return $this->hasMany(Likes::class);
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

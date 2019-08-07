@@ -59,7 +59,8 @@
                         <div class="tag-sidebar tags ml-3"></div>
                         <div class="form-group">
                             <div class="col-md-4 offset-md-8 py-2">
-                                <button class="w-100 shadow btn btn-primary">Post</button>
+                                <button class="w-100 shadow btn btn-primary">Post <i
+                                        class="ml-1 fas fa-share-square"></i></button>
                             </div>
                         </div>
                     </form>

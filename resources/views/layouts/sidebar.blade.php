@@ -5,6 +5,7 @@
     <div class="content mb-3">
       <div class="widget">
         <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
+          <i class="fas fa-fire-alt"></i>
           Popular Posts..
         </h5>
         <div class="widget-body">
@@ -38,6 +39,7 @@
     <div class="content mb-3">
       <div class="widget">
         <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
+          <i class="fas fa-tags"></i>
           Tags..
         </h5>
         <div class="widget-body">

@@ -24,19 +24,21 @@
                         <a class="nav-link" href="{{ url('/dashboard')}}"><span>Dashboard</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="/author/{{Auth::user()->userName}}">{{ Auth::user()->firstName() }}</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->firstName() }} <span class="caret"
-                                style="font-size:15px;transform:rotate(90deg);"><i class="lni-more-alt"></i></span>
+                            <span class="caret" style="font-size:15px;transform:rotate(90deg);"><i
+                                    class="lni-more-alt"></i></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/author/{{Auth::user()->userName}}">
-                                {{ __('Profile') }}
-                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i>
                                 {{ __('Logout') }}
                             </a>
 

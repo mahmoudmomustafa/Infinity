@@ -47,15 +47,6 @@ class BlogController extends Controller
 
         return view('blog.index', compact('posts'));
     }
-    // author 
-    public function author(User $author)
-    {
-        $posts = $author->posts()
-            ->with('category')
-            ->paginate(5);
-
-        return view('blog.author', compact('posts', 'author'));
-    }
     // show function
     public function show(Post $post)
     {
@@ -84,6 +75,7 @@ class BlogController extends Controller
         $post->delete();
         return redirect('/')->with('message', 'Post was Deleted');
     }
+    // liked
     public function likePost(Post $post)
     {
         $post->like();

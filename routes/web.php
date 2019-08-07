@@ -22,7 +22,7 @@ Route::get('/blog/{post}', 'BlogController@show');
 
 Route::get('/category/{category}', 'BlogController@category');
 
-Route::get('/author/{author}', 'BlogController@author');
+Route::resource('/author', 'UserController');
 Auth::routes();
 
 Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard')->middleware('checkrole');
