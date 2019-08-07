@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -42,11 +43,27 @@ class Post extends Model
         return $query->orderBy('view_count', 'desc');
     }
     // comments
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
     // likes
-    public function likes(){
-        return $this->hasMany(Like::class);
+    public function likes()
+    {
+        return $this->morphMany(Like::class,'post');
+    }
+    public function checkUser()
+    {
+        if($this->likes()->where(['user_id' => Auth::user()->id])->exists()){
+            return 'liked';
+        }
+    }
+    public function like()
+    {
+        if (! $this->checkUser()) {
+            $this->likes()->create(['user_id' => Auth::user()->id]);
+        }else{
+            $this->likes()->delete();
+        }
     }
 }

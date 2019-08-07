@@ -16,7 +16,7 @@
                   <a href="/blog/{{$post->id}}">{{$post->title}}</a>
                   <div class="float-right">
                     <div class="">
-                      <small> <span>{{$post->view_count}}</span><i class="ml-2 lni-eye"></i></small>
+                      <small> <span>{{$post->view_count}}</span><i class="fas fa-eye ml-1"></i></small>
                     </div>
                   </div>
                 </h6>

@@ -1,10 +1,12 @@
+html,body{
+    transition: 500ms ease-in-out
+}
 body {
     color: #777;
     box-sizing: border-box;
     font-family: 'Dosis', sans-serif;
-    /* position: relative; */
+    position: relative;
     background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%);
-    transition: linear
 }
 
 .navbar {
@@ -118,8 +120,16 @@ a:hover {
 .like {
     transition: 500ms ease-in-out;
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
 }
-
+.like:focus{
+    box-shadow: none;
+    border: 0;
+    outline: none
+}
 .like i {
     line-height: 2.5;
     font-size: 18px;
@@ -197,6 +207,7 @@ a:hover {
 }
 
 .tag {
+    width: max-content;
     background: #69696929;
     box-shadow: 0 0 5px #0000004d;
     border-radius: 32px;
@@ -242,25 +253,6 @@ ul.post-meta-group li i {
 
 .post-author-count {
     margin: 10px 0 15px;
-}
-
-.widget {
-    border: 1px solid #e7e7e7;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
-}
-
-.widget-heading {
-    padding: 20px;
-    border-bottom: 1px solid #e7e7e7;
-    background: rgba(0, 0, 0, 0.02) none repeat scroll 0 0;
-}
-
-.widget-heading h4 {
-    margin: 0;
-    color: #888;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    font-weight: 600;
 }
 
 ul.categories,
@@ -381,6 +373,7 @@ span.required {
 
 .author-img {
     margin: auto;
+    transition: 500ms ease;
     position: relative;
 }
 
@@ -512,15 +505,46 @@ li.nav-item .nav-link i {
         transform: translate(-90px);
     }
 }
-.commend{
+
+.commend {
     box-shadow: 0 0 5px #b7b7b7;
-border-radius: 5px;
-width: 90%;
-margin: auto;
-padding: 10px;
-background: #efefef;
+    border-radius: 5px;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    background: #efefef;
 }
+
 .commend p {
     text-indent: 40px;
     padding-left: 1rem
+}
+
+/* dark mode */
+.change-color {
+    overflow: hidden;
+    box-shadow: 0 0 5px #50cff5;
+    background: #d3f5fff7;
+    position: fixed;
+    top: 90%;
+    left: 18px;
+    padding: 8px;
+    border-radius: 52px;
+}
+.change-color img{
+    transition: 500ms ease;
+    transform: translate(0px, 27px);
+}
+.change-color img:hover{
+    transform: translate(0,0);
+}
+
+.dark-body {
+    background: linear-gradient(49deg, rgba(9, 7, 12, 0.88) 0%, rgb(56, 61, 67) 100%);
+}
+.dark-content{
+    box-shadow: 0 0 8px #bdbdbd4d;
+}
+.liked{
+    color: #1d68a7 !important;
 }

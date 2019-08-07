@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Category;
+use App\Like;
 
 class BlogController extends Controller
 {
     //index function
     public function index()
     {
-        $posts = Post::with('author')->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('blog.index', compact('posts'));
     }
     // create posts
@@ -35,7 +36,6 @@ class BlogController extends Controller
             'category_id' => 'required',
         ]);
         $request->user()->posts()->create($request->all());
-
         return back()->with('message', 'Post was created');
     }
     // category
@@ -59,9 +59,10 @@ class BlogController extends Controller
     // show function
     public function show(Post $post)
     {
+        $categories = Category::get();
         // increase view count
         $post->increment('view_count');
-        return view('blog.show', compact('post'));
+        return view('blog.show', compact('post', 'categories'));
     }
     // edit
     public function edit($id)
@@ -74,7 +75,7 @@ class BlogController extends Controller
     public function update($id)
     {
         POST::findOrFail($id)->update(request()->all());
-        return back()->with('message', 'Ur Post was Updated');
+        return back()->with('message', 'Post was Updated');
     }
     // delete post
     public function destroy($id)
@@ -82,5 +83,10 @@ class BlogController extends Controller
         $post = POST::findOrFail($id);
         $post->delete();
         return redirect('/')->with('message', 'Post was Deleted');
+    }
+    public function likePost(Post $post)
+    {
+        $post->like();
+        return back();
     }
 }

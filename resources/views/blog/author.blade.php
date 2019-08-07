@@ -84,6 +84,7 @@
                 @endif
               </div>
             </div>
+            <div class="tag-sidebar tags ml-3"></div>
             <div class="form-group">
               <div class="col-md-4 offset-md-8 py-2">
                 <button class="w-100 shadow btn btn-primary" type="submit">Post</button>
@@ -123,7 +124,12 @@
               </li>
               <span class="float-right">
                 <li class="like">
-                  <i class="lni-heart-filled"></i>
+                  <form id="likable" action="/blog/{{$post->id}}/likes" method="POST" style="display: ;">
+                    @csrf
+                    <button type="submit" class="like">
+                      <i class="lni-heart-filled {{$post->checkUser()}}"></i>
+                    </button>
+                  </form>
                 </li>
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>

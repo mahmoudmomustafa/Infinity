@@ -13,12 +13,12 @@
             @endif
             @auth
             {{-- form post --}}
-            <div class="content mb-3">
+            <div class="content mb-3 pb-2">
                 <article class="post-item">
                     <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
                         Share Your Thought..
                     </h5>
-                    <form action="/" method="post">
+                    <form method="post" id="post-form">
                         @csrf
                         {{-- post title --}}
                         <div class="form-group">
@@ -56,9 +56,10 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="tag-sidebar tags ml-3"></div>
                         <div class="form-group">
                             <div class="col-md-4 offset-md-8 py-2">
-                                <button class="w-100 shadow btn btn-primary" type="submit">Post</button>
+                                <button class="w-100 shadow btn btn-primary">Post</button>
                             </div>
                         </div>
                     </form>
@@ -87,14 +88,23 @@
                                         </div>
                                         <h5 class="float-left font-weight-bold" style="color:#1d68a7;">
                                             {{$post->author->name}}
-                                            <span style="font-size:10px;font-weight:100;color:gray;">{{$post->created_at}}</span>
+                                            <span
+                                                style="font-size:10px;font-weight:100;color:gray;">{{$post->created_at}}</span>
                                         </h5>
                                     </a>
                                 </div>
                             </li>
-                            <span class="float-right">
+                            <div class="float-right mr-1">
+                                <li>
+                                    <small>{{$post->likes->count()}}</small>
+                                </li>
                                 <li class="like">
-                                    <i class="lni-heart-filled" ></i>
+                                    <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
+                                        @csrf
+                                        <button type="submit" class="like">
+                                            <i class="lni-heart-filled {{$post->checkUser()}}"></i>
+                                        </button>
+                                    </form>
                                 </li>
                                 <li class="tag">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
@@ -124,7 +134,7 @@
                                     </div>
                                 </li>
                                 @endif
-                            </span>
+                            </div>
                         </ul>
                         <!-- Edit Modal -->
                         <div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-hidden="true">
