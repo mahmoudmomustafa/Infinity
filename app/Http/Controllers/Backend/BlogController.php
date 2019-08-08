@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
-use Illuminate\Support\Facades\Auth;
 
 class BlogController extends BackendController
 {
@@ -41,7 +40,6 @@ class BlogController extends BackendController
     {
         $this->validate($request, [
             'title' => 'required',
-            // 'slug' => 'required|unique:posts',
             'description' => 'required',
             'category_id' => 'required',
         ]);

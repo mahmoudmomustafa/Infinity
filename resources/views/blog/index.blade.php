@@ -11,62 +11,8 @@
                 </div>
             </div>
             @endif
-            @auth
-            {{-- form post --}}
-            <div class="content mb-3 pb-2">
-                <article class="post-item">
-                    <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
-                        Share Your Thought..
-                    </h5>
-                    <form method="post" id="post-form">
-                        @csrf
-                        {{-- post title --}}
-                        <div class="form-group">
-                            <div class="col">
-                                <input class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}" type="text"
-                                    name="title" id="title" placeholder="Post Title...">
-                                @if ($errors->has('title'))
-                                <div class="invalid-feedback">{{$errors->first('title') }}</div>
-                                @endif
-                            </div>
-                        </div>
-                        {{-- post description --}}
-                        <div class="form-group">
-                            <div class="col">
-                                <textarea class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}"
-                                    name="description" id="description" placeholder="Write Post Description Here..."
-                                    rows="2"></textarea>
-                                @if ($errors->has('description'))
-                                <span class="invalid-feedback">{{$errors->first('description') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        {{-- post category --}}
-                        <div class="form-group">
-                            <div class="col">
-                                <select name="category_id" id="category_id"
-                                    class="form-control {{$errors->has('category_id') ? 'is-invalid' : ''}}">
-                                    <option disabled selected>Choose Category</option>
-                                    @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->title}}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('category_id'))
-                                <span class="invalid-feedback">{{$errors->first('category_id') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="tag-sidebar tags ml-3"></div>
-                        <div class="form-group">
-                            <div class="col-md-4 offset-md-8 py-2">
-                                <button id="btn" class="w-100 shadow btn btn-primary">Post <i
-                                        class="ml-1 fas fa-share-square"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </article>
-            </div>
-            @endauth
+            {{-- include post form --}}
+            @include('blog.formPost')
             @if (!$posts->count())
             <div class="contnet">
                 <div class="alert alert-warning">
@@ -206,73 +152,7 @@
                     </div>
                     <hr class="mx-4">
                     {{-- comment --}}
-                    <div class="comment-body">
-                        <div class="comments pb-2">
-                            <article class="post-item">
-                                {{-- comment form --}}
-                                <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
-                                    @csrf
-                                    <div class="form-row justify-content-center">
-                                        <div class="col-md-9 col-9 col-lg-9 col-xl-10">
-                                            <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}"
-                                                type="text" name="body" id="comment" placeholder="Write Comment...">
-                                            <input type="hidden" name="post_id" value="{{$post->id}}">
-                                            @if ($errors->has('comment'))
-                                            <div class="invalid-feedback">{{$errors->first('comment') }}</div>
-                                            @endif
-                                        </div>
-                                        <div class="col-2 col-md-2  col-lg-2 col-xl-1">
-                                            <button class="w-100 btn btn-primary" data-toggle="tooltip"
-                                                data-placement="top" title="Comment"><i
-                                                    class="fas fa-paper-plane"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </article>
-                            @foreach($post->comments as $comment)
-                            <div class="commend mb-3">
-                                {{-- author name --}}
-                                <ul class="post-meta-group">
-                                    <li>
-                                        <div class="author">
-                                            <a href="/author/{{$comment->user->userName}}">
-                                                <div class="author-img">
-                                                    <img src="{{$comment->user->img}}" alt="authorImg">
-                                                </div>
-                                                <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
-                                                    {{$comment->user->name}}
-                                                    <span
-                                                        style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
-                                                </h6>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    @if ($comment->user->id == Auth::user()->id)
-                                    <div class="float-right mr-1">
-                                        <li>
-                                            <a href="/blog/{{$post->id}}/comments/{{$comment->id}}"
-                                                onclick="event.preventDefault();document.getElementById('delete-comment').submit();">
-                                                <i class="lni-trash trash"></i>
-                                            </a>
-                                            <form id="delete-comment"
-                                                action="/blog/{{$post->id}}/comments/{{$comment->id}}" method="post"
-                                                style="display: none;">
-                                                @method('DELETE')
-                                                @csrf
-                                            </form>
-                                        </li>
-                                    </div>
-                                    @endif
-                                </ul>
-                                <div class="comment">
-                                    <p class="mb-0">
-                                        {{$comment->body}}
-                                    </p>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+                    @include('blog.comment')
                 </article>
             </div>
             @endforeach

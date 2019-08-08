@@ -52,9 +52,7 @@ class UserController extends Controller
    */
   public function show(User $author)
   {
-    $posts = $author->posts()
-      ->paginate(5);
-
+    $posts = $author->posts()->paginate(5);
     return view('blog.author', compact('posts', 'author'));
   }
 
@@ -82,12 +80,13 @@ class UserController extends Controller
       'name' => 'required',
       'email' => 'required',
       'userName' => 'required|alpha_dash',
-      'password' => ['required', 'confirmed']
+      'password' => ['required', 'confirmed'],
+      // 'img' =>'jpg,jpeg,png,svg'
     ]);
     $data = $request->all();
     $data['password'] = bcrypt($data['password']);
     $author->save();
-    $author->update($data);
+    // $author->update($data);
     return back();
   }
 

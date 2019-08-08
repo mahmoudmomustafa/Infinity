@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +27,8 @@ class UsersController extends BackendController
      */
     public function create(User $user)
     {
-        $roles= Role::get();
-        return view('backend.users.create', compact('user','roles'));
+        $roles = Role::get();
+        return view('backend.users.create', compact('user', 'roles'));
     }
 
     /**
@@ -42,9 +42,9 @@ class UsersController extends BackendController
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'userName'=>'required|unique:users|alpha_dash',
+            'userName' => 'required|unique:users|alpha_dash',
             'password' => ['required', 'confirmed'],
-            'role_id' =>['required']
+            'role_id' => ['required']
         ]);
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
@@ -73,8 +73,8 @@ class UsersController extends BackendController
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $roles= Role::get();
-        return view('backend.users.edit', compact('user','roles'));
+        $roles = Role::get();
+        return view('backend.users.edit', compact('user', 'roles'));
     }
 
     /**
