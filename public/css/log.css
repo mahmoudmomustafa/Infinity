@@ -1,0 +1,63 @@
+body {
+    background-image: url(/img/board.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.contain {
+    /* height: -webkit-fill-available; */
+    background: #f5f5f57d;
+}
+
+.container {
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+    display: flex;
+    min-height: 625px;
+}
+
+.login {
+    width: 100%;
+    /* height: -webkit-fill-available; */
+    box-shadow: 0 0 5px #525252;
+}
+.login .form{
+  /* height: -webkit-fill-available; */
+  background: #0b023b;
+}
+.log-form .input{
+  padding: 1rem;
+  margin:0 2.5rem;
+}
+.login .btn-success{
+  box-shadow: 0 0 10px #38c172;
+  margin-bottom: 5px 
+}
+
+.login .btn-outline-light{
+  color: white !important;
+  box-shadow: 0 0 10px #d5eaf7;
+  margin-bottom: 5px 
+}
+.login .btn-outline-light:hover{
+  color: rgb(41, 41, 41) !important;
+}
+.log-form .input input.form-control , .input input:focus,.input input:focus-visible{
+  background: transparent !important;
+  border: none !important; 
+  box-shadow: none !important;
+}
+.login .img {
+    background-image: url(/img/board.jpg);
+    height: -webkit-fill-available;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media(max-width:990px){
+  .login .img{
+    display: none;
+  }
+}

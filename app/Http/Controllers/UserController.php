@@ -81,7 +81,6 @@ class UserController extends Controller
       'email' => 'required',
       'userName' => 'required|alpha_dash',
       'password' => ['required', 'confirmed'],
-      // 'img' =>'jpg,jpeg,png,svg'
     ]);
     $data = $request->all();
     $data['password'] = bcrypt($data['password']);
