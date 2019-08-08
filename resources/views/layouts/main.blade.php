@@ -91,6 +91,7 @@
   {{-- <div class="change-color">
     <img src="/img/moon.svg" width="40">
   </div> --}}
+  @include('layouts.footer')
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>

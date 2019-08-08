@@ -583,3 +583,10 @@ i.trash:hover{
 .liked {
     color: #1d68a7 !important;
 }
+
+/* footer */
+footer{
+    background: #fff;
+    /* padding: 50px 20px; */
+    text-align: center;
+}
