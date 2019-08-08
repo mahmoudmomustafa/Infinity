@@ -16,19 +16,19 @@ body {
     width: 100%
 }
 
-.navbar-brand {
+.navbar-brand ,.navbar-brand img{
     font-weight: 700;
+    padding-bottom: 5px;
     transition: 500ms ease-in-out
 }
 
-.navbar-brand:hover {
+.navbar-brand img:hover {
     transform: rotateY(180deg);
 }
 
-.navbar-brand:hover span {
+.navbar-brand:hover {
     color: #1d68ac !important;
-    opacity: 1;
-    transform: translate(-10px);
+    transform: translate(10px);
 }
 
 a {

@@ -10,6 +10,10 @@ use App\Like;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //index function
     public function index()
     {

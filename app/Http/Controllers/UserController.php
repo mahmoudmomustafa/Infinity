@@ -9,6 +9,10 @@ use App\User;
 
 class UserController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
   /**
    * Display a listing of the resource.
    *
@@ -16,8 +20,7 @@ class UserController extends Controller
    */
   public function index(User $author)
   {
-    // $posts = $author->posts()->paginate(5);
-    // return view('blog.author', compact('posts', 'author'));
+    //
   }
 
   /**
@@ -38,18 +41,7 @@ class UserController extends Controller
    */
   public function store(Request $request, User $user)
   {
-    // $this->validate($request, [
-    //   'name' => 'required',
-    //   'email' => 'required|unique:users',
-    //   'userName' => 'required|unique:users|alpha_dash',
-    //   'password' => ['required', 'confirmed'],
-    //   'role_id' => ['required']
-    // ]);
-    // $data = $request->all();
-    // $data['password'] = bcrypt($data['password']);
-    // User::create($data);
-
-    // return redirect('/dashboard/users')->with('message', 'New User was created');
+    //
   }
 
   /**
@@ -61,7 +53,6 @@ class UserController extends Controller
   public function show(User $author)
   {
     $posts = $author->posts()
-      ->with('category')
       ->paginate(5);
 
     return view('blog.author', compact('posts', 'author'));
@@ -91,7 +82,7 @@ class UserController extends Controller
       'name' => 'required',
       'email' => 'required',
       'userName' => 'required|alpha_dash',
-      'password' => ['required', 'confirmed'],
+      'password' => ['required', 'confirmed']
     ]);
     $data = $request->all();
     $data['password'] = bcrypt($data['password']);
@@ -108,11 +99,6 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    // $user = User::findOrFail($id);
-    // if ($user->id == Auth::user()->id) {
-    //   return abort(403);
-    // }
-    // $user->delete();
-    // return redirect('/author/users')->with('message', 'User was Deleted');
+    //
   }
 }

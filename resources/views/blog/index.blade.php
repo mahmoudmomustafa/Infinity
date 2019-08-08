@@ -85,7 +85,7 @@
                                 <div class="author">
                                     <a href="/author/{{$post->author->userName}}">
                                         <div class="author-img">
-                                            <img src="/img/user.svg" alt="authorImg">
+                                            <img src="{{$post->author->img}}" alt="authorImg">
                                         </div>
                                         <h5 class="float-left font-weight-bold" style="color:#1d68a7;">
                                             {{$post->author->name}}
@@ -96,6 +96,7 @@
                                 </div>
                             </li>
                             <div class="float-right mr-1">
+                                @if (Auth::check())
                                 <li>
                                     <small>{{$post->likes->count()}}</small>
                                 </li>
@@ -107,6 +108,7 @@
                                         </button>
                                     </form>
                                 </li>
+                                @endif
                                 <li class="tag">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                                 </li>

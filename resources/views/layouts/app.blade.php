@@ -22,8 +22,7 @@
         <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{-- <i class="lni-infinite"></i> --}}
-                    {{ __('Infinite') }}
+                    <img src="/img/infinity.svg" width="30">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

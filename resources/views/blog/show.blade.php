@@ -12,7 +12,7 @@
                 <div class="author">
                   <a href="/author/{{$post->author->userName}}">
                     <div class="author-img">
-                      <img src="/img/user.svg" alt="authorImg">
+                      <img src="{{$post->author->img}}" alt="authorImg">
                     </div>
                     <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
                       {{$post->author->name}}
@@ -22,18 +22,19 @@
                 </div>
               </li>
               <span class="float-right mr-1">
+                @if (Auth::check())
                 <li>
                   <small>{{$post->likes->count()}}</small>
                 </li>
                 <li class="like">
-                  <a href="/blog/{{$post->id}}/likes" class="like" onclick="event.preventDefault();
-                  document.getElementById('likable').submit();">
-                    <i class="lni-heart-filled {{$post->checkUser()}}"></i>
-                  </a>
+                  <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
+                    @csrf
+                    <button type="submit" class="like">
+                      <i class="lni-heart-filled {{$post->checkUser()}}"></i>
+                    </button>
+                  </form>
                 </li>
-                <form id="likable" action="/blog/{{$post->id}}/likes" method="POST" style="display:none ;">
-                  @csrf
-                </form>
+                @endif
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                 </li>
@@ -128,6 +129,7 @@
               <h5 class="px-4 font-weight-bold " style="color:#1d68a7;padding-bottom:1rem !important;">
                 Comments..
               </h5>
+              @if (Auth::chcek())
               {{-- comment form --}}
               <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
                 @csrf
@@ -143,6 +145,7 @@
                   <button class="btn btn-primary">Comment</button>
                 </div>
               </form>
+              @endif
             </article>
             @foreach($post->comments as $comment)
             <div class="commend mb-3">
@@ -152,7 +155,7 @@
                   <div class="author">
                     <a href="/author/{{$comment->user->userName}}">
                       <div class="author-img">
-                        <img src="/img/user.svg" alt="authorImg">
+                        <img src="{{$comment->user->img}}" alt="authorImg">
                       </div>
                       <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
                         {{$comment->user->name}}

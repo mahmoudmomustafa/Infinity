@@ -23,7 +23,6 @@
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           <img src="/img/infinity.svg" width="30">
-          {{-- <span>{{ __('Infinite') }}</span> --}}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -89,9 +88,9 @@
       @yield('content')
     </main>
   </div>
-  <div class="change-color">
+  {{-- <div class="change-color">
     <img src="/img/moon.svg" width="40">
-  </div>
+  </div> --}}
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>

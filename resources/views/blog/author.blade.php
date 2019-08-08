@@ -204,17 +204,19 @@
                 </div>
               </li>
               <div class="float-right">
+                @if (Auth::check())
                 <li>
                   <small>{{$post->likes->count()}}</small>
                 </li>
                 <li class="like">
-                  <form id="likable" action="/blog/{{$post->id}}/likes" method="POST" style="display: ;">
+                  <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
                     @csrf
                     <button type="submit" class="like">
                       <i class="lni-heart-filled {{$post->checkUser()}}"></i>
                     </button>
                   </form>
                 </li>
+                @endif
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                 </li>
