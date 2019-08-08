@@ -41,6 +41,7 @@ class BlogController extends Controller
         ]);
         $request->user()->posts()->create($request->all());
         return back()->with('message', 'Post was created');
+        // return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
     // category
     public function category(Category $category)
@@ -52,7 +53,7 @@ class BlogController extends Controller
         return view('blog.index', compact('posts'));
     }
     // show function
-    public function show(Post $post)
+    public function show(Post $post )
     {
         $categories = Category::get();
         // increase view count

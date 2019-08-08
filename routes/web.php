@@ -17,7 +17,6 @@ Route::post('/', 'BlogController@store');
 Route::get('/{post}/edit', 'BlogController@edit');
 Route::patch('/blog/{post}', 'BlogController@update');
 Route::delete('/blog/{post}', 'BlogController@destroy');
-
 Route::get('/blog/{post}', 'BlogController@show');
 
 Route::get('/category/{category}', 'BlogController@category');

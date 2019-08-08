@@ -59,7 +59,7 @@
                         <div class="tag-sidebar tags ml-3"></div>
                         <div class="form-group">
                             <div class="col-md-4 offset-md-8 py-2">
-                                <button class="w-100 shadow btn btn-primary">Post <i
+                                <button id="btn" class="w-100 shadow btn btn-primary">Post <i
                                         class="ml-1 fas fa-share-square"></i></button>
                             </div>
                         </div>
@@ -96,7 +96,6 @@
                                 </div>
                             </li>
                             <div class="float-right mr-1">
-                                @if (Auth::check())
                                 <li>
                                     <small>{{$post->likes->count()}}</small>
                                 </li>
@@ -108,11 +107,10 @@
                                         </button>
                                     </form>
                                 </li>
-                                @endif
                                 <li class="tag">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                                 </li>
-                                @if(Auth::check() && $post->author->id == Auth::user()->id)
+                                @if($post->author->id == Auth::user()->id)
                                 <li class="dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span
@@ -199,11 +197,80 @@
                     </div>
                     {{-- author post --}}
                     <div class="post-item-body ml-4">
-                        <div class="p-4" style="white-space:nowrap;text-overflow:ellipsis;">
+                        <div class="p-3" style="white-space:nowrap;text-overflow:ellipsis;">
                             <h4 class="post-title"><a href="/blog/{{$post->id}}">{{$post->title}}</a></h4>
                             <p class="post-des">
                                 {!!$post->description!!}
                             </p>
+                        </div>
+                    </div>
+                    <hr class="mx-4">
+                    {{-- comment --}}
+                    <div class="comment-body">
+                        <div class="comments pb-2">
+                            <article class="post-item">
+                                {{-- comment form --}}
+                                <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
+                                    @csrf
+                                    <div class="form-row justify-content-center">
+                                        <div class="col-md-9 col-9 col-lg-9 col-xl-10">
+                                            <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}"
+                                                type="text" name="body" id="comment" placeholder="Write Comment...">
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            @if ($errors->has('comment'))
+                                            <div class="invalid-feedback">{{$errors->first('comment') }}</div>
+                                            @endif
+                                        </div>
+                                        <div class="col-2 col-md-2  col-lg-2 col-xl-1">
+                                            <button class="w-100 btn btn-primary" data-toggle="tooltip"
+                                                data-placement="top" title="Comment"><i
+                                                    class="fas fa-paper-plane"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </article>
+                            @foreach($post->comments as $comment)
+                            <div class="commend mb-3">
+                                {{-- author name --}}
+                                <ul class="post-meta-group">
+                                    <li>
+                                        <div class="author">
+                                            <a href="/author/{{$comment->user->userName}}">
+                                                <div class="author-img">
+                                                    <img src="{{$comment->user->img}}" alt="authorImg">
+                                                </div>
+                                                <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
+                                                    {{$comment->user->name}}
+                                                    <span
+                                                        style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
+                                                </h6>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    @if ($comment->user->id == Auth::user()->id)
+                                    <div class="float-right mr-1">
+                                        <li>
+                                            <a href="/blog/{{$post->id}}/comments/{{$comment->id}}"
+                                                onclick="event.preventDefault();document.getElementById('delete-comment').submit();">
+                                                <i class="lni-trash trash"></i>
+                                            </a>
+                                            <form id="delete-comment"
+                                                action="/blog/{{$post->id}}/comments/{{$comment->id}}" method="post"
+                                                style="display: none;">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </div>
+                                    @endif
+                                </ul>
+                                <div class="comment">
+                                    <p class="mb-0">
+                                        {{$comment->body}}
+                                    </p>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </article>

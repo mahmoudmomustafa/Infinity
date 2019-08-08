@@ -8,6 +8,10 @@ use App\Post;
 
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,13 +42,11 @@ class CommentsController extends Controller
     {
 
         $input = $request->validate([
-            'body' => 'required',
+            'body' => 'required|min:3',
         ]);
-
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
         Comment::create($input);
-
         return back();
     }
 

@@ -22,7 +22,6 @@
                 </div>
               </li>
               <span class="float-right mr-1">
-                @if (Auth::check())
                 <li>
                   <small>{{$post->likes->count()}}</small>
                 </li>
@@ -34,11 +33,10 @@
                     </button>
                   </form>
                 </li>
-                @endif
                 <li class="tag">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                 </li>
-                @if (Auth::check() && $post->author->id == Auth::user()->id)
+                @if ($post->author->id == Auth::user()->id)
                 <li class="dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" v-pre><span class="caret more-icon"><i
@@ -124,76 +122,69 @@
             </p>
           </div>
           {{-- comments --}}
-          <div class="comments pb-2">
-            <article class="post-item">
-              <h5 class="px-4 font-weight-bold " style="color:#1d68a7;padding-bottom:1rem !important;">
-                Comments..
-              </h5>
-              @if (Auth::chcek())
-              {{-- comment form --}}
-              <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
-                @csrf
-                <div class="form-group mx-3 mb-2">
-                  <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
-                    id="comment" placeholder="Write Comment...">
-                  <input type="hidden" name="post_id" value="{{$post->id}}">
-                  @if ($errors->has('comment'))
-                  <div class="invalid-feedback">{{$errors->first('comment') }}</div>
-                  @endif
-                </div>
-                <div class="form-group mx-3">
-                  <button class="btn btn-primary">Comment</button>
-                </div>
-              </form>
-              @endif
-            </article>
-            @foreach($post->comments as $comment)
-            <div class="commend mb-3">
-              {{-- author name --}}
-              <ul class="post-meta-group">
-                <li>
-                  <div class="author">
-                    <a href="/author/{{$comment->user->userName}}">
-                      <div class="author-img">
-                        <img src="{{$comment->user->img}}" alt="authorImg">
-                      </div>
-                      <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
-                        {{$comment->user->name}}
-                        <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
-                      </h5>
-                    </a>
+          <div class="comment-body">
+            <div class="comments pb-2">
+              <article class="post-item">
+                {{-- comment form --}}
+                <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
+                  @csrf
+                  <div class="form-row justify-content-center">
+                    <div class="col-md-9 col-9 col-lg-9 col-xl-10">
+                      <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text"
+                        name="body" id="comment" placeholder="Write Comment...">
+                      <input type="hidden" name="post_id" value="{{$post->id}}">
+                      @if ($errors->has('comment'))
+                      <div class="invalid-feedback">{{$errors->first('comment') }}</div>
+                      @endif
+                    </div>
+                    <div class="col-2 col-md-2  col-lg-2 col-xl-1">
+                      <button class="w-100 btn btn-primary" data-toggle="tooltip" data-placement="top"
+                        title="Comment"><i class="fas fa-paper-plane"></i></button>
+                    </div>
                   </div>
-                </li>
-                @if (Auth::check() && $comment->user->id == Auth::user()->id)
-                <span class="float-right mr-1">
-                  <li class="dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span
-                        class="caret more-icon"><i class="lni-more-alt"></i></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                      {{-- delete form --}}
-                      <a class="dropdown-item" href="/blog/{{$post->id}}/comments/{{$comment->id}}"
+                </form>
+              </article>
+              @foreach($post->comments as $comment)
+              <div class="commend mb-3">
+                {{-- author name --}}
+                <ul class="post-meta-group">
+                  <li>
+                    <div class="author">
+                      <a href="/author/{{$comment->user->userName}}">
+                        <div class="author-img">
+                          <img src="{{$comment->user->img}}" alt="authorImg">
+                        </div>
+                        <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
+                          {{$comment->user->name}}
+                          <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
+                        </h6>
+                      </a>
+                    </div>
+                  </li>
+                  @if ($comment->user->id == Auth::user()->id)
+                  <div class="float-right mr-1">
+                    <li>
+                      <a href="/blog/{{$post->id}}/comments/{{$comment->id}}"
                         onclick="event.preventDefault();document.getElementById('delete-comment').submit();">
-                        {{ __('Delete') }}
+                        <i class="lni-trash trash"></i>
                       </a>
                       <form id="delete-comment" action="/blog/{{$post->id}}/comments/{{$comment->id}}" method="post"
                         style="display: none;">
                         @method('DELETE')
                         @csrf
                       </form>
-                    </div>
-                  </li>
-                </span>
-                @endif
-              </ul>
-              <div class="comment">
-                <p>
-                  {{$comment->body}}
-                </p>
+                    </li>
+                  </div>
+                  @endif
+                </ul>
+                <div class="comment">
+                  <p class="mb-0">
+                    {{$comment->body}}
+                  </p>
+                </div>
               </div>
+              @endforeach
             </div>
-            @endforeach
           </div>
         </article>
       </div>
