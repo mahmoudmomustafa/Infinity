@@ -28,7 +28,7 @@
           <div class="author">
             <a href="/author/{{$comment->user->userName}}">
               <div class="author-img">
-                <img src="{{$comment->user->img}}" alt="authorImg">
+                <img src="/storage/users/{{$comment->user->img}}" alt="authorImg">
               </div>
               <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
                 {{$comment->user->name}}

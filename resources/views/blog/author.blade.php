@@ -62,6 +62,7 @@
                       <span class="help-block">{{$errors->first('password') }}</span>
                       @endif
                     </div>
+                    {{-- repass --}}
                     <div class="form-group">
                       <div class="col">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
@@ -69,6 +70,11 @@
                       </div>
                     </div>
                     {{-- pic --}}
+                    {{-- <div class="post-img">
+                      <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img
+                          src="/img/image.svg" width="30"></label>
+                      <input type="file" name="img" id="img-post" style="display:none">
+                    </div> --}}
                     <div class="form-group {{$errors->has('img') ? 'has-error' : ''}}">
                       <div class="col">
                         <input class="form-control-files" type="file" name="img" id="img">
@@ -96,7 +102,7 @@
                 <div class="author">
                   <a href="/author/{{$author->userName}}">
                     <div class="author-img">
-                      <img src="{{$author->image}}" alt="authorImg" style="width:100px !important">
+                      <img src="/storage/users/{{$author->img}}" class="img-fluid" alt="Responsive image">
                     </div>
                   </a>
                   <h5 class="font-weight-bold mt-4" style="color:#1d68a7;">
@@ -151,7 +157,7 @@
                 <div class="author">
                   <a href="/author/{{$post->author->userName}}">
                     <div class="author-img">
-                      <img src="/img/user.svg" alt="authorImg">
+                      <img src="/storage/users/{{$author->img}}" alt="authorImg">
                     </div>
                     <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
                       {{$post->author->name}}

@@ -83,9 +83,16 @@ class UserController extends Controller
       'password' => ['required', 'confirmed'],
     ]);
     $data = $request->all();
+    if ($request->hasFile('img')) {
+      $image = $request->file('img');
+      $fileName = time() . '.' . $image->getClientOriginalExtension();
+      $destination = public_path('storage/users');
+      $image->move($destination, $fileName);
+
+      $data['img'] = $fileName;
+    }
     $data['password'] = bcrypt($data['password']);
-    $author->save();
-    // $author->update($data);
+    $author->update($data);
     return back();
   }
 

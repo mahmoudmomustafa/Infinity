@@ -31,7 +31,7 @@
                                 <div class="author">
                                     <a href="/author/{{$post->author->userName}}">
                                         <div class="author-img">
-                                            <img src="{{$post->author->img}}" alt="authorImg">
+                                            <img src="/storage/users/{{$post->author->img}}" alt="authorImg">
                                         </div>
                                         <h5 class="float-left font-weight-bold" style="color:#1d68a7;">
                                             {{$post->author->name}}
