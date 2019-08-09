@@ -117,6 +117,11 @@
                 </div>
               </div>
             </div>
+            @if (!is_null($post->image))
+            <div class="img mt-2">
+              <img src="/storage/posts/{{ $post->image }}" class="img-thumbnail">
+            </div>
+            @endif
             <p class="p-4">
               {!! $post->description !!}
             </p>

@@ -35,11 +35,20 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
             'description' => 'required',
+            // 'image' => 'reuired|mimes:jpg,jpeg,png',
             'category_id' => 'required',
         ]);
-        $request->user()->posts()->create($request->all());
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $image =$request->file('image');
+            $fileName = time().'.'. $image->getClientOriginalExtension();
+            $destination = public_path('storage/posts');
+            $image->move($destination,$fileName);
+
+            $data['image'] = $fileName;
+         }
+        $request->user()->posts()->create($data);
         return back()->with('message', 'Post was created');
         // return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
@@ -53,7 +62,7 @@ class BlogController extends Controller
         return view('blog.index', compact('posts'));
     }
     // show function
-    public function show(Post $post )
+    public function show(Post $post)
     {
         $categories = Category::get();
         // increase view count

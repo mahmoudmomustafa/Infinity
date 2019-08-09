@@ -19,7 +19,7 @@
 
 <body>
   <div id="app">
-    <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+    <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light shadow">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           <img src="/img/infinity.svg" width="30">

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'description', 'category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
+    protected $fillable = ['title', 'slug', 'description', 'image','category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
 
     public function author()
     {
@@ -19,15 +19,15 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
     //image
-    public function getImageUrlAttribute($value)
-    {
-        $imageUrl = '';
-        if (!is_null($this->image)) {
-            $imagePath = public_path() . '/img/' . $this->image;
-            if (file_exists($imagePath)) $imageUrl = asset('img/' . $this->image);
-        }
-        return $imageUrl;
-    }
+    // public function getImageUrlAttribute($value)
+    // {
+    //     $imageUrl = '';
+    //     if (!is_null($this->image)) {
+    //         $imagePath = public_path() . 'storage/posts' . $this->image;
+    //         if (file_exists($imagePath)) $imageUrl = asset('storage/posts' . $this->image);
+    //     }
+    //     return $imageUrl;
+    // }
     // markdown html
     public function getBodyHtmlAttribute()
     {

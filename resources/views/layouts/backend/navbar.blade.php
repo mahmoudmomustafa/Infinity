@@ -1,5 +1,5 @@
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="/img/infinity.svg" width="30">{{ __(' | Dashboard') }}

@@ -41,4 +41,10 @@ $(document).ready(function () {
             $('.change-color').html('<img src="/img/sun.svg" width="40">');
         }
     });
+    // check if file select
+    // if( $("#img-post").prop("files").length !== 0 ){
+    //     console.log("no files selected");
+    // }else{
+    //     $(".form-post").append('<div class="img mb-2"><img src="'+ $('#img-post').val() + '" class="img-thumbnail"></div>');
+    // }
 });

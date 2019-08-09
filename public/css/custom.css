@@ -340,7 +340,14 @@ ul.tags li a:hover {
     background: linear-gradient(45deg, #86868673, #27272736);
     border: 0;
 }
-
+.post-img{
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+}
+.post-img img{
+    cursor: pointer;
+}
 .help-block {
     color: red
 }
@@ -586,7 +593,6 @@ i.trash:hover{
 
 /* footer */
 footer{
-    background: #fff;
-    /* padding: 50px 20px; */
+    background: #091013;
     text-align: center;
 }

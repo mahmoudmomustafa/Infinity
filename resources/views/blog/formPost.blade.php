@@ -5,23 +5,22 @@
     <h5 class="p-4 font-weight-bold " style="color:#1d68a7;padding-bottom:.5rem !important;">
       Share Your Thought..
     </h5>
-    <form action="/" method="post">
+    <form action="/" method="post" class="form-post" enctype="multipart/form-data">
       @csrf
-      {{-- post title --}}
-      <div class="form-group">
-        <div class="col">
-          <input class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}" type="text" name="title"
-            placeholder="Post Title...">
-          @if ($errors->has('title'))
-          <div class="invalid-feedback">{{$errors->first('title') }}</div>
-          @endif
-        </div>
-      </div>
+      {{-- if there is img select --}}
+      {{-- <div class="img mb-2">
+        <img src="/img/board.jpg" class="img-thumbnail">
+      </div> --}}
       {{-- post description --}}
       <div class="form-group">
         <div class="col">
+          {{-- post img --}}
+          <div class="post-img">
+            <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img src="/img/image.svg" width="30"></label>
+            <input type="file" name="image" id="img-post" style="display:none">
+          </div>
           <textarea class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" name="description"
-            placeholder="Write Post Description Here..." rows="2"></textarea>
+            placeholder="Write Post Description Here..." rows="2" style="min-height:100px;"></textarea>
           @if ($errors->has('description'))
           <span class="invalid-feedback">{{$errors->first('description') }}</span>
           @endif

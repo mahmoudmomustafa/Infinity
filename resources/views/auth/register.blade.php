@@ -36,7 +36,9 @@
                                     class="form-control @error('userName') is-invalid @enderror" name="userName"
                                     value="{{ old('userName') }}" required autocomplete="userName">
                                 @if ($errors->has('userName'))
-                                <span class="help-block">{{$errors->first('userName') }}</span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$errors->first('userName') }}</strong>
+                                </span>
                                 @endif
                             </div>
                             {{-- email --}}

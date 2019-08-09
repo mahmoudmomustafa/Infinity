@@ -18,7 +18,7 @@
                             <div class="form-group input">
                                 <label for="email" class="font-weight-bold"
                                     style="color:#ccdacd">{{ __('EMail Address') }}</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
                                     value="{{ old('email') }}">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">

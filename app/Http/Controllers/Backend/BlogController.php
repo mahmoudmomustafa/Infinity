@@ -39,7 +39,7 @@ class BlogController extends BackendController
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            // 'title' => 'required',
             'description' => 'required',
             'category_id' => 'required',
         ]);
