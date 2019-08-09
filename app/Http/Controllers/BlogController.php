@@ -1,12 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\User;
 use App\Post;
 use App\Category;
-use App\Like;
 
 class BlogController extends Controller
 {
@@ -35,8 +32,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'description' => 'required',
-            // 'image' => 'reuired|mimes:jpg,jpeg,png',
+            'description' => 'required|max:150',
+            // 'image' => 'reuired|mimes:jpg,jpeg,png,svg',
             'category_id' => 'required',
         ]);
         $data = $request->all();

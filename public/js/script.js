@@ -1,4 +1,12 @@
+$('body').css('overflow', 'hidden');
 $(document).ready(function () {
+    // hide loading
+    $(window).on('load', function () {
+        setTimeout(function () {
+            $('.loading').fadeOut();
+        }, 2500);
+        $('body').css('overflow', 'auto');
+    });
     // post ajax
     $.ajaxSetup({
         headers: {
@@ -42,9 +50,24 @@ $(document).ready(function () {
         }
     });
     // check if file select
-    // if( $("#img-post").prop("files").length !== 0 ){
-    //     console.log("no files selected");
-    // }else{
-    //     $(".form-post").append('<div class="img mb-2"><img src="'+ $('#img-post').val() + '" class="img-thumbnail"></div>');
-    // }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#img-post").change(function () {
+        $('.img').show();
+        readURL(this);
+    });
+    $('.close').click(function () {
+        $('.img').hide();
+        $('#img-post').val('');
+    });
 });

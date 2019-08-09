@@ -14,7 +14,8 @@
             <li>
               <div class="post-body">
                 <h6 style="overflow:auto">
-                  <a href="/blog/{{$post->id}}">{{$post->title}}</a>
+                  <a href="/blog/{{$post->id}}" class="float-left w-50"
+                    style="overflow:hidden;text-overflow:ellipsis;">{{$post->description}}</a>
                   <div class="float-right">
                     <div class="">
                       <small> <span>{{$post->view_count}}</span><i class="fas fa-eye ml-1"></i></small>

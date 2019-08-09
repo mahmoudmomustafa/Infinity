@@ -11,12 +11,46 @@ body {
     background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%);
 }
 
+.loading {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: #ededed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading img {
+    height: fit-content;
+    -webkit-animation: flip-2-hor-top-1 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate-reverse;
+    animation: flip-2-hor-top-1 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate-reverse;
+}
+
+@keyframes flip-2-hor-top-1 {
+    0% {
+        -webkit-transform: translateY(0) rotateX(0);
+        transform: translateY(0) rotateX(0);
+        -webkit-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
+    }
+
+    100% {
+        -webkit-transform: translateY(-100%) rotateX(-180deg);
+        transform: translateY(-100%) rotateX(-180deg);
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+    }
+}
+
 .navbar {
     background: linear-gradient(49deg, rgba(89, 89, 89, 0.19) 0%, rgba(105, 105, 105, 0.14) 100%);
     width: 100%
 }
 
-.navbar-brand ,.navbar-brand img{
+.navbar-brand,
+.navbar-brand img {
     font-weight: 700;
     padding-bottom: 5px;
     transition: 500ms ease-in-out
@@ -63,8 +97,14 @@ a:hover {
     background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
 }
 
+.close {
+    position: absolute;
+    right: 10px;
+    font-size: 35px;
+}
+
 .content {
-    box-shadow: 0 0 10px #bdbdbd;
+    box-shadow: 0 0 10px #7b7b7b78;
     border-radius: 5px;
     background: #f8fafc;
 }
@@ -157,6 +197,7 @@ a:hover {
 .post-item p {
     font-size: 16px;
     text-indent: 50px;
+    overflow-wrap: break-word;
 }
 
 .post-item-image {
@@ -177,8 +218,6 @@ a:hover {
 
 .post-des {
     font-size: 15px;
-    text-overflow: ellipsis;
-    overflow: hidden;
     color: #5b6f82;
     margin-bottom: 0;
 }
@@ -335,19 +374,22 @@ ul.tags li a:hover {
 }
 
 .form-control {
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 0 15px gainsboro;
     background: linear-gradient(45deg, #86868673, #27272736);
     border: 0;
 }
-.post-img{
+
+.post-img {
     position: absolute;
-    bottom: 0;
     right: 25px;
+    top: 20px;
 }
-.post-img img{
+
+.post-img img {
     cursor: pointer;
 }
+
 .help-block {
     color: red
 }
@@ -413,9 +455,11 @@ span.required {
     padding: 5px;
     border-radius: 30px;
 }
-.comment-body .author-img img{
+
+.comment-body .author-img img {
     width: 40px
 }
+
 .author a h5 {
     justify-content: center;
     display: flex;
@@ -423,10 +467,12 @@ span.required {
     margin-left: .5rem;
     margin-bottom: 0;
 }
-.comment-body h6{
+
+.comment-body h6 {
     padding: 10px;
     display: inline-grid;
 }
+
 .btn-add {
     background: linear-gradient(65deg, #5E52F6 0, #8B82F9 100%);
 }
@@ -548,16 +594,19 @@ li.nav-item .nav-link i {
     top: 0;
     right: 10px;
 }
-i.trash{
+
+i.trash {
     font-size: 20px;
     margin: 5px;
     color: #29323c;
     transition: 500ms ease-in-out;
     cursor: pointer;
 }
-i.trash:hover{
+
+i.trash:hover {
     color: #ff3030;
 }
+
 /* dark mode */
 .change-color {
     overflow: hidden;
@@ -592,7 +641,7 @@ i.trash:hover{
 }
 
 /* footer */
-footer{
+footer {
     background: #091013;
     text-align: center;
 }

@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Laratrust\LaratrustServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -190,6 +191,7 @@ return [
     */
 
     'aliases' => [
+        'Image' => Intervention\Image\Facades\Image::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'App' => Illuminate\Support\Facades\App::class,

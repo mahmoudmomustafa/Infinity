@@ -8,17 +8,22 @@
     <form action="/" method="post" class="form-post" enctype="multipart/form-data">
       @csrf
       {{-- if there is img select --}}
-      {{-- <div class="img mb-2">
-        <img src="/img/board.jpg" class="img-thumbnail">
-      </div> --}}
+      <div class="img mb-2" style="display:none;position:relative;">
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="#" id="img" class="img-thumbnail">
+      </div>
+      {{-- img input --}}
+      <div class="post-img">
+        <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img
+            src="/img/image.svg" width="30"></label>
+        <input type="file" name="image" id="img-post" style="display:none">
+      </div>
       {{-- post description --}}
       <div class="form-group">
         <div class="col">
           {{-- post img --}}
-          <div class="post-img">
-            <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img src="/img/image.svg" width="30"></label>
-            <input type="file" name="image" id="img-post" style="display:none">
-          </div>
           <textarea class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" name="description"
             placeholder="Write Post Description Here..." rows="2" style="min-height:100px;"></textarea>
           @if ($errors->has('description'))

@@ -144,13 +144,12 @@
                     {{-- author post --}}
                     <div class="post-item-body">
                         <a href="/blog/{{$post->id}}">
-
                             @if (!is_null($post->image))
                             <div class="img mt-2">
                                 <img src="/storage/posts/{{ $post->image }}" class="img-thumbnail">
                             </div>
                             @endif
-                            <div class="p-3" style="white-space:nowrap;text-overflow:ellipsis;">
+                            <div class="p-3">
                                 <p class="post-des">
                                     {!!$post->description!!}
                                 </p>
