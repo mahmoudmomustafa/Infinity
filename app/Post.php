@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
 class Post extends Model
 {
     protected $fillable = ['title', 'slug', 'description', 'image', 'category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
@@ -67,7 +67,10 @@ class Post extends Model
         }
     }
     // date
-    protected $casts = [
-        'created_at' => 'datetime:Y-m-d',
-    ];
+    public function getDateAttribute($value)
+    {
+        $date = $this->created_at;
+        $current = Carbon::parse($date)->diffForHumans();
+        return $current;
+    }
 }

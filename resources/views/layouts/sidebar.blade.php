@@ -23,7 +23,7 @@
                   </div>
                 </h6>
                 <div class="post-meta">
-                  <span>{{$post->created_at}}</span>
+                  <span>{{$post->date}}</span>
                   <span style="float:right"><a
                       href="/author/{{$post->author->userName}}">{{$post->author->name}}</a></span>
                 </div>

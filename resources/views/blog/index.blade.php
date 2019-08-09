@@ -36,7 +36,7 @@
                                         <h5 class="float-left font-weight-bold" style="color:#1d68a7;">
                                             {{$post->author->name}}
                                             <span
-                                                style="font-size:10px;font-weight:100;color:gray;">{{$post->created_at}}</span>
+                                                style="font-size:10px;font-weight:100;color:gray;">{{$post->date}}</span>
                                         </h5>
                                     </a>
                                 </div>

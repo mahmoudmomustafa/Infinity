@@ -32,7 +32,7 @@
               </div>
               <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
                 {{$comment->user->name}}
-                <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->created_at}}</span>
+                <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->date}}</span>
               </h6>
             </a>
           </div>

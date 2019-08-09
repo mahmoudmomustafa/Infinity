@@ -51,10 +51,10 @@
                   <tr>
                     <td>{{$post->description}}</td>
                     <td>{{$post->author->name}}</td>
-                    <td style="text-align:center;">{{$post->author->id}}</td>
+                    <td style="text-align:center;">{{$post->likes->count()}}</td>
                     <td style="text-align:center;">{{$post->comments->count()}}</td>
                     <td>{{$post->category->title}}</td>
-                    <td>{{$post->created_at}}</td>
+                    <td>{{$post->date}}</td>
                     <td style="display:flex">
                       <a href="/dashboard/posts/{{$post->id}}/edit" class="mr-2 btn btn-xs btn-success">
                         <i class="fa fa-edit"></i>
