@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'description', 'image','category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
+    protected $fillable = ['title', 'slug', 'description', 'image', 'category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
 
     public function author()
     {
@@ -50,19 +50,19 @@ class Post extends Model
     // likes
     public function likes()
     {
-        return $this->morphMany(Like::class,'post');
+        return $this->morphMany(Like::class, 'post');
     }
     public function checkUser()
     {
-        if(Auth::check() && $this->likes()->where(['user_id' => Auth::user()->id])->exists()){
+        if (Auth::check() && $this->likes()->where(['user_id' => Auth::user()->id])->exists()) {
             return 'liked';
         }
     }
     public function like()
     {
-        if (! $this->checkUser()) {
+        if (!$this->checkUser()) {
             $this->likes()->create(['user_id' => Auth::user()->id]);
-        }else{
+        } else {
             $this->likes()->delete();
         }
     }

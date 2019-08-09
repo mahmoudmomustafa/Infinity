@@ -258,17 +258,18 @@
           </div>
           {{-- author post --}}
           <div class="post-item-body">
-            @if (!is_null($post->image))
-            <div class="img mt-2">
-              <img src="/storage/posts/{{ $post->image }}" class="img-thumbnail">
-            </div>
-            @endif
-            <div class="p-3" style="white-space:nowrap;text-overflow:ellipsis;">
-              <h4 class="post-title"><a href="/blog/{{$post->id}}">{{$post->title}}</a></h4>
-              <p class="post-des">
-                {!!$post->description!!}
-              </p>
-            </div>
+            <a href="/blog/{{$post->id}}">
+              @if (!is_null($post->image))
+              <div class="img mt-2">
+                <img src="/storage/posts/{{ $post->image }}" class="img-thumbnail">
+              </div>
+              @endif
+              <div class="p-3" style="white-space:nowrap;text-overflow:ellipsis;">
+                <p class="post-des">
+                  {!!$post->description!!}
+                </p>
+              </div>
+            </a>
           </div>
           <hr class="mx-4">
           {{-- comment --}}

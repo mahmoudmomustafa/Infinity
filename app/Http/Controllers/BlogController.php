@@ -41,16 +41,15 @@ class BlogController extends Controller
         ]);
         $data = $request->all();
         if ($request->hasFile('image')) {
-            $image =$request->file('image');
-            $fileName = time().'.'. $image->getClientOriginalExtension();
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
             $destination = public_path('storage/posts');
-            $image->move($destination,$fileName);
+            $image->move($destination, $fileName);
 
             $data['image'] = $fileName;
-         }
+        }
         $request->user()->posts()->create($data);
         return back()->with('message', 'Post was created');
-        // return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
     // category
     public function category(Category $category)
