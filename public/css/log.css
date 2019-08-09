@@ -12,19 +12,16 @@ body {
 
 .container {
     justify-content: center;
-    /* text-align: center; */
     align-items: center;
     display: flex;
-    min-height: 625px;
+    min-height: 100vh;
 }
 
 .login {
     width: 100%;
-    /* height: -webkit-fill-available; */
     box-shadow: 0 0 5px #525252;
 }
 .login .form{
-  /* height: -webkit-fill-available; */
   background: #0b023b;
 }
 .log-form .input{
@@ -55,6 +52,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: auto;
 }
 .login .img-up {
   background-image: url(/img/log.png);
@@ -62,6 +60,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: auto;
+
 }
 @media(max-width:990px){
   .login .img,.login .img-up{

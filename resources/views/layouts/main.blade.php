@@ -22,7 +22,7 @@
   <div class="loading">
     <img src="/img/infinity.svg" alt="loading" width="150">
   </div>
-  <div id="app">
+  <div id="app" style="min-height:100vh">
     <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light shadow">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
@@ -97,7 +97,6 @@
   </div> --}}
   @include('layouts.footer')
   <!-- Scripts -->
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="/js/script.js"></script>

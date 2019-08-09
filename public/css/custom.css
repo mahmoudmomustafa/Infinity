@@ -644,4 +644,8 @@ i.trash:hover {
 footer {
     background: #091013;
     text-align: center;
+    /* position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            Footer height */
 }

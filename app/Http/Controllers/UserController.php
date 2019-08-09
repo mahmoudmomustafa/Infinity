@@ -52,7 +52,7 @@ class UserController extends Controller
    */
   public function show(User $author)
   {
-    $posts = $author->posts()->paginate(5);
+    $posts = $author->posts()->orderBy('created_at','desc')->paginate(5);
     return view('blog.author', compact('posts', 'author'));
   }
 
