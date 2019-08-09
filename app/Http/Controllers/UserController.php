@@ -52,7 +52,7 @@ class UserController extends Controller
    */
   public function show(User $author)
   {
-    $posts = $author->posts()->orderBy('created_at','desc')->paginate(5);
+    $posts = $author->posts()->orderBy('created_at', 'desc')->paginate(5);
     return view('blog.author', compact('posts', 'author'));
   }
 
@@ -77,10 +77,10 @@ class UserController extends Controller
   public function update(User $author, Request $request)
   {
     $this->validate($request, [
-      'name' => 'required',
-      'email' => 'required',
-      'userName' => 'required|alpha_dash',
-      'password' => ['required', 'confirmed'],
+      'name' => ['string', 'min:5', 'max:255'],
+      'email' => ['string', 'email', 'max:255'],
+      'password' => ['string', 'min:8', 'confirmed'],
+      'userName' => ['alpha_dash'],
     ]);
     $data = $request->all();
     if ($request->hasFile('img')) {

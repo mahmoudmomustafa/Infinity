@@ -7,7 +7,7 @@
         <div class="form-row justify-content-center">
           <div class="col-md-9 col-9 col-lg-9 col-xl-10">
             <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
-              id="comment" placeholder="Write Comment...">
+              id="comment_{{$post->id}}" placeholder="Write Comment...">
             <input type="hidden" name="post_id" value="{{$post->id}}">
             @if ($errors->has('comment'))
             <div class="invalid-feedback">{{$errors->first('comment') }}</div>
@@ -41,10 +41,10 @@
         <div class="float-right mr-1">
           <li>
             <a href="/blog/{{$post->id}}/comments/{{$comment->id}}"
-              onclick="event.preventDefault();document.getElementById('delete-comment').submit();">
+              onclick="event.preventDefault();document.getElementById('delete-comment_{{$comment->id}}').submit();">
               <i class="lni-trash trash"></i>
             </a>
-            <form id="delete-comment" action="/blog/{{$post->id}}/comments/{{$comment->id}}" method="post"
+            <form id="delete-comment_{{$comment->id}}" action="/blog/{{$post->id}}/comments/{{$comment->id}}" method="post"
               style="display: none;">
               @method('DELETE')
               @csrf

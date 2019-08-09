@@ -27,19 +27,9 @@
           <div class="box-body ">
             <form action="/dashboard/posts" class="mt-2"method="post">
               @csrf
-              {{-- <div class="form-group row">
-                <div class="col-md-6 m-auto">
-                  <input type="text" name="title" id="title"
-                    class="form-control back-create {{$errors->has('title') ? 'has-error' : ''}}"
-                    placeholder="Post Title">
-                  @if ($errors->has('title'))
-                  <span class="help-block">{{$errors->first('title') }}</span>
-                  @endif
-                </div>
-              </div> --}}
               <div class="form-group row">
                 <div class="col-md-6 m-auto">
-                  <textarea name="description" id="description" rows="3" placeholder="Post Description"
+                  <textarea name="description" id="description" rows="3" placeholder="Post..."
                     class="form-control back-create {{$errors->has('description') ? 'has-error' : ''}}"></textarea>
                   @if ($errors->has('description'))
                   <span class="help-block">{{$errors->first('description') }}</span>

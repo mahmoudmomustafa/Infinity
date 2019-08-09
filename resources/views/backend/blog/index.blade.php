@@ -37,7 +37,7 @@
               <table class="table table-striped table-dark table-hover table-bordered ">
                 <thead>
                   <tr class="font-weight-bold " style="color:#1d68a7;">
-                    <td>Post title</td>
+                    <td>Post</td>
                     <td width="100">Author</td>
                     <td style="text-align:center;">Likes</td>
                     <td style="text-align:center;">Comments</td>
@@ -49,7 +49,7 @@
                 <tbody>
                   @foreach ($posts as $post)
                   <tr>
-                    <td>{{$post->title}}</td>
+                    <td>{{$post->description}}</td>
                     <td>{{$post->author->name}}</td>
                     <td style="text-align:center;">{{$post->author->id}}</td>
                     <td style="text-align:center;">{{$post->comments->count()}}</td>

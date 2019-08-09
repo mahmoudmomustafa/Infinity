@@ -94,15 +94,7 @@
                                         <form action="/blog/{{$post->id}}" method="post">
                                             @method('patch')
                                             @csrf
-                                            <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
-                                                <div class="col">
-                                                    <input class="form-control" value="{{$post->title}}" type="text"
-                                                        name="title" id="title" placeholder="Post Title...">
-                                                </div>
-                                                @if ($errors->has('title'))
-                                                <span class="help-block">{{$errors->first('title') }}</span>
-                                                @endif
-                                            </div>
+                                            {{-- description --}}
                                             <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
                                                 <div class="col">
                                                     <textarea class="form-control" name="description" id="description"
@@ -113,6 +105,7 @@
                                                 <span class="help-block">{{$errors->first('description') }}</span>
                                                 @endif
                                             </div>
+                                            {{-- category --}}
                                             <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
                                                 <div class="col">
                                                     <select name="category_id" id="category_id"

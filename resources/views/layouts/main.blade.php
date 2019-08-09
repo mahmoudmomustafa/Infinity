@@ -12,21 +12,21 @@
   <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet"> 
   <!-- Styles -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/custom.css">
 </head>
 
 <body>
-  <div class="loading">
+  {{-- <div class="loading">
     <img src="/img/infinity.svg" alt="loading" width="150">
-  </div>
+  </div> --}}
   <div id="app" style="min-height:100vh">
     <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light shadow">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="/img/infinity.svg" width="30">
+          <a class="navbar-brand" href="{{ url('/') }}" style="color:dimgrey">
+            <img src="/img/infinity.svg" width="30">{{ __(' | Infinity') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

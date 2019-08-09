@@ -70,11 +70,6 @@
                       </div>
                     </div>
                     {{-- pic --}}
-                    {{-- <div class="post-img">
-                      <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img
-                          src="/img/image.svg" width="30"></label>
-                      <input type="file" name="img" id="img-post" style="display:none">
-                    </div> --}}
                     <div class="form-group {{$errors->has('img') ? 'has-error' : ''}}">
                       <div class="col">
                         <input class="form-control-files" type="file" name="img" id="img">
@@ -195,10 +190,10 @@
                     </button>
                     {{-- delete form --}}
                     <a class="dropdown-item" href="/blog/{{$post->id}}" onclick="event.preventDefault();
-                                                             document.getElementById('delete-form').submit();">
+                                                             document.getElementById('delete-form-{{$post->id}}').submit();">
                       {{ __('Delete') }}
                     </a>
-                    <form id="delete-form" action="/blog/{{$post->id}}" method="POST" style="display: none;">
+                    <form id="delete-form-{{$post->id}}" action="/blog/{{$post->id}}" method="POST" style="display: none;">
                       @method('DELETE')
                       @csrf
                     </form>
@@ -218,15 +213,7 @@
                     <form action="/blog/{{$post->id}}" method="post" files=TRUE>
                       @method('patch')
                       @csrf
-                      <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
-                        <div class="col">
-                          <input class="form-control" value="{{$post->title}}" type="text" name="title"
-                            placeholder="Post Title...">
-                        </div>
-                        @if ($errors->has('title'))
-                        <span class="help-block">{{$errors->first('title') }}</span>
-                        @endif
-                      </div>
+                      {{-- description --}}
                       <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
                         <div class="col">
                           <textarea class="form-control" name="description" placeholder="Write Post Description Here..."
@@ -236,6 +223,7 @@
                         <span class="help-block">{{$errors->first('description') }}</span>
                         @endif
                       </div>
+                      {{-- category --}}
                       <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}}">
                         <div class="col">
                           <select name="category_id" value="{{$post->category_id}}" class="form-control">
