@@ -67,13 +67,6 @@ class User extends Authenticatable
         else
             return false;
     }
-    public function isEditor()
-    {
-        if ($this->role_id == 2)
-            return true;
-        else
-            return false;
-    }
     public function isAuthor()
     {
         if ($this->role_id == 3)

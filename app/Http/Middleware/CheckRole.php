@@ -16,10 +16,10 @@ class CheckRole
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->isAdmin() || Auth::user()->isEditor()) {
+            if (Auth::user()->isAdmin()) {
                 return $next($request);
             }
         }
-        return redirect('/dashboard')->with('message','Not allowed , You are Not Admin or editor');
+        return redirect('/dashboard')->with('message','Not allowed , You are Not Admin');
     }
 }

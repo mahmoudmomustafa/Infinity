@@ -3,7 +3,6 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use App\Http\Middleware\CheckPermissionsMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -56,7 +55,6 @@ class Kernel extends HttpKernel
         'permission' => \Laratrust\Middleware\LaratrustPermission::class,
         'ability' => \Laratrust\Middleware\LaratrustAbility::class,
         'admin' => \App\Http\Middleware\IsAdmin::class,
-        'editor' => \App\Http\Middleware\IsEditor::class,
         'author' => \App\Http\Middleware\IsAuthor::class,
         'checkrole' => \App\Http\Middleware\CheckRole::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
