@@ -2,109 +2,24 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
+    {{-- user info --}}
     <div class="col-md-4">
       <div class="content mb-3 content-post">
         <article class="post-item">
-          @if($author->id == Auth::user()->id)
-          <div class="user-edit">
-            <button type="button" class="like" data-toggle="modal" data-target="#userEdit" style="cursor:pointer">
-              <i class="fas fa-edit"></i>
-            </button>
-          </div>
-          {{-- asdas --}}
-          <!-- Edit Modal -->
-          <div class="modal fade" id="userEdit" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class=" modal-dialog content" role="document">
-              <div class="modal-content" style="border:none">
-                <h5 class="modal-title p-4 font-weight-bold" style="color:#1d68a7;padding-bottom:.5rem !important;">Edit
-                  ur Profile
-                </h5>
-                <div class="modal-body">
-                  <form action="/author/{{$author->userName}}" method="post" enctype="multipart/form-data">
-                    @method('patch')
-                    @csrf
-                    <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
-                      <div class="col">
-                        <input class="form-control" type="text" name="name" placeholder="Full Name..."
-                          value="{{$author->name}}">
-                      </div>
-                      @if ($errors->has('name'))
-                      <span class="help-block">{{$errors->first('name') }}</span>
-                      @endif
-                    </div>
-                    {{-- email --}}
-                    <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
-                      <div class="col">
-                        <input class="form-control" type="email" name="email" placeholder="Email Address..."
-                          value="{{$author->email}}">
-                      </div>
-                      @if ($errors->has('email'))
-                      <span class="help-block">{{$errors->first('email') }}</span>
-                      @endif
-                    </div>
-                    {{-- username --}}
-                    <div class="form-group {{$errors->has('userName') ? 'has-error' : ''}}">
-                      <div class="col">
-                        <input class="form-control" type="text" name="userName" placeholder="User Name..."
-                          value="{{$author->userName}}" autocomplete="none">
-                      </div>
-                      @if ($errors->has('userName'))
-                      <span class="help-block">{{$errors->first('userName') }}</span>
-                      @endif
-                    </div>
-                    {{-- password --}}
-                    <div class="form-group {{$errors->has('password') ? 'has-error' : ''}}">
-                      <div class="col">
-                        <input class="form-control" type="password" name="password" id="password"
-                          placeholder="Password..." autocomplete="none">
-                      </div>
-                      @if ($errors->has('password'))
-                      <span class="help-block">{{$errors->first('password') }}</span>
-                      @endif
-                    </div>
-                    {{-- repass --}}
-                    <div class="form-group">
-                      <div class="col">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                          required autocomplete="new-password" placeholder="Confirm Password" autocomplete="none">
-                      </div>
-                    </div>
-                    {{-- pic --}}
-                    <div class="form-group {{$errors->has('img') ? 'has-error' : ''}}">
-                      <div class="col">
-                        <input class="form-control-files" type="file" name="img" id="img">
-                      </div>
-                      @if ($errors->has('img'))
-                      <span class="help-block">{{$errors->first('img') }}</span>
-                      @endif
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save
-                        changes</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{-- sada --}}
-          @endif
           <div class="author-meta p-3">
             {{-- author name --}}
-            <ul class="post-meta-group">
-              <li>
+            <ul class="w-100 post-meta-group userInfo">
+              <li class="mb-4">
                 <div class="author">
                   <a href="/author/{{$author->userName}}">
                     <div class="author-img">
                       <img src="/storage/users/{{$author->img}}" class="img-fluid" alt="Responsive image">
                     </div>
                   </a>
-                  <h5 class="font-weight-bold mt-4" style="color:#1d68a7;">
+                  <h3 class="font-weight-bold mt-4" style="color:#1d68a7;">
                     {{$author->name}}
                     <small>{ {{$author->userName}} }</small>
-                  </h5>
-                  <h4>{{$author->email}}</h4>
+                  </h3>
                   <span class="tag">
                     {{$author->posts()->count()}} Posts
                   </span>
@@ -116,12 +31,21 @@
                   </span>
                 </div>
               </li>
+              {{-- posts --}}
+              <li class="info mx-4 font-weight-bold active post">
+                See Posts
+              </li>
+              {{-- General info --}}
+              <li class="info mx-4 font-weight-bold inf">
+                General Info
+              </li>
             </ul>
           </div>
         </article>
       </div>
     </div>
-    <div class="col-md-6 offset-md-1">
+    {{-- posts- --}}
+    <div class="col-md-6 offset-md-1 posts">
       {{-- include form post --}}
       @if($author->id == Auth::user()->id)
       @include('blog.formPost')
@@ -189,11 +113,13 @@
                       Edit
                     </button>
                     {{-- delete form --}}
-                    <a class="dropdown-item" href="/blog/{{$post->id}}" onclick="event.preventDefault();
+                    <a class="dropdown-item" href="/blog/{{$post->id}}"
+                      onclick="event.preventDefault();
                                                              document.getElementById('delete-form-{{$post->id}}').submit();">
                       {{ __('Delete') }}
                     </a>
-                    <form id="delete-form-{{$post->id}}" action="/blog/{{$post->id}}" method="POST" style="display: none;">
+                    <form id="delete-form-{{$post->id}}" action="/blog/{{$post->id}}" method="POST"
+                      style="display: none;">
                       @method('DELETE')
                       @csrf
                     </form>
@@ -275,6 +201,10 @@
       <nav>
         {{$posts->links()}}
       </nav>
+    </div>
+    {{--Info--}}
+    <div class="col-md-6 offset-md-1 information">
+      @include('blog.authorInf')
     </div>
   </div>
 </div>

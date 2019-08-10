@@ -639,13 +639,27 @@ i.trash:hover {
 .liked {
     color: #1d68a7 !important;
 }
-
+.userInfo{
+    display: flex;
+    flex-direction: column
+}
+.info{
+    transition: 500ms ease-in-out;
+    font-size: 25px;
+    padding: 10px;
+    margin: .5rem;
+    box-shadow: 0 0 5px grey;
+    background: linear-gradient(45deg, #d8e1ee, #bcc4dc);
+    cursor: pointer;
+    border-radius: 10px
+}
+.info:hover,.active{
+    color: #fff;
+    background: linear-gradient(65deg,#5E52F6 0,#8B82F9 100%);
+    box-shadow: 0 0 15px rgba(94,82,246,.25);
+}
 /* footer */
 footer {
     background: #091013;
     text-align: center;
-    /* position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;            Footer height */
 }

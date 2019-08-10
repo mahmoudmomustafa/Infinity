@@ -68,4 +68,21 @@ $(document).ready(function () {
         $('.img').hide();
         $('#img-post').val('');
     });
+    // list
+    $('.information').slideUp();   
+    
+    $(".info").on('click', function () {
+        // remove classes from all
+        $(".info").removeClass("active");
+        // add class to the one we clicked
+        $(this).addClass("active");
+        // check
+        if($('.post').hasClass('active')){
+            $('.posts').slideDown();
+            $('.information').hide();        
+        }else{
+            $('.information').slideDown();
+            $('.posts').hide();            
+        }
+    });
 });

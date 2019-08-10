@@ -10,6 +10,12 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user, $ability)
+    {
+        if ($user->isAdmin()) {
+            return true;
+        }
+    }
     /**
      * Determine whether the user can view the post.
      *
@@ -42,7 +48,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $post->author_id == $user->id;        
+        return $post->author_id == $user->id;
     }
 
     /**

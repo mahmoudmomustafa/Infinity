@@ -64,7 +64,8 @@ class UserController extends Controller
    */
   public function edit(User $author)
   {
-    //
+    $this->authorize('update', $author);
+    return view('blog.edit', compact('author'));
   }
 
   /**
@@ -76,11 +77,15 @@ class UserController extends Controller
    */
   public function update(User $author, Request $request)
   {
+    $this->authorize('update', $author);
     $this->validate($request, [
       'name' => ['string', 'min:5', 'max:255'],
       'email' => ['string', 'email', 'max:255'],
-      'password' => ['string', 'min:8', 'confirmed'],
+      'img' => 'required|mimes:jpeg,jpg,png,svg',
       'userName' => ['alpha_dash'],
+      'number' => ['numeric','min:11', 'starts_with:01'],
+      'education' => ['string', 'min:5', 'max:255'],
+      'birth' => ['date'],
     ]);
     $data = $request->all();
     if ($request->hasFile('img')) {
@@ -91,8 +96,9 @@ class UserController extends Controller
 
       $data['img'] = $fileName;
     }
-    $data['password'] = bcrypt($data['password']);
-    $author->update($data);
+    // $data['password'] = bcrypt($data['password']);
+    $request->user()->update($data);
+    // $author->update($data);
     return back();
   }
 

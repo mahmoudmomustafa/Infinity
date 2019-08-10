@@ -8,6 +8,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
 use App\Like;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'userName', 'img', 'role_id'
+        'name', 'email', 'password', 'userName', 'img', 'role_id','number','birth','education'
     ];
 
     /**
@@ -95,5 +96,12 @@ class User extends Authenticatable
     public function getImageAttribute()
     {
         return $this->img;
+    }
+    // date/
+    public function getDateAttribute($value)
+    {
+        $date = $this->created_at;
+        $current = Carbon::parse($date)->diffForHumans();
+        return $current;
     }
 }
