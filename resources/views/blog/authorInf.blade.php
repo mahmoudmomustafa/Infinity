@@ -32,7 +32,7 @@
         </li>
         <li class="d-flex inf-list mx-4 mb-4">
           <h5 class="font-weight-bold pt-1">Phone Number:</h5>
-          <h4 class="font-weight-bold px-2" style="color:#1d68a7;">0{{$author->number}}</h4>
+          <h4 class="font-weight-bold px-2" style="color:#1d68a7;">{{$author->number}}</h4>
         </li>
         <li class="d-flex inf-list mx-4 mb-4">
           <h5 class="font-weight-bold pt-1">Eductaion:</h5>

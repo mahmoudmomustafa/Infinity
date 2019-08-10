@@ -34,6 +34,7 @@ class BlogController extends Controller
         $this->validate($request, [
             'description' => 'required|max:150',
             // 'image' => 'reuired|mimes:jpg,jpeg,png,svg',
+            'image' => 'mimes:jpeg,jpg,png,svg',
             'category_id' => 'required',
         ]);
         $data = $request->all();

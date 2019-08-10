@@ -69,7 +69,7 @@ $(document).ready(function () {
         $('#img-post').val('');
     });
     // list
-    $('.information').slideUp();   
+    $('.information').hide();   
     
     $(".info").on('click', function () {
         // remove classes from all

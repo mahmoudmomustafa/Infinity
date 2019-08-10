@@ -16,9 +16,13 @@
       </div>
       {{-- img input --}}
       <div class="post-img">
-        <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img
-            src="/img/image.svg" width="30"></label>
-        <input type="file" name="image" id="img-post" style="display:none">
+        <label for="img-post" data-toggle="tooltip" data-placement="right" title="Upload Img"><img src="/img/image.svg"
+            width="30"></label>
+        <input type="file" class="{{$errors->has('image') ? 'is-invalid' : ''}}" name="image" id="img-post"
+          style="display:none">
+        @if ($errors->has('image'))
+        <span class="help-block">{{$errors->first('image') }}</span>
+        @endif
       </div>
       {{-- post description --}}
       <div class="form-group">

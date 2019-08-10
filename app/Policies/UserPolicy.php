@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+
 
 class UserPolicy
 {

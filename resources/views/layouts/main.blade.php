@@ -54,7 +54,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('blog') }}">{{ __('Home') }}</a>
             </li>
-            @if(Auth::user()->isAdmin() || Auth::user()->isEditor())
+            @if(Auth::user()->isAdmin())
             <li class="nav-item">
               <a class="nav-link" href="{{ route('dashboard') }}">
                 {{ __('Dashboard') }}

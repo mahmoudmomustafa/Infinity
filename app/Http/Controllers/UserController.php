@@ -64,7 +64,8 @@ class UserController extends Controller
    */
   public function edit(User $author)
   {
-    $this->authorize('update', $author);
+    // $this->authorize('update', $author);
+    abort_if($author->id !== auth()->id(),403);
     return view('blog.edit', compact('author'));
   }
 
@@ -96,9 +97,7 @@ class UserController extends Controller
 
       $data['img'] = $fileName;
     }
-    // $data['password'] = bcrypt($data['password']);
     $request->user()->update($data);
-    // $author->update($data);
     return back();
   }
 
