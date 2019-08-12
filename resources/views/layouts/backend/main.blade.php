@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="icon" href="/img/infinity.svg">
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/custom.css">

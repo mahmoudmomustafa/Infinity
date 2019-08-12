@@ -8,7 +8,8 @@ body {
     box-sizing: border-box;
     font-family: 'Dosis', sans-serif;
     position: relative;
-    background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%);
+    /* background: linear-gradient(49deg, rgba(89, 89, 89, 0.08) 0%, rgba(105, 105, 105, 0.15) 100%); */
+    background: linear-gradient(49deg, rgb(60, 65, 70) 0%, rgb(84, 94, 115) 100%)
 }
 
 .loading {
@@ -45,7 +46,8 @@ body {
 }
 
 .navbar {
-    background: linear-gradient(49deg, rgba(89, 89, 89, 0.19) 0%, rgba(105, 105, 105, 0.14) 100%);
+    /* background: linear-gradient(49deg, rgba(89, 89, 89, 0.19) 0%, rgba(105, 105, 105, 0.14) 100%); */
+    background: linear-gradient(49deg, rgba(89, 89, 89, 0.19) 0%, rgb(78, 87, 104) 100%);
     width: 100%
 }
 
@@ -53,7 +55,9 @@ body {
 .navbar-brand img {
     font-weight: 700;
     padding-bottom: 5px;
-    transition: 500ms ease-in-out
+    transition: 500ms ease-in-out;
+    color: #1d68ac !important;
+
 }
 
 .navbar-brand img:hover {
@@ -61,10 +65,14 @@ body {
 }
 
 .navbar-brand:hover {
-    color: #1d68ac !important;
     transform: translate(10px);
 }
-
+i.ml-1.fas.fa-sign-out-alt{
+    transition: 500ms ease
+}
+i.ml-1.fas.fa-sign-out-alt:hover {
+    color: #c65858;
+}
 a {
     color: #333;
 }
@@ -76,7 +84,7 @@ a {
 .more-icon {
     font-size: 15px;
     transform: rotate(90deg);
-    padding-top: 18px;
+    /* padding-top: 18px; */
     line-height: 2;
 }
 
@@ -180,8 +188,8 @@ a:hover {
 }
 
 .like i {
-    line-height: 2.5;
-    font-size: 18px;
+    line-height: 2;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -233,7 +241,7 @@ a:hover {
 }
 
 .content-post:hover {
-    background: linear-gradient(223deg, #1d68ac1a 0, #566aa761 100%);
+    background: #e5e5e5;
 }
 
 .post-item-body h2,
@@ -433,6 +441,8 @@ span.required {
     margin: auto;
     transition: 500ms ease;
     position: relative;
+    width: 55px;
+    height: 55px;
 }
 
 .author-img::after {
@@ -451,21 +461,21 @@ span.required {
 }
 
 .author-img img {
-    width: 57px;
+    width: 100%;
     padding: 5px;
-    border-radius: 30px;
 }
 
-.comment-body .author-img img {
-    width: 40px
+.likes{
+    display: flex;
+    justify-content: flex-end;
 }
-
 .author a h5 {
     justify-content: center;
     display: flex;
     flex-direction: column;
     margin-left: .5rem;
     margin-bottom: 0;
+    font-size: calc(1vw + 12px);
 }
 
 .comment-body h6 {

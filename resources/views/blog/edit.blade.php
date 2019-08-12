@@ -94,7 +94,7 @@
                   <div class="input-group mb-3">
                     @csrf
                     @method('PATCH')
-                    <input type="text" class="form-control {{$errors->has('number') ? 'has-error' : ''}}" name="number"
+                    <input type="number" class="form-control {{$errors->has('number') ? 'has-error' : ''}}" name="number"
                       placeholder="Phone Number" value="{{$author->number}}">
                     <div class="input-group-append">
                       <button class="btn btn-outline-success">Update</button>

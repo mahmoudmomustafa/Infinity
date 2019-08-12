@@ -31,9 +31,9 @@
                                 <div class="author">
                                     <a href="/author/{{$post->author->userName}}">
                                         <div class="author-img">
-                                            <img src="/storage/users/{{$post->author->img}}" alt="authorImg">
+                                            <img src="/storage/users/{{$post->author->img}}">
                                         </div>
-                                        <h5 class="float-left font-weight-bold" style="color:#1d68a7;">
+                                        <h5 class="float-left font-weight-bold" style="color:#;">
                                             {{$post->author->name}}
                                             <span
                                                 style="font-size:10px;font-weight:100;color:gray;">{{$post->date}}</span>
@@ -42,23 +42,12 @@
                                 </div>
                             </li>
                             <div class="float-right mr-1">
-                                <li>
-                                    <small>{{$post->likes->count()}}</small>
-                                </li>
-                                <li class="like">
-                                    <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
-                                        @csrf
-                                        <button type="submit" class="like">
-                                            <i class="lni-heart-filled {{$post->checkUser()}}"></i>
-                                        </button>
-                                    </form>
-                                </li>
-                                <li class="tag">
+                                <li class="tag mt-1">
                                     <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                                 </li>
                                 @if($post->author->id == Auth::user()->id)
-                                <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <li class="dropdown mt-1">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle pr-1" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span
                                             class="caret more-icon"><i class="lni-more-alt"></i></span>
                                     </a>

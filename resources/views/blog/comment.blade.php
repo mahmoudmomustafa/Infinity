@@ -1,24 +1,38 @@
 <div class="comment-body">
   <div class="comments pb-2">
-    <article class="post-item">
-      {{-- comment form --}}
-      <form action="/blog/{{$post->id}}/comments" class="pb-4" method="post">
-        @csrf
-        <div class="form-row justify-content-center">
-          <div class="col-md-9 col-9 col-lg-9 col-xl-10">
-            <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
-              id="comment_{{$post->id}}" placeholder="Write Comment...">
-            <input type="hidden" name="post_id" value="{{$post->id}}">
-            @if ($errors->has('comment'))
-            <div class="invalid-feedback">{{$errors->first('comment') }}</div>
-            @endif
-          </div>
-          <div class="col-2 col-md-2  col-lg-2 col-xl-1">
-            <button class="w-100 btn btn-primary" data-toggle="tooltip" data-placement="top" title="Comment"><i
-                class="fas fa-paper-plane"></i></button>
+    <article class="post-item pb-4">
+      <div class="form-row">
+        <div class="col-1 likes ml-4">
+          <div class="like d-flex">
+            <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
+              @csrf
+              <button type="submit" class="like" data-toggle="tooltip" data-placement="left" title="{{$post->likes->count()}} Likes">
+                <i class="lni-heart-filled {{$post->checkUser()}}"></i>
+              </button>
+            </form>
           </div>
         </div>
-      </form>
+        <div class="col">
+          {{-- comment form --}}
+          <form action="/blog/{{$post->id}}/comments" method="post">
+            @csrf
+            <div class="form-row justify-content-start mx-0 ml-2">
+              <div class="col-md-9 col-9 col-lg-9 col-xl-10">
+                <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
+                  id="comment_{{$post->id}}" placeholder="Write Comment...">
+                <input type="hidden" name="post_id" value="{{$post->id}}">
+                @if ($errors->has('comment'))
+                <div class="invalid-feedback">{{$errors->first('comment') }}</div>
+                @endif
+              </div>
+              <div class="col-2 col-md-2  col-lg-2 col-xl-1 p-0">
+                <button class="w-100 btn btn-primary" data-toggle="tooltip" data-placement="top" title="Comment"><i
+                    class="fas fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </article>
     @foreach($post->comments as $comment)
     <div class="commend mb-3">
@@ -28,7 +42,7 @@
           <div class="author">
             <a href="/author/{{$comment->user->userName}}">
               <div class="author-img">
-                <img src="/storage/users/{{$comment->user->img}}" alt="authorImg">
+                <img src="/storage/users/{{$comment->user->img}}">
               </div>
               <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
                 {{$comment->user->name}}
@@ -44,8 +58,8 @@
               onclick="event.preventDefault();document.getElementById('delete-comment_{{$comment->id}}').submit();">
               <i class="lni-trash trash"></i>
             </a>
-            <form id="delete-comment_{{$comment->id}}" action="/blog/{{$post->id}}/comments/{{$comment->id}}" method="post"
-              style="display: none;">
+            <form id="delete-comment_{{$comment->id}}" action="/blog/{{$post->id}}/comments/{{$comment->id}}"
+              method="post" style="display: none;">
               @method('DELETE')
               @csrf
             </form>

@@ -84,7 +84,7 @@ class UserController extends Controller
       'email' => ['string', 'email', 'max:255'],
       'img' => 'required|mimes:jpeg,jpg,png,svg',
       'userName' => ['alpha_dash'],
-      'number' => ['numeric','min:11', 'starts_with:01'],
+      'number' => ['numeric','min:11','max:13', 'starts_with:01'],
       'education' => ['string', 'min:5', 'max:255'],
       'birth' => ['date'],
     ]);
