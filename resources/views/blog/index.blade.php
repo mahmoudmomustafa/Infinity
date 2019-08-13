@@ -45,7 +45,7 @@
                                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                                         {{-- edit form --}}
                                         <button type="button" class="dropdown-item" data-toggle="modal"
-                                            data-target="#editForm" style="cursor:pointer">
+                                            data-target="#editForm" style="cursor:pointer;">
                                             Edit
                                         </button>
                                         {{-- delete form --}}

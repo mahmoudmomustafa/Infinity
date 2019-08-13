@@ -80,4 +80,7 @@ $(document).ready(function () {
             $('.posts').hide();            
         }
     });
+    $('.lni-angle-double-down').on('click',function(){
+        $('.navbar-toggler').toggleClass('rotate');
+    });
 });

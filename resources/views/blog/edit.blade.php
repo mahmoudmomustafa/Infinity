@@ -15,24 +15,6 @@
               Edit Profile :
             </h2>
             <ul class="w-100 post-meta-group userInfo ml-2">
-              {{-- profile img --}}
-              <li class="d-flex inf-list m-4">
-                <h5 class="font-weight-bold pt-1 mr-2" style="width:100px;">Profile Pic</h5>
-                <form action="/author/{{$author->userName}}" class="w-100" method="post" enctype="multipart/form-data">
-                  <div class="input-group mb-3">
-                    @csrf
-                    @method('PATCH')
-                    <input type="file" class="form-control-file w-auto {{$errors->has('img') ? 'has-error' : ''}}"
-                  name="img" placeholder="Profile Pic" value="{{$author->img}}">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-success">Update</button>
-                    </div>
-                  </div>
-                  @if ($errors->has('img'))
-                  <span class="help-block">{{$errors->first('img') }}</span>
-                  @endif
-                </form>
-              </li>
               {{-- Name --}}
               <li class="d-flex inf-list mx-4 mb-4">
                 <h5 class="font-weight-bold pt-1 mr-2" style="width:100px;">Full Name</h5>

@@ -21,9 +21,9 @@
 </head>
 
 <body>
-  {{-- <div class="loading">
+  <div class="loading">
     <img src="/img/infinity.svg" alt="loading" width="150">
-  </div> --}}
+  </div>
   <div id="app" style="min-height:100vh">
     <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark shadow">
       <div class="container">
@@ -32,7 +32,7 @@
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-          <span class="navbar-toggler-icon"></span>
+          <i class="lni-angle-double-down"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

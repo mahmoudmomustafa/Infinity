@@ -10,12 +10,54 @@
             {{-- author name --}}
             <ul class="w-100 post-meta-group userInfo">
               <li class="mb-4">
-                <div class="author">
+                <div class="author" style="position: relative;">
                   <a href="/author/{{$author->userName}}">
-                    <div class="author-img">
+                    <div class="author-img" style="width:80px;height:80px;">
                       <img src="/storage/users/{{$author->img}}" class="img-fluid" alt="Responsive image">
                     </div>
                   </a>
+                  @if (Auth::user()->id == $author->id)
+                  {{-- update img --}}
+                  <div class="upload" data-toggle="tooltip" data-placement="bottom" title="Update Image">
+                    <button type="button" class="dropdown-item p-1" data-toggle="modal" data-target="#uploadImg"
+                      style="cursor:pointer;background: transparent;">
+                      <i class="fas fa-camera-retro m-0"></i>
+                    </button>
+                  </div>
+                  <!-- Edit Modal -->
+                  <div class="modal fade" id="uploadImg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class=" modal-dialog content" role="document">
+                      <div class="modal-content" style="border:none">
+                        <h5 class="modal-title p-4 font-weight-bold"
+                          style="color:#1d68a7;padding-bottom:.5rem !important;">Update Profile Pic
+                        </h5>
+                        <div class="modal-body">
+                          <form action="/author/{{$author->userName}}" class="w-100" method="post"
+                            enctype="multipart/form-data">
+                            @method('patch')
+                            @csrf
+                            {{-- description --}}
+                            <div class="form-group {{$errors->has('description') ? 'has-error' : ''}}">
+                              <div class="col">
+                                <input type="file"
+                                  class="form-control-file w-auto {{$errors->has('img') ? 'has-error' : ''}}" name="img"
+                                  placeholder="Profile Pic" value="{{$author->img}}">
+                              </div>
+                              @if ($errors->has('description'))
+                              <span class="help-block">{{$errors->first('description') }}</span>
+                              @endif
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save
+                                changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  @endif
                   <h3 class="font-weight-bold mt-4" style="color:#1d68a7;">
                     {{$author->name}}
                     <small>{ {{$author->userName}} }</small>
