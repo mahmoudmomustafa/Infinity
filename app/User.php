@@ -10,7 +10,8 @@ use Laratrust\Traits\LaratrustUserTrait;
 use App\Like;
 use Carbon\Carbon;
 
-class User extends Authenticatable implements MustVerifyEmail
+// class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
     use LaratrustUserTrait;

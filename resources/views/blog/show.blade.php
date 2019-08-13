@@ -21,11 +21,11 @@
                   </a>
                 </div>
               </li>
-              <span class="float-right mr-1">
-                <li class="tag">
+              <div class="float-right mr-1">
+                <li class="tag mt-1">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                 </li>
-                @if ($post->author->id == Auth::user()->id)
+                @canany(['update', 'delete'], $post)
                 <li class="dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" v-pre><span class="caret more-icon"><i
@@ -42,15 +42,17 @@
                                                    document.getElementById('delete-form-{{$post->id}}').submit();">
                       {{ __('Delete') }}
                     </a>
-                    <form id="delete-form-{{$post->id}}" action="/blog/{{$post->id}}" method="POST" style="display: none;">
+                    <form id="delete-form-{{$post->id}}" action="/blog/{{$post->id}}" method="POST"
+                      style="display: none;">
                       @method('DELETE')
                       @csrf
                     </form>
                   </div>
                 </li>
-                @endif
-              </span>
+                @endcanany
+              </div>
             </ul>
+            @can('update', $post)
             <!-- Edit Modal -->
             <div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-hidden="true">
               <div class=" modal-dialog content" role="document">
@@ -99,6 +101,7 @@
                 </div>
               </div>
             </div>
+            @endcan
             @if (!is_null($post->image))
             <div class="img mt-2">
               <img src="/storage/posts/{{ $post->image }}" class="img-thumbnail">

@@ -35,7 +35,6 @@ class BlogController extends Controller
             'description' => 'required|max:150',
             // 'image' => 'reuired|mimes:jpg,jpeg,png,svg',
             'image' => 'mimes:jpeg,jpg,png,svg',
-            'category_id' => 'required',
         ]);
         $data = $request->all();
         if ($request->hasFile('image')) {
@@ -67,22 +66,22 @@ class BlogController extends Controller
         return view('blog.show', compact('post', 'categories'));
     }
     // edit
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = POST::findOrFail($id);
-        $this->authorize('view', $post);
+        $this->authorize('update', $post);
         return view('/edit', compact('post'));
     }
     // update method
-    public function update($id)
+    public function update(Post $post)
     {
-        POST::findOrFail($id)->update(request()->all());
+        $this->authorize('update', $post);
+        $post->update(request()->all());
         return back()->with('message', 'Post was Updated');
     }
     // delete post
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = POST::findOrFail($id);
+        $this->authorize('delete', $post);
         $post->delete();
         return redirect('/')->with('message', 'Post was Deleted');
     }

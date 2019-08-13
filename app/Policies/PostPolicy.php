@@ -9,13 +9,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class PostPolicy
 {
     use HandlesAuthorization;
-
-    public function before($user, $ability)
-    {
-        if ($user->isAdmin()) {
-            return true;
-        }
-    }
+    
     /**
      * Determine whether the user can view the post.
      *
@@ -25,7 +19,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        return $post->author_id == $user->id;
+        //
     }
 
     /**
@@ -48,7 +42,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $post->author_id == $user->id;
+        return $user->id == $post->author_id;
     }
 
     /**
@@ -60,7 +54,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        //
+        return $user->id == $post->author_id;   
     }
 
     /**

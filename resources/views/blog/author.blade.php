@@ -52,21 +52,12 @@
       @endif
       {{-- session message --}}
       @if (session('message'))
-      <div class="content">
-        <div class="alert alert-info">
-          {{ session('message')}}
-        </div>
+      <div class="alert alert-info" role="alert">
+        {{ session('message')}}
       </div>
       @endif
-      @if (!$posts->count())
-      <div class="contnet">
-        <div class="alert alert-warning">
-          <p>No Posts Yet</p>
-        </div>
-      </div>
-      @else
       {{-- authors posts --}}
-      @foreach ($posts as $post)
+      @forelse ($posts as $post)
       <div class="content mb-3 content-post">
         <article class="post-item">
           <div class="post-meta p-3">
@@ -76,7 +67,7 @@
                 <div class="author">
                   <a href="/author/{{$post->author->userName}}">
                     <div class="author-img">
-                      <img src="/storage/users/{{$author->img}}" alt="authorImg">
+                      <img src="/storage/users/{{$author->img}}" alt="">
                     </div>
                     <h5 class="float-left font-weight-bold " style="color:#1d68a7;">
                       {{$post->author->name}}
@@ -85,22 +76,11 @@
                   </a>
                 </div>
               </li>
-              <div class="float-right">
-                <li>
-                  <small>{{$post->likes->count()}}</small>
-                </li>
-                <li class="like">
-                  <form action="/blog/{{$post->id}}/likes" method="POST">
-                    @csrf
-                    <button type="submit" class="like">
-                      <i class="lni-heart-filled {{$post->checkUser()}}"></i>
-                    </button>
-                  </form>
-                </li>
-                <li class="tag">
+              <div class="float-right mr-1">
+                <li class="tag mt-1">
                   <a href="/category/{{$post->category->slug}}">{{$post->category->title}}</a>
                 </li>
-                @if($post->author->id == Auth::user()->id)
+                @canany(['update', 'delete'], $post)
                 <li class="dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" v-pre><span class="caret more-icon"><i
@@ -125,9 +105,10 @@
                     </form>
                   </div>
                 </li>
-                @endif
+                @endcanany
               </div>
             </ul>
+            @can('update', $post)
             <!-- Edit Modal -->
             <div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-hidden="true">
               <div class=" modal-dialog content" role="document">
@@ -175,6 +156,7 @@
                 </div>
               </div>
             </div>
+            @endcan
           </div>
           {{-- author post --}}
           <div class="post-item-body">
@@ -196,8 +178,11 @@
           @include('blog.comment')
         </article>
       </div>
-      @endforeach
-      @endif
+      @empty
+      <div class="alert alert-warning" role="alert">
+        NO Posts Yet..
+      </div>
+      @endforelse
       <nav>
         {{$posts->links()}}
       </nav>

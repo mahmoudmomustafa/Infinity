@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
+use League\OAuth1\Client\Server\User;
 
 class LoginController extends Controller
 {
@@ -38,24 +39,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     // github
-    public function redirectToProvider()
-    {
-        return Socialite::driver('github')->redirect();
-    }
-    public function handleProviderCallback()
-    {
-        try {
-            $user = Socialite::driver('github')->user();
-        } catch (Exception $e) {
-            return Redirect::to('auth/github');
-        }
+    // public function redirectToProvider()
+    // {
+    //     return Socialite::driver('github')->redirect();
+    // }
+    // public function handleProviderCallback()
+    // {
+    //     $user = Socialite::driver('github')->user();
+    //     // $authUser = User::firstOrNew(['github_id'=>$user->id]);
+    //     dd($user);
+    //     // $authUser->name=$user->name;
+    //     // $authUser->email=$user->email;
 
-        $authUser = $this->findOrCreateUser($user);
+    //     // $authUser->save();
 
-        Auth::login($authUser, true);
-
-        return Redirect::to('home');
-    }
+    //     // auth()->login($authUser);
+        
+    //     // return redirect('/');
+    // }
 
     /**
      * Return user if exists; create and return if doesn't
@@ -63,17 +64,17 @@ class LoginController extends Controller
      * @param $githubUser
      * @return User
      */
-    private function findOrCreateUser($githubUser)
-    {
-        if ($authUser = User::where('github_id', $githubUser->id)->first()) {
-            return $authUser;
-        }
+    // private function findOrCreateUser($githubUser)
+    // {
+    //     if ($authUser = User::where('github_id', $githubUser->id)->first()) {
+    //         return $authUser;
+    //     }
 
-        return User::create([
-            'name' => $githubUser->name,
-            'email' => $githubUser->email,
-            'github_id' => $githubUser->id,
-            'avatar' => $githubUser->avatar
-        ]);
-    }
+    //     return User::create([
+    //         'name' => $githubUser->name,
+    //         'email' => $githubUser->email,
+    //         'github_id' => $githubUser->id,
+    //         'avatar' => $githubUser->avatar
+    //     ]);
+    // }
 }

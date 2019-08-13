@@ -51,7 +51,7 @@
             </a>
           </div>
         </li>
-        @if ($comment->user->id == Auth::user()->id)
+        @can('delete', $comment)
         <div class="float-right mr-1">
           <li>
             <a href="/blog/{{$post->id}}/comments/{{$comment->id}}"
@@ -65,7 +65,7 @@
             </form>
           </li>
         </div>
-        @endif
+        @endcan
       </ul>
       <div class="comment">
         <p class="mb-0">

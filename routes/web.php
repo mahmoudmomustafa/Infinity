@@ -38,5 +38,5 @@ Route::post('/blog/{post}/likes', 'BlogController@likePost');
 Route::delete('/blog/{post}/likes', 'BlogController@likePost');
 
 // github
-Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+// Route::get('auth/github', 'Auth\LoginController@redirectToProvider');
+// Route::get('auth/github/callback', 'Auth\LoginController@handleProviderCallback');

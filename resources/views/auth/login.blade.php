@@ -60,7 +60,7 @@
 
                                 </div>
                             </div>
-                            <a href="login/github">github</a>
+                            {{-- <a href="auth/github/callback">github</a> --}}
                             <div class="form-group row input">
                                 <div class="col-md-5 m-auto">
                                     <button type="submit" class="w-100 btn btn-success">
