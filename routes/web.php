@@ -20,9 +20,11 @@ Route::delete('/blog/{post}', 'BlogController@destroy');
 Route::get('/blog/{post}', 'BlogController@show');
 
 Route::get('/category/{category}', 'BlogController@category');
-
 Route::resource('/author', 'UserController');
+
+// Route::resource('/author', 'UserController')->middleware('verified');
 Auth::routes();
+// Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard')->middleware('checkrole');
 Route::resource('/dashboard/posts', 'Backend\BlogController')->middleware('checkrole');
@@ -34,3 +36,7 @@ Route::delete('/blog/{post}/comments/{comment}', 'CommentsController@destroy');
 
 Route::post('/blog/{post}/likes', 'BlogController@likePost');
 Route::delete('/blog/{post}/likes', 'BlogController@likePost');
+
+// github
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

@@ -8,31 +8,26 @@ $(document).ready(function () {
         $('body').css('overflow', 'auto');
     });
     // post ajax
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $('#post-frm').on('submit', function () {
-        event.preventDefault();
-        // post data
-        $.ajax({
-                url: "/",
-                method: 'post',
-                dataType: 'json',
-                data: {
-                    title: $("input[name=title]").val(),
-                    description: $("#description").val(),
-                    category_id: $("#category_id").val()
-                },
-                success: function (response) {
-                    console.log(response);
-                },
-            })
-            .fail(function (error) {
-                console.log(error);
-            })
-    });
+    // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
+    // $('#likable').on('submit', function () {
+    //     event.preventDefault();
+    //     // post data
+    //     $.ajax({
+    //             url: "/blog/{{$post->id}}/likes",
+    //             method: 'post',
+    //             dataType: 'json',
+    //             success: function (response) {
+    //                 console.log(response);
+    //             },
+    //         })
+    //         .fail(function (error) {
+    //             console.log(error);
+    //         })
+    // });
     //display category on select
     $('.tags').hide();
     $('#category_id').change(function () {

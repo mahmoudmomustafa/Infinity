@@ -135,6 +135,7 @@ return [
     */
 
     'providers' => [
+        \SocialiteProviders\Manager\ServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         /*

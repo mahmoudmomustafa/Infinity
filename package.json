@@ -23,6 +23,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "tailwindcss": "^1.1.1",
         "wow.js": "^1.2.2"
     }
 }

@@ -19,6 +19,7 @@
         "nesbot/carbon": "^2.22",
         "overtrue/laravel-follow": "^1.1",
         "santigarcor/laratrust": "3.2.*",
+        "socialiteproviders/github": "dev-master",
         "socialiteproviders/google": "^3.0"
     },
     "require-dev": {
