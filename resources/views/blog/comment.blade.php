@@ -17,13 +17,16 @@
           <form action="/blog/{{$post->id}}/comments" method="post">
             @csrf
             <div class="form-row justify-content-start mx-0 ml-2">
-              <div class="col-md-9 col-9 col-lg-9 col-xl-10">
+              <div class="col-md-9 col-9 col-lg-9 col-xl-10" style="position:relative">
                 <input class="form-control {{$errors->has('comment') ? 'is-invalid' : ''}}" type="text" name="body"
                   id="comment_{{$post->id}}" placeholder="Write Comment...">
                 <input type="hidden" name="post_id" value="{{$post->id}}">
                 @if ($errors->has('comment'))
                 <div class="invalid-feedback">{{$errors->first('comment') }}</div>
                 @endif
+                <div class="count tag">
+                <small><span>{{$post->comments->count()}} Comments</span></small>
+                </div>
               </div>
               <div class="col-2 col-md-2  col-lg-2 col-xl-1 p-0">
                 <button class="w-100 btn btn-primary" data-toggle="tooltip" data-placement="top" title="Comment"><i

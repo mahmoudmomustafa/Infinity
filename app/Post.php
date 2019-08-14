@@ -2,12 +2,14 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 class Post extends Model
 {
+
     protected $fillable = ['title', 'slug', 'description', 'image', 'category_id', 'excerpt', 'view_count', 'author_id', 'updated_at', 'created_at'];
 
     public function author()

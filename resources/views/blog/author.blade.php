@@ -12,9 +12,19 @@
               <li class="mb-4">
                 <div class="author" style="position: relative;">
                   <a href="/author/{{$author->userName}}">
-                    <div class="author-img" style="width:80px;height:80px;">
+                    <div class="author-img m-0" style="width:80px;height:80px;">
                       <img src="/storage/users/{{$author->img}}" class="img-fluid" alt="Responsive image">
                     </div>
+                    <h3 class="font-weight-bold mt-4 ml-3" style="color:#1d68a7;">
+                      {{$author->name}}
+                      <small>{ {{$author->userName}} }</small>
+                    </h3>
+                    {{-- <div class="tagr">
+                          <form action="/author/{{$author->id}}/follow" method="post">
+                            @csrf
+                            <button type="submit">Follow</button>
+                          </form>
+                    </div> --}}
                   </a>
                   @if (Auth::user()->id == $author->id)
                   {{-- update img --}}
@@ -58,10 +68,6 @@
                     </div>
                   </div>
                   @endif
-                  <h3 class="font-weight-bold mt-4" style="color:#1d68a7;">
-                    {{$author->name}}
-                    <small>{ {{$author->userName}} }</small>
-                  </h3>
                   <span class="tag">
                     {{$author->posts()->count()}} Posts
                   </span>

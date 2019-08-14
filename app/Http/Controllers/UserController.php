@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -65,7 +66,7 @@ class UserController extends Controller
   public function edit(User $author)
   {
     $this->authorize('update', $author);
-    abort_if($author->id !== auth()->id(),403);
+    abort_if($author->id !== auth()->id(), 403);
     return view('blog.edit', compact('author'));
   }
 
@@ -84,7 +85,7 @@ class UserController extends Controller
       'email' => ['string', 'email', 'max:255'],
       'img' => 'required|mimes:jpeg,jpg,png,svg',
       'userName' => ['alpha_dash'],
-      'number' => ['numeric','min:11','max:13', 'starts_with:01'],
+      'number' => ['numeric', 'min:11', 'max:13', 'starts_with:01'],
       'education' => ['string', 'min:5', 'max:255'],
       'birth' => ['date'],
     ]);
@@ -101,6 +102,7 @@ class UserController extends Controller
     return back();
   }
 
+
   /**
    * Remove the specified resource from storage.
    *
@@ -110,5 +112,14 @@ class UserController extends Controller
   public function destroy($id)
   {
     //
+  }
+  //follow
+  public function UserFollow(User $user, $id)
+  {
+    // $following = new User($id);
+    // // Auth::user()->follow($id);
+
+    // // $user->following()->count(); // 1
+    // return dd($id);
   }
 }

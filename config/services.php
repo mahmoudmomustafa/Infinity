@@ -13,16 +13,11 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
-    // github login
-    'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),
-        'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect' => env('GITHUB_URL'),
-    ],
-    'github' => [
-        'client_id' => env('3e06ca85e0ddaade9986'),
-        'client_secret' => env('3187da280c9acfec723beedbc716f0fe54f7c8b6'),
-        'redirect' => env('http://localhost:8000/auth/github/callback')
+    // google login
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => 'http://localhost:8000/login/google/callback',
     ],
 
     'mailgun' => [

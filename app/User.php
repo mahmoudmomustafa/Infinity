@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Rennokki\Befriended\Traits\Follow;
+use Rennokki\Befriended\Contracts\Following;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use GrahamCampbell\Markdown\Facades\Markdown;
@@ -10,11 +13,12 @@ use Laratrust\Traits\LaratrustUserTrait;
 use App\Like;
 use Carbon\Carbon;
 
+
+// class User extends Authenticatable implements ReacterableContract
 // class User extends Authenticatable implements MustVerifyEmail
-class User extends Authenticatable
-{
-    use Notifiable;
-    use LaratrustUserTrait;
+// class User extends Authenticatable
+class User extends Authenticatable implements Following {
+    use Follow,Notifiable ,LaratrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'userName', 'img', 'role_id','number','birth','education','github_id'
+        'name', 'email', 'password', 'userName', 'img', 'role_id','number','birth','education','google_id'
     ];
 
     /**

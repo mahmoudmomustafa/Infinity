@@ -394,6 +394,7 @@ ul.tags li a:hover {
 }
 
 .form-control {
+    padding-right: 90px;
     border-radius: 10px;
     box-shadow: 0 0 15px gainsboro;
     background: linear-gradient(45deg, #86868673, #27272736);
@@ -667,8 +668,8 @@ i.trash:hover {
 
 .upload {
     position: absolute;
-    top: 30%;
-    left: 55%;
+    top: 37%;
+    left: 15%;
     font-size: 20px;
     transition: 500ms ease;
     cursor: pointer;
@@ -680,6 +681,13 @@ i.trash:hover {
 
 .upload:hover {
     color: #1d68a7;
+}
+
+.count{
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    background: #f8fafc;
 }
 
 .userInfo {

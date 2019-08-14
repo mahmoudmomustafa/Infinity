@@ -135,7 +135,6 @@ return [
     */
 
     'providers' => [
-        \SocialiteProviders\Manager\ServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         /*
@@ -169,6 +168,7 @@ return [
          */
         Laratrust\LaratrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Rennokki\Befriended\BefriendedServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -192,7 +192,6 @@ return [
     */
 
     'aliases' => [
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,

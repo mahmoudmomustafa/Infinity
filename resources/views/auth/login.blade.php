@@ -18,8 +18,8 @@
                             <div class="form-group input">
                                 <label for="email" class="font-weight-bold"
                                     style="color:#ccdacd">{{ __('EMail Address') }}</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
-                                    value="{{ old('email') }}">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" id="email" value="{{ old('email') }}">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -60,7 +60,6 @@
 
                                 </div>
                             </div>
-                            {{-- <a href="auth/github/callback">github</a> --}}
                             <div class="form-group row input">
                                 <div class="col-md-5 m-auto">
                                     <button type="submit" class="w-100 btn btn-success">

@@ -25,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create(Category $category)
     {
-        // return view('backend.categories.create', compact('category'));
+        //
     }
 
     /**

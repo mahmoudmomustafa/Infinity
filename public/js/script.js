@@ -1,4 +1,4 @@
-// $('body').css('overflow', 'hidden');
+$('body').css('overflow', 'hidden');
 $(document).ready(function () {
     // hide loading
     $(window).on('load', function () {
