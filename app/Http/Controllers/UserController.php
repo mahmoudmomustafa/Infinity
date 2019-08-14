@@ -113,13 +113,16 @@ class UserController extends Controller
   {
     //
   }
-  //follow
-  public function UserFollow(User $user, $id)
+  public function ajaxRequest(Request $request)
   {
-    // $following = new User($id);
-    // // Auth::user()->follow($id);
-
-    // // $user->following()->count(); // 1
-    // return dd($id);
+    $request->all();
+    // $user = User::find($request->author_id);
+    // auth()->user()->toggleFollow($user);
+    // $user = Auth::user()->id;
+    $user = Auth::user()->find();
+    $author = $request['author_id'];
+    $user->follow(User::find($author));
+    // return back(); 
+    return dd($user,$author);
   }
 }

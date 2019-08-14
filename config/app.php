@@ -168,7 +168,7 @@ return [
          */
         Laratrust\LaratrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Rennokki\Befriended\BefriendedServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
         /*
          * Application Service Providers...
          */

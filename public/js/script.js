@@ -7,27 +7,6 @@ $(document).ready(function () {
         }, 2500);
         $('body').css('overflow', 'auto');
     });
-    // post ajax
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
-    // $('#likable').on('submit', function () {
-    //     event.preventDefault();
-    //     // post data
-    //     $.ajax({
-    //             url: "/blog/{{$post->id}}/likes",
-    //             method: 'post',
-    //             dataType: 'json',
-    //             success: function (response) {
-    //                 console.log(response);
-    //             },
-    //         })
-    //         .fail(function (error) {
-    //             console.log(error);
-    //         })
-    // });
     //display category on select
     $('.tags').hide();
     $('#category_id').change(function () {

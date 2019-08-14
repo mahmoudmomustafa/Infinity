@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Rennokki\Befriended\Traits\Follow;
-use Rennokki\Befriended\Contracts\Following;
-
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use GrahamCampbell\Markdown\Facades\Markdown;
@@ -17,8 +16,8 @@ use Carbon\Carbon;
 // class User extends Authenticatable implements ReacterableContract
 // class User extends Authenticatable implements MustVerifyEmail
 // class User extends Authenticatable
-class User extends Authenticatable implements Following {
-    use Follow,Notifiable ,LaratrustUserTrait;
+class User extends Authenticatable {
+    use CanFollow, CanBeFollowed,Notifiable ,LaratrustUserTrait;
 
     /**
      * The attributes that are mass assignable.

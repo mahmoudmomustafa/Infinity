@@ -19,12 +19,15 @@
                       {{$author->name}}
                       <small>{ {{$author->userName}} }</small>
                     </h3>
-                    {{-- <div class="tagr">
-                          <form action="/author/{{$author->id}}/follow" method="post">
-                            @csrf
-                            <button type="submit">Follow</button>
-                          </form>
-                    </div> --}}
+                    <div class="tagr">
+                      <form id="followed" method="POST" action="/author/follow">
+                      @csrf
+                      <input type="hidden" name="author_id" value="{{$author->id}}">
+                      <button type="submit" class="btn btn-primary">
+                        Follow
+                      </button>
+                      </form>
+                    </div>
                   </a>
                   @if (Auth::user()->id == $author->id)
                   {{-- update img --}}
