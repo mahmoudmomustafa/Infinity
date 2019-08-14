@@ -38,18 +38,18 @@
       </div>
     </article>
     @foreach($post->comments as $comment)
-    <div class="commend mb-3">
+    <div class="commend mb-2">
       {{-- author name --}}
       <ul class="post-meta-group">
         <li>
           <div class="author">
             <a href="/author/{{$comment->user->userName}}">
-              <div class="author-img">
+              <div class="author-img" style="width:40px;height:40px">
                 <img src="/storage/users/{{$comment->user->img}}">
               </div>
-              <h6 class="float-left font-weight-bold " style="color:#1d68a7;">
+              <h6 class="float-left font-weight-bold p-2">
                 {{$comment->user->name}}
-                <span style="font-size:10px;font-weight:100;color:gray;">{{$comment->date}}</span>
+                <span style="font-size:10px;font-weight:100;color:gray;"> | {{$comment->date}}</span>
               </h6>
             </a>
           </div>

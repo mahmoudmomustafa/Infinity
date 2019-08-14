@@ -494,10 +494,10 @@ span.required {
     font-size: calc(1vw + 12px);
 }
 
-.comment-body h6 {
+/* .comment-body h6 {
     padding: 10px;
     display: inline-grid;
-}
+} */
 
 .btn-add {
     background: linear-gradient(65deg, #5E52F6 0, #8B82F9 100%);
