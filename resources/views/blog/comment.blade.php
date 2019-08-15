@@ -37,7 +37,7 @@
         </div>
       </div>
     </article>
-    @foreach($post->comments as $comment)
+    @foreach (Request::is('/') ? $post->comments->take(1) : $post->comments as $comment)
     <div class="commend mb-2">
       {{-- author name --}}
       <ul class="post-meta-group">
@@ -70,12 +70,21 @@
         </div>
         @endcan
       </ul>
-      <div class="comment">
-        <p class="mb-0">
-          {{$comment->body}}
-        </p>
-      </div>
+      {{-- like comment --}}
+      {{-- <div class="like d-flex">
+        <form id="likable" action="/comments/{{$comment->id}}/likes" method="POST">
+      @csrf
+      <button class="like" data-toggle="tooltip" data-placement="left" title="{{$comment->likes->count()}} Likes">
+        <i class="lni-heart-filled {{$comment->checkUser()}}"></i> like
+      </button>
+      </form>
+    </div> --}}
+    <div class="comment">
+      <p class="mb-0">
+        {{$comment->body}}
+      </p>
     </div>
-    @endforeach
   </div>
+  @endforeach
+</div>
 </div>

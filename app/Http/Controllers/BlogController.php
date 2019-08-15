@@ -15,8 +15,8 @@ class BlogController extends Controller
     //index function
     public function index()
     {    
-        $posts = Auth::user()->followingPosts()->orderBy('created_at', 'desc')->paginate(5);
-        // $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        // $posts = Auth::user()->followingPosts()->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('blog.index', compact('posts'));
     }
     // create posts
