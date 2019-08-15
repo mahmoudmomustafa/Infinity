@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Overtrue\LaravelFollow\Traits\CanFollow;
-use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use GrahamCampbell\Markdown\Facades\Markdown;
@@ -11,13 +9,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
 use App\Like;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
+use Overtrue\LaravelFollow\Follow;
 
 // class User extends Authenticatable implements ReacterableContract
 // class User extends Authenticatable implements MustVerifyEmail
 // class User extends Authenticatable
-class User extends Authenticatable {
-    use CanFollow, CanBeFollowed,Notifiable ,LaratrustUserTrait;
+class User extends Authenticatable
+{
+    use Notifiable, LaratrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +27,7 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'userName', 'img', 'role_id','number','birth','education','google_id'
+        'name', 'email', 'password', 'userName', 'img', 'role_id', 'number', 'birth', 'education'
     ];
 
     /**
@@ -50,11 +52,6 @@ class User extends Authenticatable {
     public function posts()
     {
         return $this->hasMany(Post::class, 'author_id');
-    }
-    //author bio
-    public function getBioHtmlAttribute()
-    {
-        return $this->bio ? Markdown::convertToHtml($this->bio) : Null;
     }
     public function getRouteKeyName()
     {
@@ -108,4 +105,38 @@ class User extends Authenticatable {
         $current = Carbon::parse($date)->diffForHumans();
         return $current;
     }
+    public function followers()
+    {
+        return $this->morphMany(Follower::class, 'user');
+    }
+    // check follow
+    public function checkFollow($author)
+    {
+        if (Auth::check() && $this->followers()->where(['follower_id' => $author])->exists()) {
+            return true;
+        }
+    }
+    // create delete follow
+    public function toggleFollow($author)
+    {
+        if (!$this->checkFollow($author)) {
+            return $this->followers()->create(['follower_id' => $author]);
+        } else {
+            return $this->followers()->delete();
+        }
+    }
+    // following
+    public function following()
+    {
+        return $this->followers();
+    }
+    // get followed posts
+    public function followingPosts()
+    {
+     //
+    }
+    // public function follower()
+    // {
+    //     return  $this->followers()->where(['follower_id' => $this]);
+    // }
 }

@@ -11,23 +11,28 @@
             <ul class="w-100 post-meta-group userInfo">
               <li class="mb-4">
                 <div class="author" style="position: relative;">
-                  <a href="/author/{{$author->userName}}">
-                    <div class="author-img m-0" style="width:80px;height:80px;">
+                  <a href="/author/{{$author->userName}}" class="mb-3" style="flex-direction:column;align-items:center">
+                    <div class="author-img mb-1" style="width:80px;height:80px;">
                       <img src="/storage/users/{{$author->img}}" class="img-fluid" alt="Responsive image">
                     </div>
-                    <h3 class="font-weight-bold mt-4 ml-3" style="color:#1d68a7;">
+                    <h4 class="font-weight-bold my-2" style="color:#1d68a7;">
                       {{$author->name}}
                       <small>{ {{$author->userName}} }</small>
-                    </h3>
-                    <div class="tagr">
-                      <form id="followed" method="POST" action="/author/follow">
-                      @csrf
-                      <input type="hidden" name="author_id" value="{{$author->id}}">
-                      <button type="submit" class="btn btn-primary">
-                        Follow
-                      </button>
-                      </form>
-                    </div>
+                      {{-- following --}}
+                      @if (Auth::user()->id !== $author->id)
+                      <div class="follow mt-2">
+                        <form id="followed" method="POST" action="/author/{{$author->userName}}/follow">
+                          @csrf
+                          <input type="hidden" name="follower_id" value="{{$author->id}}">
+                          @if (! Auth::user()->checkfollow($author->id))
+                          <button type="submit" class="btn btn-primary">Follow</button>
+                          @else
+                          <button type="submit" class="btn btn-outline-primary">UnFollow</button>
+                          @endif
+                        </form>
+                      </div>
+                      @endif
+                    </h4>
                   </a>
                   @if (Auth::user()->id == $author->id)
                   {{-- update img --}}
@@ -71,15 +76,19 @@
                     </div>
                   </div>
                   @endif
-                  <span class="tag">
-                    {{$author->posts()->count()}} Posts
-                  </span>
-                  <span class="tag">
-                    {{$author->likes->count()}} Likes
-                  </span>
-                  <span class="tag">
-                    {{$author->comments->count()}} Comment
-                  </span>
+                  <div class="tag-info">
+                    <span class="tag">{{$author->following->count()}} Following</span>
+                    <span class="tag">{{$followers->count()}} Followers</span>
+                    <span class="tag">
+                      {{$author->posts()->count()}} Posts
+                    </span>
+                    <span class="tag">
+                      {{$author->likes->count()}} Likes
+                    </span>
+                    <span class="tag">
+                      {{$author->comments->count()}} Comment
+                    </span>
+                  </div>
                 </div>
               </li>
               {{-- posts --}}

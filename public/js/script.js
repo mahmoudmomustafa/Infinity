@@ -1,5 +1,31 @@
 $('body').css('overflow', 'hidden');
 $(document).ready(function () {
+    // ajax like
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // $('#likable').submit(function(event){
+    //     event.preventDefault();
+    //     $.ajax({
+    //         method:'POST',
+    //         type:'json',
+    //         url:'/likes',
+    //         // data:$('#likeable').serialize(),
+    //         data:{
+    //             'post_id' : $('input[name="post_id"]').val(),
+    //             'user_id': $('input[name="user_id"]').val(),
+    //         }
+
+    //     })
+    //     .done(function(success){
+    //         console.log('success');
+    //     })
+    //     .fail(function(error){
+    //         console.log(error);
+    //     })
+    // })
     // hide loading
     $(window).on('load', function () {
         setTimeout(function () {

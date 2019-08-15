@@ -6,8 +6,8 @@
           <div class="like d-flex">
             <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
               @csrf
-              <button type="submit" class="like" data-toggle="tooltip" data-placement="left" title="{{$post->likes->count()}} Likes">
-                <i class="lni-heart-filled {{$post->checkUser()}}"></i>
+              <button class="like" data-toggle="tooltip" data-placement="left" title="{{$post->likes->count()}} Likes">
+                <i class="lni-heart-filled {{$post->checkUser()}}"></i> like
               </button>
             </form>
           </div>
@@ -25,7 +25,7 @@
                 <div class="invalid-feedback">{{$errors->first('comment') }}</div>
                 @endif
                 <div class="count tag">
-                <small><span>{{$post->comments->count()}} Comments</span></small>
+                  <small><span>{{$post->comments->count()}} Comments</span></small>
                 </div>
               </div>
               <div class="col-2 col-md-2  col-lg-2 col-xl-1 p-0">

@@ -34,8 +34,7 @@ Route::resource('/dashboard/users', 'Backend\UsersController')->middleware('admi
 Route::post('/blog/{post}/comments', 'CommentsController@store');
 Route::delete('/blog/{post}/comments/{comment}', 'CommentsController@destroy');
 
-Route::post('/blog/{post}/likes', 'BlogController@likePost');
-Route::delete('/blog/{post}/likes', 'BlogController@likePost');
+Route::post('/likes', 'BlogController@likePost');
+Route::delete('/likes', 'BlogController@likePost');
 
-// Route::post('/author/{author}/follow', 'UserController@UserFollow');
-Route::post('/author/follow', 'UserController@ajaxRequest');
+Route::post('/author/{author}/follow', 'UserController@follow');

@@ -20,25 +20,6 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    //image
-    // public function getImageUrlAttribute($value)
-    // {
-    //     $imageUrl = '';
-    //     if (!is_null($this->image)) {
-    //         $imagePath = public_path() . 'storage/posts' . $this->image;
-    //         if (file_exists($imagePath)) $imageUrl = asset('storage/posts' . $this->image);
-    //     }
-    //     return $imageUrl;
-    // }
-    // markdown html
-    public function getBodyHtmlAttribute()
-    {
-        return $this->description ? Markdown::convertToHtml($this->description) : Null;
-    }
-    public function getExcerptHtmlAttribute()
-    {
-        return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : Null;
-    }
     // popular post
     public function scopePopular($query)
     {

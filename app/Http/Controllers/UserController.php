@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Follower;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -53,8 +54,9 @@ class UserController extends Controller
    */
   public function show(User $author)
   {
+    $followers= Follower::where('follower_id', $author->id)->get();
     $posts = $author->posts()->orderBy('created_at', 'desc')->paginate(5);
-    return view('blog.author', compact('posts', 'author'));
+    return view('blog.author', compact('posts', 'author','followers'));
   }
 
   /**
@@ -113,16 +115,9 @@ class UserController extends Controller
   {
     //
   }
-  public function ajaxRequest(Request $request)
+  public function follow(User $author)
   {
-    $request->all();
-    // $user = User::find($request->author_id);
-    // auth()->user()->toggleFollow($user);
-    // $user = Auth::user()->id;
-    $user = Auth::user()->find();
-    $author = $request['author_id'];
-    $user->follow(User::find($author));
-    // return back(); 
-    return dd($user,$author);
+    auth()->user()->toggleFollow($author->id);
+    return back();
   }
 }

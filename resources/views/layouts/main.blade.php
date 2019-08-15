@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ __('Infinite') }}</title>
-  <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+  {{-- <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet"> --}}
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"> --}}
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  {{-- <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet"> --}}
+  {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+  {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
+  {{-- <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet"> --}}
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> --}}
   <link rel="icon" href="/img/infinity.svg">
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -21,9 +21,9 @@
 </head>
 
 <body>
-  <div class="loading">
+  {{-- <div class="loading">
     <img src="/img/infinity.svg" alt="loading" width="150">
-  </div>
+  </div> --}}
   <div id="app" style="min-height:100vh">
     <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark shadow">
       <div class="container">
@@ -89,12 +89,9 @@
   </div> --}}
   @include('layouts.footer')
   <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="/js/script.js">
-  new WOW().init();
-  </script>
+  <script src="/js/script.js"></script>
 </body>
 
 </html>

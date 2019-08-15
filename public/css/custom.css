@@ -275,6 +275,7 @@ a:hover {
 }
 
 .tag {
+    display: inline-block;
     width: max-content;
     background: #69696929;
     box-shadow: 0 0 5px #0000004d;
@@ -668,8 +669,8 @@ i.trash:hover {
 
 .upload {
     position: absolute;
-    top: 37%;
-    left: 15%;
+    top: 30%;
+    left: 55%;
     font-size: 20px;
     transition: 500ms ease;
     cursor: pointer;
@@ -683,7 +684,7 @@ i.trash:hover {
     color: #1d68a7;
 }
 
-.count{
+.count {
     position: absolute;
     top: -5px;
     right: 10px;
