@@ -122,7 +122,7 @@ class User extends Authenticatable
         if (!$this->checkFollow($author)) {
             return $this->followers()->create(['follower_id' => $author]);
         } else {
-            return $this->followers()->delete();
+            return $this->followers()->where(['follower_id' => $author])->delete();
         }
     }
     // following
@@ -133,10 +133,6 @@ class User extends Authenticatable
     // get followed posts
     public function followingPosts()
     {
-     //
+        $this->with('followers');
     }
-    // public function follower()
-    // {
-    //     return  $this->followers()->where(['follower_id' => $this]);
-    // }
 }

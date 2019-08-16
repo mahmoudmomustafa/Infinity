@@ -23,9 +23,9 @@ class UserController extends Controller
    */
   public function show(User $author)
   {
-    $followers= Follower::where('follower_id', $author->id)->get();
+    $followers = Follower::where('follower_id', $author->id)->get();
     $posts = $author->posts()->orderBy('created_at', 'desc')->paginate(5);
-    return view('blog.author', compact('posts', 'author','followers'));
+    return view('blog.author', compact('posts', 'author', 'followers'));
   }
 
   /**

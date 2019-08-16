@@ -64,11 +64,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $follow = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'userName'=>$data['userName'],
             'password' => Hash::make($data['password']),
         ]);
+        $follow->toggleFollow($follow->id);
+        return $follow;
     }
 }

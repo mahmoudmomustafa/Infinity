@@ -12,7 +12,8 @@
             {{-- include post form --}}
             @include('blog.formPost')
             {{-- authors posts --}}
-            @forelse ($posts as $post)
+            @forelse ($followers as $follower)
+            @forelse ($follower->user->posts as $post)
             <div class="content mb-3 content-post">
                 <article class="post-item">
                     <div class="post-meta p-3" style="padding-bottom: 0 !important;">
@@ -49,8 +50,9 @@
                                             Edit
                                         </button>
                                         {{-- delete form --}}
-                                        <a class="dropdown-item" href="/blog/{{$post->id}}" onclick="event.preventDefault();
-                                                             document.getElementById('delete-form').submit();">
+                                        <a class="dropdown-item" href="/blog/{{$post->id}}"
+                                            onclick="event.preventDefault();
+                                                                             document.getElementById('delete-form').submit();">
                                             {{ __('Delete') }}
                                         </a>
                                         <form id="delete-form" action="/blog/{{$post->id}}" method="POST"
@@ -138,11 +140,16 @@
             </div>
             @empty
             <div class="alert alert-warning" role="alert">
+                Create Your Post Now..
+            </div>
+            @endforelse
+            @empty
+            <div class="alert alert-warning" role="alert">
                 NO Posts Yet..
             </div>
             @endforelse
             <nav>
-                {{$posts->links()}}
+                {{-- {{$posts->links()}} --}}
             </nav>
         </div>
         @include('layouts.sidebar')

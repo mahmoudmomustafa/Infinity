@@ -56,4 +56,8 @@ class Post extends Model
         $current = Carbon::parse($date)->diffForHumans();
         return $current;
     }
+    //posts
+    // public function follower(){
+    //     return $this->belongsTo(Follower::class,'follower_id');
+    // }
 }

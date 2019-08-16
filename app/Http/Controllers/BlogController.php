@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
-use Illuminate\Support\Facades\Auth;
+use App\Follower;
 
 class BlogController extends Controller
 {
@@ -14,10 +15,9 @@ class BlogController extends Controller
     }
     //index function
     public function index()
-    {    
-        // $posts = Auth::user()->followingPosts()->orderBy('created_at', 'desc')->paginate(5);
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        return view('blog.index', compact('posts'));
+    {
+        $followers = Follower::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
+        return view('blog.index', compact('followers'));
     }
     // create posts
     public function create(Post $post)
