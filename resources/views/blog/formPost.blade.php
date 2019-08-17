@@ -20,9 +20,11 @@
             width="30"></label>
         <input type="file" class="{{$errors->has('image') ? 'is-invalid' : ''}}" name="image" id="img-post"
           style="display:none">
-        @if ($errors->has('image'))
-        <span class="help-block">{{$errors->first('image') }}</span>
-        @endif
+        @error('image')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
       {{-- post description --}}
       <div class="form-group">
@@ -30,9 +32,11 @@
           {{-- post img --}}
           <textarea class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" name="description"
             placeholder="Write Post Description Here..." rows="2" style="min-height:100px;"></textarea>
-          @if ($errors->has('description'))
-          <span class="invalid-feedback">{{$errors->first('description') }}</span>
-          @endif
+          @error('description')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
       </div>
       {{-- post category --}}

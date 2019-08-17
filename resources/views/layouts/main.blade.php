@@ -6,14 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ __('Infinite') }}</title>
-  {{-- <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet"> --}}
-  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"> --}}
+  {{-- icons --}}
+  <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
   <!-- Fonts -->
-  {{-- <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet"> --}}
-  {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
-  {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-  {{-- <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet"> --}}
-  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> --}}
+  <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <link rel="icon" href="/img/infinity.svg">
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -84,9 +85,6 @@
       @yield('content')
     </main>
   </div>
-  {{-- <div class="change-color">
-    <img src="/img/moon.svg" width="40">
-  </div> --}}
   @include('layouts.footer')
   <!-- Scripts -->
   <script src="/js/jquery-3.3.1.min.js"></script>

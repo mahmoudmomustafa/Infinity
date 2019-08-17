@@ -7,7 +7,7 @@
             <form id="likable" action="/blog/{{$post->id}}/likes" method="POST">
               @csrf
               <button class="like" data-toggle="tooltip" data-placement="left" title="{{$post->likes->count()}} Likes">
-                <i class="lni-heart-filled {{$post->checkUser()}}"></i> like
+                <i class="lni-heart-filled {{$post->checkUser()}}"></i>
               </button>
             </form>
           </div>
@@ -70,21 +70,12 @@
         </div>
         @endcan
       </ul>
-      {{-- like comment --}}
-      {{-- <div class="like d-flex">
-        <form id="likable" action="/comments/{{$comment->id}}/likes" method="POST">
-      @csrf
-      <button class="like" data-toggle="tooltip" data-placement="left" title="{{$comment->likes->count()}} Likes">
-        <i class="lni-heart-filled {{$comment->checkUser()}}"></i> like
-      </button>
-      </form>
-    </div> --}}
-    <div class="comment">
-      <p class="mb-0">
-        {{$comment->body}}
-      </p>
+      <div class="comment">
+        <p class="mb-0">
+          {{$comment->body}}
+        </p>
+      </div>
     </div>
+    @endforeach
   </div>
-  @endforeach
-</div>
 </div>

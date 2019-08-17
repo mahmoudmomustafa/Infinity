@@ -64,9 +64,8 @@
       </div>
     </div>
   </div>
-
   <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 

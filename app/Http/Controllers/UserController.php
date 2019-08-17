@@ -21,6 +21,16 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+  public function index()
+  {
+    return abort(404);
+  }
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
   public function show(User $author)
   {
     $followers = Follower::where('follower_id', $author->id)->get();

@@ -35,11 +35,11 @@
                                 <input id="userName" type="text"
                                     class="form-control @error('userName') is-invalid @enderror" name="userName"
                                     value="{{ old('userName') }}" required autocomplete="userName">
-                                @if ($errors->has('userName'))
+                                @error('userName')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{$errors->first('userName') }}</strong>
+                                    <strong>{{ $message }}</strong>
                                 </span>
-                                @endif
+                                @enderror
                             </div>
                             {{-- email --}}
                             <div class="form-group input">

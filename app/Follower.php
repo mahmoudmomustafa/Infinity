@@ -20,5 +20,4 @@ class Follower extends Model
     public function tag(){
         return $this->belongsTo(Category::class);
     }
-
 }
