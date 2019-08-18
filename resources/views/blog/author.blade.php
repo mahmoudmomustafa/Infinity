@@ -77,8 +77,8 @@
                   </div>
                   @endif
                   <div class="tag-info">
-                    <span class="tag">{{$author->following->count()}} Following</span>
-                    <span class="tag">{{$followers->count()}} Followers</span>
+                    <span class="tag">{{$author->following->count()-1}} Following</span>
+                    <span class="tag">{{$followers->count()-1}} Followers</span>
                     <span class="tag">
                       {{$author->posts()->count()}} Posts
                     </span>

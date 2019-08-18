@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 use Overtrue\LaravelFollow\Follow;
 
-// class User extends Authenticatable implements ReacterableContract
-// class User extends Authenticatable implements MustVerifyEmail
 // class User extends Authenticatable
 class User extends Authenticatable
 {

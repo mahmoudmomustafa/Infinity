@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div id="app" style="min-height:100vh;min-width:max-content;">
+    <div id="app" style="min-height:100vh;min-width:100%;">
         {{-- <main> --}}
         @yield('content')
         {{-- </main> --}}

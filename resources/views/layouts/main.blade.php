@@ -43,9 +43,9 @@
               @csrf
               <div class="form-inline">
                 <input type="search" placeholder="Search" aria-label="Search" name="search" id="search" class="form-control  mr-sm-2" style="box-shadow:none">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </div>
             </form>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">

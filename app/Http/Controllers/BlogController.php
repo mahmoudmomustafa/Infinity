@@ -53,11 +53,12 @@ class BlogController extends Controller
     // category
     public function category(Category $category)
     {
+        $categories = Category::get();
         $posts = $category->posts()
             ->with('author')
-            ->paginate(3);
+            ->get();
 
-        return view('blog.index', compact('posts'));
+        return view('blog.index', compact('posts', 'categories'));
     }
     // show function
     public function show(Post $post)
