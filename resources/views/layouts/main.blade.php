@@ -39,6 +39,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
+            <form action="/search" method="GET">
+              @csrf
+              <div class="form-inline">
+                <input type="search" placeholder="Search" aria-label="Search" name="search" id="search" class="form-control  mr-sm-2" style="box-shadow:none">
+              </div>
+            </form>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">

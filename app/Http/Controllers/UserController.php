@@ -88,4 +88,10 @@ class UserController extends Controller
     auth()->user()->toggleFollow($author->id);
     return back();
   }
+  public function search(Request $request)
+  {
+    $user = $request->get('search');
+    $users = User::query()->where('name', 'LIKE', '%' . $user . '%')->orWhere('userName', 'LIKE', '%' . $user . '%')->get();
+    return view('blog.search', compact('users'));
+  }
 }

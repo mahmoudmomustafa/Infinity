@@ -38,6 +38,8 @@ Route::post('/blog/{post}/likes', 'BlogController@likePost');
 Route::delete('/blog/{post}/likes', 'BlogController@likePost');
 
 // Route::delete('/comments/{{$comment->id}}/likes', 'BlogController@likeComment');
-// Route::get('/search', 'BlogController@search');
 
 Route::post('/author/{author}/follow', 'UserController@follow');
+
+
+Route::get('/search', 'UserController@search');
